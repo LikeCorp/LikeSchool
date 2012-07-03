@@ -28,7 +28,9 @@ var times = ["00:00",
 "23:00"];
 //Initializer
 $(document).ready(function () {
-    $("div.month_body,.weekday,.daybody,.appointment").mousedown(function () { return false; })
+    $("#wholeDay").click(function () {
+        HideTimes();
+    });
     LoadCurrentView();//loads the current view
     $("#options > button").each(function () {
         $(this).click(function () {
@@ -103,8 +105,21 @@ $(document).ready(function () {
     });
 });
 function Check(res) {
-    var first = new DateDetail(Date.parse($('#startDate').val()));
-    $("." + first.GetUniqueDateId() + " > ul").append("<li><a href='#' title='" + $('#title').val() + "' id='" + res.d + "'>" + $('#title').val() + "</a></li>");
+    var first = parseDate($('#startDate').val());
+    var second = parseDate($('#endDate').val());
+    var diff = daydiff( first,second);
+    var dae
+    if (diff > 0) {
+        for (var day = 0; day < diff; day++) {
+            dae = new DateDetail(first.addDays(1).clone());
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetMonthText() + "-" + (new DateDetail(second)).GetMonthText() + "' id='" + res.d + "'>" + $('#title').val() + "</a></li>");
+        }
+    }
+    else {
+        dae = new DateDetail(first.clone());
+        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetMonthText() + "' id='" + res.d + "'>" + $('#title').val() + "</a></li>");
+    }
+    
    
 }
 function ClearValues() {
@@ -116,10 +131,20 @@ function ClearValues() {
     $('#description').val('');
     $('#email').attr('checked', false);
     $('#recursive').attr('checked', false);
+    $('#wholeDay').attr('checked', true);
+   
 }
 
-function CheckValues() {
+function HideTimes() {
 
+    if ($("#wholeDay").is(":checked")) {
+        $("#sTime").hide();
+        $("#eTime").hide();
+    }
+    else {
+        $("#sTime").show();
+        $("#eTime").show();
+    }
 }
 function GetOptionValue(val) {
     return parseInt(val.slice(0, 2));
@@ -139,6 +164,7 @@ function LoadCurrentView() {
     if (viewid == null) viewid = 0;
     if (isNaN(increment)) increment = 0;
     LoadValues(viewid, increment);
+    
 }
 /*Loads the respective calendar view*/
 function LoadValues(viewId, increment) {
@@ -162,8 +188,9 @@ function LoadValues(viewId, increment) {
     localStorage.setItem("monthincrement", increment);
 }
 function InitializeDialog() {
-    $("div.month_body,.weekday,.daybody,.appointment").dblclick(function() {
+    $("div.month_body,.weekday,.daybody,.appointment").click(function() {
         ClearValues();
+        HideTimes();
         $("#eventWindow").modal({
 
         });

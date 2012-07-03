@@ -59,10 +59,12 @@
             <div class="controls">
                 <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [mm/dd/yyyy]" />
             </div>
-            <label class="control-label" for="startTime">Start Time</label>
-            <div class="controls">
-                <select class="span4" id="startTime">
-                </select>
+            <div id="sTime">
+                <label class="control-label" for="startTime">Start Time</label>
+                <div class="controls">
+                    <select class="span4" id="startTime">
+                    </select>
+                </div>
             </div>
         </div>
         <div class="control-group">
@@ -70,11 +72,19 @@
             <div class="controls">
                 <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [mm/dd/yyyy]" />
             </div>
-            <label class="control-label" for="endTime">End Time</label>
-            <div class="controls">
-                <select class="span4" id="endTime">
-                </select>
+            <div id="eTime">
+                <label class="control-label" for="endTime">End Time</label>
+                <div class="controls">
+                    <select class="span4" id="endTime">
+                    </select>
+                </div>
             </div>
+        </div>
+        <div class="control-group">
+            <label class="checkbox">
+                <input type="checkbox" id="wholeDay" checked="checked" />
+                Whole Day
+            </label>
         </div>
         <div class="control-group">
             <label class="control-label" for="title">Title</label>

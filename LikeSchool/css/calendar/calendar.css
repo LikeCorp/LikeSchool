@@ -17,6 +17,19 @@ ul > li {
     font-size: 12px;
     cursor: pointer;
 }
+.event {
+    width: 160px;
+    height: 15px;
+    background-color: #878787;
+    margin: 0px;
+    font-size:10px;  
+    line-height: 13px;
+     text-align:center;
+}
+    .event > a {
+       text-decoration: none;
+       color: #fff;
+    }
 #pagetitle {
     
    float: left;
