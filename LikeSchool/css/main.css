@@ -1,0 +1,17 @@
+﻿body, html {
+    font-family: Tahoma;
+    margin: 0px !important;
+    height: 100%;
+}
+
+.brand {
+    color: #63B8E3 !important;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -4em;
+}
+

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LikeSchool</RootNamespace>
+    <AssemblyName>LikeSchool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="calendar.aspx" />
+    <Content Include="css\main.css" />
+    <Content Include="css\uicss\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
+    <Content Include="css\uicss\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
+    <Content Include="css\uicss\images\ui-bg_flat_0_333333_40x100.png" />
+    <Content Include="css\uicss\images\ui-bg_flat_65_ffffff_40x100.png" />
+    <Content Include="css\uicss\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="css\uicss\images\ui-bg_glass_55_fbf8ee_1x400.png" />
+    <Content Include="css\uicss\images\ui-bg_highlight-hard_100_eeeeee_1x100.png" />
+    <Content Include="css\uicss\images\ui-bg_highlight-hard_100_f6f6f6_1x100.png" />
+    <Content Include="css\uicss\images\ui-bg_highlight-soft_15_cc0000_1x100.png" />
+    <Content Include="css\uicss\images\ui-icons_004276_256x240.png" />
+    <Content Include="css\uicss\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="css\uicss\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="css\uicss\jquery-ui-1.8.21.custom.css" />
+    <Content Include="css\uicss\jquery.ui.accordion.css" />
+    <Content Include="css\uicss\jquery.ui.all.css" />
+    <Content Include="css\uicss\jquery.ui.autocomplete.css" />
+    <Content Include="css\uicss\jquery.ui.base.css" />
+    <Content Include="css\uicss\jquery.ui.button.css" />
+    <Content Include="css\uicss\jquery.ui.core.css" />
+    <Content Include="css\uicss\jquery.ui.datepicker.css" />
+    <Content Include="css\uicss\jquery.ui.dialog.css" />
+    <Content Include="css\uicss\jquery.ui.progressbar.css" />
+    <Content Include="css\uicss\jquery.ui.resizable.css" />
+    <Content Include="css\uicss\jquery.ui.selectable.css" />
+    <Content Include="css\uicss\jquery.ui.slider.css" />
+    <Content Include="css\uicss\jquery.ui.tabs.css" />
+    <Content Include="css\uicss\jquery.ui.theme.css" />
+    <Content Include="img\databg.png" />
+    <Content Include="js\calendar\calendar.js" />
+    <Content Include="js\jquery\core\jquery-1.7.2.js" />
+    <Content Include="js\jquery\ui\jquery.ui.button.js" />
+    <Content Include="js\jquery\ui\jquery.ui.core.js" />
+    <Content Include="js\jquery\ui\jquery.ui.datepicker.js" />
+    <Content Include="js\jquery\ui\jquery.ui.dialog.js" />
+    <Content Include="js\jquery\ui\jquery.ui.widget.js" />
+    <Content Include="js\thirdparty\date.js" />
+    <Content Include="js\thirdparty\json2.js" />
+    <Content Include="js\utilities\utilities.js" />
+    <Content Include="Controls\Calendar.ascx" />
+    <Content Include="css\calendar\calendar.css" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\bootstrap_button.js" />
+    <Content Include="js\bootstrap_drop.js" />
+    <Content Include="js\bootstrap_modal.js" />
+    <Content Include="js\bootstrap_scrollspy.js" />
+    <Content Include="Services\EventService.asmx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="calendar.aspx.cs">
+      <DependentUpon>calendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calendar.aspx.designer.cs">
+      <DependentUpon>calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Calendar.ascx.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Calendar.ascx.designer.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Masterpages\mainpage.Master.cs">
+      <DependentUpon>mainpage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masterpages\mainpage.Master.designer.cs">
+      <DependentUpon>mainpage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Calendar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Masterpages\mainpage.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LikeSchool.Services.DB\LikeSchool.Services.DB.csproj">
+      <Project>{b62a62f4-c902-4567-bef4-20a474d8a05f}</Project>
+      <Name>LikeSchool.Services.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:31225/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

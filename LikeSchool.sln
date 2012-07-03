@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 11
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool", "LikeSchool\LikeSchool.csproj", "{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Test", "LikeSchool.Test\LikeSchool.Test.csproj", "{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.DB", "LikeSchool.Services.DB\LikeSchool.Services.DB.csproj", "{B62A62F4-C902-4567-BEF4-20A474D8A05F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62A62F4-C902-4567-BEF4-20A474D8A05F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62A62F4-C902-4567-BEF4-20A474D8A05F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62A62F4-C902-4567-BEF4-20A474D8A05F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62A62F4-C902-4567-BEF4-20A474D8A05F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
