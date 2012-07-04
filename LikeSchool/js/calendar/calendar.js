@@ -31,6 +31,7 @@ $(document).ready(function () {
     $("#wholeDay").click(function () {
         HideTimes();
     });
+    
     LoadCurrentView();//loads the current view
     $("#options > button").each(function () {
         $(this).click(function () {
@@ -112,15 +113,19 @@ function Check(res) {
     if (diff > 0) {
         for (var day = 0; day < diff; day++) {
             dae = new DateDetail(first.addDays(1).clone());
-            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetMonthText() + "-" + (new DateDetail(second)).GetMonthText() + "' id='" + res.d + "'>" + $('#title').val() + "</a></li>");
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(),155,$(".event").css('font-size')) + "</a></li>");
         }
     }
     else {
         dae = new DateDetail(first.clone());
-        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetMonthText() + "' id='" + res.d + "'>" + $('#title').val() + "</a></li>");
+        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(),155,$(".event").css('font-size')) + "</a></li>");
     }
     
-   
+    $(".event > a").click(function () {
+        $("#eventviewtitle").text($(this).attr("title"));
+        $("#durationdetail").text($(this).attr("desc"));
+        $("#eventView").modal({});
+    });
 }
 function ClearValues() {
     $('#startDate').val('');
@@ -188,13 +193,15 @@ function LoadValues(viewId, increment) {
     localStorage.setItem("monthincrement", increment);
 }
 function InitializeDialog() {
-    $("div.month_body,.weekday,.daybody,.appointment").click(function() {
+    $("div.month_body,.weekday,.daybody,.appointment").dblclick(function() {
         ClearValues();
         HideTimes();
         $("#eventWindow").modal({
 
         });
     });
+
+   
 }
 function GetWeekDates(week) {
     var weekDts = [];

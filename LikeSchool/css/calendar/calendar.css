@@ -17,35 +17,38 @@ ul > li {
     font-size: 12px;
     cursor: pointer;
 }
+
 .event {
-    width: 160px;
+    width: 155px;
     height: 15px;
-    background-color: #878787;
+    background-color: #9FC6E7;
     margin: 0px;
-    font-size:10px;  
+    font-size: 10px;
     line-height: 13px;
-     text-align:center;
+    text-align: center;
 }
+
     .event > a {
-       text-decoration: none;
-       color: #fff;
-    }
-#pagetitle {
-    
-   float: left;
-width:150px;
-padding-top: 5px;
-}
-    #pagetitle > h2 {
-        
-       color: #6F6F6F;
-    }
-    .month_body ul {
-        margin: 0px !important;
-        color: #878787;
+        text-decoration: none;
+        color: #000;
     }
 
-.nowday,.now > .month_body {
+#pagetitle {
+    float: left;
+    width: 150px;
+    padding-top: 5px;
+}
+
+    #pagetitle > h2 {
+        color: #6F6F6F;
+    }
+
+.month_body ul {
+    margin: 0px !important;
+    color: #878787;
+}
+
+.nowday, .now > .month_body {
     background-color: #E1E1E1 !important;
     color: #000;
 }
@@ -55,13 +58,13 @@ padding-top: 5px;
     padding-right: 10px;
 }
 
-.modal {
+.createEvent > .modal {
     width: 790px;
     top: 33%;
     left: 43%;
 }
 
-.modal-body {
+.createEvent > .modal > .modal-body {
     max-height: none;
     height: 755px;
 }
@@ -164,7 +167,7 @@ padding-top: 5px;
 
 .calendarheader {
     margin-top: 20px;
-    height: 50px;   
+    height: 50px;
 }
 
 .container_calendar {
@@ -174,14 +177,15 @@ padding-top: 5px;
 
 
 
-.month_head,.month_head_now {
+.month_head, .month_head_now {
     text-align: center;
     padding-top: 5px;
     height: 25px;
     background-color: #3BA1BF;
 }
-.month_head_now {  
-    background-color: #E1E1E1;   
+
+.month_head_now {
+    background-color: #E1E1E1;
     color: #000;
 }
 
@@ -235,7 +239,7 @@ hr {
 
     .calendarleftbody > #body {
         overflow-y: scroll;
-        margin-right: 625px;
+        margin-right: 615px;
         height: 866px;
     }
 

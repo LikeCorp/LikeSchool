@@ -39,8 +39,7 @@
     <div class="calendarrightbody">
         <div class="settings">
             <a href="#" class="btn btn-danger appointment"><i class="icon-plus icon-black"></i>&nbsp;Add
-                an Event </a>&nbsp; <a href="#" class="btn"><i class="icon-cog icon-black"></i>
-            </a>
+                an Event </a>
         </div>
         <hr />
         <div class="settings">
@@ -48,75 +47,77 @@
         </div>
     </div>
 </div>
-<div class="modal hide" id="eventWindow">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Add an Event</h3>
-    </div>
-    <div class="modal-body">
-        <div class="control-group">
-            <label class="control-label" for="startDate">Start Date</label>
-            <div class="controls">
-                <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [mm/dd/yyyy]" />
-            </div>
-            <div id="sTime">
-                <label class="control-label" for="startTime">Start Time</label>
+<div class="createEvent">
+    <div class="modal hide" id="eventWindow">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h3>Add an Event</h3>
+        </div>
+        <div class="modal-body">
+            <div class="control-group">
+                <label class="control-label" for="startDate">Start Date</label>
                 <div class="controls">
-                    <select class="span4" id="startTime">
-                    </select>
+                    <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [mm/dd/yyyy]" />
+                </div>
+                <div id="sTime">
+                    <label class="control-label" for="startTime">Start Time</label>
+                    <div class="controls">
+                        <select class="span4" id="startTime">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="endDate">End Date</label>
+                <div class="controls">
+                    <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [mm/dd/yyyy]" />
+                </div>
+                <div id="eTime">
+                    <label class="control-label" for="endTime">End Time</label>
+                    <div class="controls">
+                        <select class="span4" id="endTime">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="checkbox">
+                    <input type="checkbox" id="wholeDay" checked="checked" />
+                    Whole Day
+                </label>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="title">Title</label>
+                <div class="controls">
+                    <input type="text" id="title" placeholder="Short description of your Event" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="description">Description</label>
+                <div class="controls">
+                    <textarea id="description"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" id="email" />
+                        Add an email Reminder
+                    </label>
+                </div>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" id="recursive" />
+                        Add it as a recursive event
+                    </label>
                 </div>
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="endDate">End Date</label>
-            <div class="controls">
-                <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [mm/dd/yyyy]" />
-            </div>
-            <div id="eTime">
-                <label class="control-label" for="endTime">End Time</label>
-                <div class="controls">
-                    <select class="span4" id="endTime">
-                    </select>
-                </div>
-            </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal" id="cancel"><i class="icon-remove icon-black">
+            </i>Cancel </a><a href="#" class="btn btn-info" id="add"><i class="icon-plus icon-black">
+            </i>Add </a>
         </div>
-        <div class="control-group">
-            <label class="checkbox">
-                <input type="checkbox" id="wholeDay" checked="checked" />
-                Whole Day
-            </label>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="title">Title</label>
-            <div class="controls">
-                <input type="text" id="title" placeholder="Short description of your Event" />
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="description">Description</label>
-            <div class="controls">
-                <textarea id="description"></textarea>
-            </div>
-        </div>
-        <div class="control-group">
-            <div class="controls">
-                <label class="checkbox">
-                    <input type="checkbox" id="email" />
-                    Add an email Reminder
-                </label>
-            </div>
-            <div class="controls">
-                <label class="checkbox">
-                    <input type="checkbox" id="recursive" />
-                    Add it as a recursive event
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#" class="btn" data-dismiss="modal" id="cancel"><i class="icon-remove icon-black">
-        </i>Cancel </a><a href="#" class="btn btn-info" id="add"><i class="icon-plus icon-black">
-        </i>Add </a>
     </div>
 </div>
 <div class="modal hide" id="eventView">
@@ -125,6 +126,7 @@
         <h3 id="eventviewtitle"></h3>
     </div>
     <div class="modal-body">
+        <label>When :</label>
         <span id="durationdetail"></span>
     </div>
     <div class="modal-footer">
