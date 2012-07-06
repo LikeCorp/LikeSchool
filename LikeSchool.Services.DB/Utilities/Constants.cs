@@ -12,6 +12,7 @@ namespace LikeSchool.Services.DB
 
         /*Stored procedures need to be appended with SP_[storedprocedure name]*/
         public const string SP_InsertEventTable = "InsertEventTable";
+        public const string SP_SelectEventTable = "SelectEventTable";
 
         public const string LikeConnectionString = "likeconnectionstring";
 
@@ -25,6 +26,8 @@ namespace LikeSchool.Services.DB
         public const string Recursive = "@recursive";
         public const string Reminder = "@reminder";
         public const string EventId = "@id";
+        public const string InputSDate="@iSDate";
+        public const string InputEDate = "@iEDate";
         #endregion
     }
 }

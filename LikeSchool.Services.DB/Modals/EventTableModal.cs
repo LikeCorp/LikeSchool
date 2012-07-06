@@ -6,7 +6,7 @@ using LikeSchool.Services.DB.Insert;
 
 namespace LikeSchool.Services.DB.Modals
 {
-    public class EventTableModal : InsertSP
+    public class EventTableModal : SP
     {
 
         public string StartDate { get; set; }
@@ -18,8 +18,10 @@ namespace LikeSchool.Services.DB.Modals
         public string IsRecursive { get; set; }
         public string IsReminder { get; set; }
         public string EventId { get; set; }
+        public string InputStartDate {get;set;}
+        public string InputEndDate{get;set;}
 
-        public List<Procedure> GetProcedureList()
+        public List<Procedure> GetInsertProcedureList()
         {
             List<Procedure> procs = new List<Procedure>();
             procs.Add(new Procedure() { ProcedureParameter = Constants.SDate, ProcedureValue = StartDate,IsOutParemeter=false });
@@ -34,10 +36,23 @@ namespace LikeSchool.Services.DB.Modals
             return procs;
         }
 
-        public override List<Procedure> InsertProcedure(string procedureName)
+        public List<Procedure> GetSelectProcedureList()
         {
-            base.Parameters = GetProcedureList();
-            return base.InsertProcedure(procedureName);
+            List<Procedure> procs = new List<Procedure>();
+            procs.Add(new Procedure() { ProcedureParameter = Constants.SDate, ProcedureValue = StartDate, IsOutParemeter = true });
+            procs.Add(new Procedure() { ProcedureParameter = Constants.STime, ProcedureValue = StartTime, IsOutParemeter = true });
+            procs.Add(new Procedure() { ProcedureParameter = Constants.EDate, ProcedureValue = EndDate, IsOutParemeter = true });
+            procs.Add(new Procedure() { ProcedureParameter = Constants.ETime, ProcedureValue = EndTime, IsOutParemeter = true });
+            procs.Add(new Procedure() { ProcedureParameter = Constants.TitleString, ProcedureValue = Title, IsOutParemeter = true });        
+            procs.Add(new Procedure() { ProcedureParameter = Constants.EventId, ProcedureValue = EventId, IsOutParemeter = true });
+            procs.Add(new Procedure() { ProcedureParameter = Constants.InputSDate, ProcedureValue = InputStartDate, IsOutParemeter = false });
+            procs.Add(new Procedure() { ProcedureParameter = Constants.InputEDate, ProcedureValue = InputEndDate, IsOutParemeter = false });
+            return procs;
+        }
+
+        public override List<Procedure> ExecuteProcedure(string procedureName,List<Procedure> parameters)
+        {
+            return base.ExecuteProcedure(procedureName, parameters);
         }
     }
 }

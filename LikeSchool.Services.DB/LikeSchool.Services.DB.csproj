@@ -65,7 +65,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilities\Connection.cs" />
-    <Compile Include="Insert\Insert.cs" />
+    <Compile Include="StoredProcedure\SP.cs" />
     <Compile Include="Utilities\Procedure.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

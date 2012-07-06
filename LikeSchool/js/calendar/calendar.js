@@ -2,6 +2,8 @@
 var increment = 0;
 var totalCount = 42;
 var todayDate = new DateDetail(Date.today());
+var istartDate;
+var iendDate;
 var times = ["00:00",
 "01:00",
 "02:00",
@@ -31,7 +33,7 @@ $(document).ready(function () {
     $("#wholeDay").click(function () {
         HideTimes();
     });
-    
+
     LoadCurrentView();//loads the current view
     $("#options > button").each(function () {
         $(this).click(function () {
@@ -108,19 +110,19 @@ $(document).ready(function () {
 function Check(res) {
     var first = parseDate($('#startDate').val());
     var second = parseDate($('#endDate').val());
-    var diff = daydiff( first,second);
+    var diff = daydiff(first, second);
     var dae
     if (diff > 0) {
         for (var day = 0; day < diff; day++) {
             dae = new DateDetail(first.addDays(1).clone());
-            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(),155,$(".event").css('font-size')) + "</a></li>");
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
         }
     }
     else {
         dae = new DateDetail(first.clone());
-        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(),155,$(".event").css('font-size')) + "</a></li>");
+        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
     }
-    
+
     $(".event > a").click(function () {
         $("#eventviewtitle").text($(this).attr("title"));
         $("#durationdetail").text($(this).attr("desc"));
@@ -137,7 +139,7 @@ function ClearValues() {
     $('#email').attr('checked', false);
     $('#recursive').attr('checked', false);
     $('#wholeDay').attr('checked', true);
-   
+
 }
 
 function HideTimes() {
@@ -169,7 +171,7 @@ function LoadCurrentView() {
     if (viewid == null) viewid = 0;
     if (isNaN(increment)) increment = 0;
     LoadValues(viewid, increment);
-    
+
 }
 /*Loads the respective calendar view*/
 function LoadValues(viewId, increment) {
@@ -186,6 +188,7 @@ function LoadValues(viewId, increment) {
             $("#body").html(GetDayValues(increment));
             break;
     }
+    UpdateRightSide();
     InitializeDialog();
     UpdateEvents(viewId);
     SetOption(viewId);
@@ -193,7 +196,7 @@ function LoadValues(viewId, increment) {
     localStorage.setItem("monthincrement", increment);
 }
 function InitializeDialog() {
-    $("div.month_body,.weekday,.daybody,.appointment").dblclick(function() {
+    $("div.month_body,.weekday,.daybody,.appointment").dblclick(function () {
         ClearValues();
         HideTimes();
         $("#eventWindow").modal({
@@ -201,7 +204,27 @@ function InitializeDialog() {
         });
     });
 
-   
+
+}
+
+function UpdateRightSide() {
+    var references = ['inputstartdate', 'inputenddate'];
+    var rvalues = [];
+    rvalues.push(istartDate);
+    rvalues.push(iendDate);
+    $.ajax({
+        url: "/Services/EventService.asmx/SelectEventTable",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
+        dataType: "json",
+        success: function (res) {
+            WriteContents(res);
+        }
+    });
+}
+function WriteContents(result) {
+    var parseResult = JSON.parse(result);
 }
 function GetWeekDates(week) {
     var weekDts = [];
@@ -218,6 +241,8 @@ function GetWeekValues(week) {
     var currentIndex;
     var weekDates = GetWeekDates(week);
     UpdateDateShow(weekDates[0].GetDateText() + " - " + weekDates[6].GetDateText());
+    istartDate = weekDates[0].GetDBDate();
+    iendDate = weekDates[6].GetDBDate();
     var htmlContent = "<div id='topsection'>";
     htmlContent += "<table><tbody>";
     htmlContent += "<tr>";
@@ -273,6 +298,8 @@ function GetDate(week) {
 function GetDayValues(week) {
     var weekDate = GetDate(week);
     UpdateDateShow(weekDate.GetDateText());
+    istartDate = weekDate.GetDBDate();
+    iendDate = weekDate.GetDBDate();
     var htmlContent = "<div id='topsection'>";
     htmlContent += "<table><tbody>";
     htmlContent += "<tr>";
@@ -355,6 +382,9 @@ function GetMonthValues(month) {
     var afterDays = GetAfterDays(lastDateDayNo, lastDateOfCurrentMonth, totalCount);
     totalCount -= afterDays.length;
     var completeMonthDays = beforeDays.concat(currentDays).concat(afterDays);
+
+    istartDate = completeMonthDays[0].GetDBDate();
+    iendDate = completeMonthDays[completeMonthDays.length - 1].GetDBDate();
 
     var monthHtmlContent = GetConstructedMonthHTML(GetSplitDates(completeMonthDays));
     return monthHtmlContent;
@@ -524,6 +554,9 @@ function DateDetail(date, isBefore, isAfter, isNow) {
     };
     this.GetDateText = function () {
         return this.Date.toString("dd/MMM/yy");
+    };
+    this.GetDBDate = function () {
+        return this.Date.toString('yyyy-MM-dd');
     };
     this.GetUniqueDateId = function () {
         return this.DayNo.toString() + this.MonthNo.toString() + this.Year.toString() + this.WeekDayNo.toString();

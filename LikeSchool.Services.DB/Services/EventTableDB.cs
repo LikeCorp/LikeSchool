@@ -25,8 +25,17 @@ namespace LikeSchool.Services.DB.Services
         {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
-                List<Procedure> outs=modal.InsertProcedure(Constants.SP_InsertEventTable);
+                List<Procedure> outs=modal.ExecuteProcedure(Constants.SP_InsertEventTable,modal.GetInsertProcedureList());
                 return outs[0].OutValue.ToString();            
         }
+        [WebMethod]
+        public string SelectEventTable(string jsonValue)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
+            List<Procedure> outs = modal.ExecuteProcedure(Constants.SP_SelectEventTable, modal.GetSelectProcedureList());
+            return serializer.Serialize(outs);
+        }
+       
     }
 }
