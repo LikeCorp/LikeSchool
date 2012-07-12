@@ -23,8 +23,7 @@ namespace LikeSchool.Services.DB
         public const string ETime = "@eTime";
         public const string TitleString = "@title";
         public const string DescString = "@desc";
-        public const string Recursive = "@recursive";
-        public const string Reminder = "@reminder";
+        public const string Recursive = "@recursive";       
         public const string EventId = "@id";
         public const string InputSDate="@iSDate";
         public const string InputEDate = "@iEDate";

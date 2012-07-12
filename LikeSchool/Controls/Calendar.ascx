@@ -45,6 +45,9 @@
         <div class="settings">
             <span id="eventTitle">Events of this Month</span>
         </div>
+        <div class="settings" id="events">
+
+        </div>
     </div>
 </div>
 <div class="createEvent">
@@ -98,13 +101,7 @@
                     <textarea id="description"></textarea>
                 </div>
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <label class="checkbox">
-                        <input type="checkbox" id="email" />
-                        Add an email Reminder
-                    </label>
-                </div>
+            <div class="control-group">                
                 <div class="controls">
                     <label class="checkbox">
                         <input type="checkbox" id="recursive" />

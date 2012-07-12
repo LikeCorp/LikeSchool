@@ -63,18 +63,9 @@ $(document).ready(function () {
     $("#startDate").datepicker();
     $("#endDate").datepicker();
     $("#datepicker").datepicker({ inline: true });
-    //$("#endDate").change(function () {
-    //    var first = Date.parse($('#startDate').val());
-    //    var second = Date.parse($('#endDate').val());
-    //    if (second < first) {
-    //        $('#endDate').addClass('error');
-    //    }
-    //    else {
-    //        $('#endDate').removeClass('error');
-    //    }
-    //});
+
     $("#add").click(function () {
-        var references = ['startdate', 'starttime', 'enddate', 'endtime', 'title', 'description', 'isrecursive', 'isreminder'];
+        var references = ['startdate', 'starttime', 'enddate', 'endtime', 'title', 'description', 'isrecursive'];
         var rvalues = [];
         rvalues.push($('#startDate').val());
         rvalues.push(GetOptionValue($("#startTime option:selected").text()));
@@ -82,17 +73,12 @@ $(document).ready(function () {
         rvalues.push(GetOptionValue($("#endTime option:selected").text()));
         rvalues.push($('#title').val());
         rvalues.push($('#description').val());
-        if ($('#email').is(':checked')) {
-            rvalues.push('1');
-        } else {
-            rvalues.push('0');
-        }
+
         if ($('#recursive').is(':checked')) {
             rvalues.push('1');
         } else {
             rvalues.push('0');
         }
-
 
         $.ajax({
             url: "/Services/EventService.asmx/InsertEventTable",
@@ -110,17 +96,22 @@ $(document).ready(function () {
 function Check(res) {
     var first = parseDate($('#startDate').val());
     var second = parseDate($('#endDate').val());
+    UpdateInnerEvents(first, second,res.d);
+
+}
+function UpdateInnerEvents(first, second,id) {
+    
     var diff = daydiff(first, second);
     var dae
     if (diff > 0) {
         for (var day = 0; day < diff; day++) {
             dae = new DateDetail(first.addDays(1).clone());
-            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + id + "'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + id + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
         }
     }
     else {
         dae = new DateDetail(first.clone());
-        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + res.d + "'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetDateText() + "' id='" + res.d + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
+        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + id+ "'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetDateText() + "' id='" + id + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
     }
 
     $(".event > a").click(function () {
@@ -136,10 +127,8 @@ function ClearValues() {
     $('#endTime').prop('selectedIndex', 0);
     $('#title').val('');
     $('#description').val('');
-    $('#email').attr('checked', false);
     $('#recursive').attr('checked', false);
     $('#wholeDay').attr('checked', true);
-
 }
 
 function HideTimes() {
@@ -203,8 +192,6 @@ function InitializeDialog() {
 
         });
     });
-
-
 }
 
 function UpdateRightSide() {
@@ -224,7 +211,40 @@ function UpdateRightSide() {
     });
 }
 function WriteContents(result) {
-    var parseResult = JSON.parse(result);
+    var parseResult = JSON.parse(result.d);
+    var result;
+    if (parseResult.length == 0) {
+        result = "Boo !!! There is no events registered in this month";
+    }
+    else {
+        result = "<table class='table table-striped'>";
+        result += "<thead>";
+        result += "<th>";
+        result += "EventTitle";
+        result += "</th>";
+        result += "<th>";
+        result += "When";
+        result += "</th>";
+        result += "</thead>";
+        result += "<tbody>";
+        for (var i = 0; i < parseResult.length; i++) {
+            result += "<tr>";
+            result += "<td>";
+            result += parseResult[i].Title;
+            result += "</td>";
+            result += "<td>";
+            result += parseResult[i].StartDate + " to " + parseResult[i].EndDate;
+            result += "</td>";
+            result += "</tr>";
+            UpdateInnerEvents(parseDbDate(parseResult[i].StartDate), parseDbDate(parseResult[i].EndDate), parseResult[i].eventid);
+        }
+        result += "</tbody>";
+        result += "</table>";
+    }
+
+    $("#events").html('');
+    $("#events").html(result);
+
 }
 function GetWeekDates(week) {
     var weekDts = [];

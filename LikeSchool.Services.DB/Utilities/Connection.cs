@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -10,10 +11,10 @@ namespace LikeSchool.Services.DB
 {
     public class Connection
     {
-       private static SqlConnection connection;
-        public static void OpenConnection()
+       private static IDbConnection connection;
+       public static void OpenConnection()
         {
-            DbConnection.Open();
+            DbConnection.Open();           
         }
         public static void CloseConnection()
         {
@@ -21,7 +22,7 @@ namespace LikeSchool.Services.DB
                 DbConnection.Close();
         }
 
-        public static SqlConnection DbConnection
+        public static IDbConnection DbConnection
         {
             get
             {

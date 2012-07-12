@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
 using LikeSchool.Services.DB.Modals;
-using LikeSchool.Services.DB.Insert;
+
 using System.Web.Script.Services;
 
 namespace LikeSchool.Services.DB.Services
@@ -14,7 +14,7 @@ namespace LikeSchool.Services.DB.Services
     /// Summary description for EventTableDB
     /// </summary>
     [WebService(Namespace = "http://tempuri.org/")]
-    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]        
+    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [ScriptService]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
     // [System.Web.Script.Services.ScriptService]
@@ -23,19 +23,20 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public string InsertEventTable(string jsonValue)
         {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
-                List<Procedure> outs=modal.ExecuteProcedure(Constants.SP_InsertEventTable,modal.GetInsertProcedureList());
-                return outs[0].OutValue.ToString();            
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
+            string output = modal.InsertEvents(Constants.SP_InsertEventTable, modal);
+            return output;
         }
+
         [WebMethod]
         public string SelectEventTable(string jsonValue)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
-            List<Procedure> outs = modal.ExecuteProcedure(Constants.SP_SelectEventTable, modal.GetSelectProcedureList());
-            return serializer.Serialize(outs);
+            List<EventTableModal> output = modal.GetEvents(Constants.SP_SelectEventTable, modal);
+            return serializer.Serialize(output);
         }
-       
+
     }
 }

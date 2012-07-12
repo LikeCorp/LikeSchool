@@ -17,7 +17,9 @@ ul > li {
     font-size: 12px;
     cursor: pointer;
 }
-
+.eventTitle {
+    font-weight: bold;
+}
 .event {
     width: 155px;
     height: 15px;

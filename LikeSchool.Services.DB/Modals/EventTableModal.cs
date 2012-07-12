@@ -1,58 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
-using LikeSchool.Services.DB.Insert;
+using Dapper;
+
 
 namespace LikeSchool.Services.DB.Modals
 {
-    public class EventTableModal : SP
+    public class EventTableModal : Connection
     {
-
-        public string StartDate { get; set; }
-        public string StartTime { get; set; }
+        public string StartDate
+        {
+            get;
+            set;
+        }
+        public int StartTime { get; set; }
         public string EndDate { get; set; }
-        public string EndTime { get; set; }
+        public int EndTime { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string IsRecursive { get; set; }
-        public string IsReminder { get; set; }
-        public string EventId { get; set; }
-        public string InputStartDate {get;set;}
-        public string InputEndDate{get;set;}
+        public int EventId { get; set; }
+        public string InputStartDate { get; set; }
+        public string InputEndDate { get; set; }
 
-        public List<Procedure> GetInsertProcedureList()
+        public string InsertEvents(string procedureName, EventTableModal parameter)
         {
-            List<Procedure> procs = new List<Procedure>();
-            procs.Add(new Procedure() { ProcedureParameter = Constants.SDate, ProcedureValue = StartDate,IsOutParemeter=false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.STime, ProcedureValue = StartTime, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.EDate, ProcedureValue = EndDate, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.ETime, ProcedureValue = EndTime, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.TitleString, ProcedureValue = Title, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.DescString, ProcedureValue = Description, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.Recursive, ProcedureValue = IsRecursive, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.Reminder, ProcedureValue = IsReminder, IsOutParemeter = false });
-            procs.Add(new Procedure(){ ProcedureParameter=Constants.EventId,ProcedureValue= EventId,IsOutParemeter=true});
-            return procs;
+            OpenConnection();
+            var dynamic = new DynamicParameters();
+            dynamic.Add(Constants.SDate, parameter.StartDate);
+            dynamic.Add(Constants.STime, parameter.StartTime);
+            dynamic.Add(Constants.EDate, parameter.EndDate);
+            dynamic.Add(Constants.ETime, parameter.EndTime);
+            dynamic.Add(Constants.TitleString, parameter.Title);
+            dynamic.Add(Constants.DescString, parameter.Description);
+            dynamic.Add(Constants.Recursive, parameter.IsRecursive);
+            dynamic.Add(Constants.EventId, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            DbConnection.Execute(Constants.SP_InsertEventTable, dynamic, null, null, CommandType.StoredProcedure);
+            CloseConnection();
+            return dynamic.Get<int>(Constants.EventId).ToString();
         }
 
-        public List<Procedure> GetSelectProcedureList()
+        public List<EventTableModal> GetEvents(string procedureName, EventTableModal parameter)
         {
-            List<Procedure> procs = new List<Procedure>();
-            procs.Add(new Procedure() { ProcedureParameter = Constants.SDate, ProcedureValue = StartDate, IsOutParemeter = true });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.STime, ProcedureValue = StartTime, IsOutParemeter = true });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.EDate, ProcedureValue = EndDate, IsOutParemeter = true });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.ETime, ProcedureValue = EndTime, IsOutParemeter = true });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.TitleString, ProcedureValue = Title, IsOutParemeter = true });        
-            procs.Add(new Procedure() { ProcedureParameter = Constants.EventId, ProcedureValue = EventId, IsOutParemeter = true });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.InputSDate, ProcedureValue = InputStartDate, IsOutParemeter = false });
-            procs.Add(new Procedure() { ProcedureParameter = Constants.InputEDate, ProcedureValue = InputEndDate, IsOutParemeter = false });
-            return procs;
-        }
-
-        public override List<Procedure> ExecuteProcedure(string procedureName,List<Procedure> parameters)
-        {
-            return base.ExecuteProcedure(procedureName, parameters);
+            OpenConnection();
+            List<EventTableModal> result = DbConnection.Query<EventTableModal>(Constants.SP_SelectEventTable, new
+            {
+                iSDate = parameter.InputStartDate,
+                iEDate = parameter.InputEndDate
+            },
+            commandType: CommandType.StoredProcedure).ToList<EventTableModal>();
+            CloseConnection();
+            return result;
         }
     }
 }
