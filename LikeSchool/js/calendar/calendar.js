@@ -94,24 +94,47 @@ $(document).ready(function () {
     });
 });
 function Check(res) {
+
     var first = parseDate($('#startDate').val());
     var second = parseDate($('#endDate').val());
-    UpdateInnerEvents(first, second,res.d);
+    var title = $('#title').val();
+    UpdateInnerEvents(first, second, res.d, title);
+    UpdateRightSide(false);
 
 }
-function UpdateInnerEvents(first, second,id) {
-    
+function UpdateInnerEvents(first, second, id, t) {
+
     var diff = daydiff(first, second);
-    var dae
+    var dae;
+    var len;
     if (diff > 0) {
-        for (var day = 0; day < diff; day++) {
-            dae = new DateDetail(first.addDays(1).clone());
-            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + id + "'><a href='#' title='" + $('#title').val() + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + id + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
+        for (var day = 0; day <= diff; day++) {
+            var temp = first.clone();
+            dae = new DateDetail(temp.addDays(day));
+            len = $("." + dae.GetUniqueDateId() + " > ul > li").size();
+            if (len < 4) {
+                $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event' id='" + id + "'><a href='#' title='" + t + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + id + "'>" + GetText(t, 155, $(".event").css('font-size')) + "</a></li>");
+
+            }
+            else if (len == 4) {
+
+                $("." + dae.GetUniqueDateId() + " > ul").append("<li class='eventmore'><a href='#' date='" + dae.GetUniqueDateId() + "'> More</a></li>");
+
+            }
         }
     }
     else {
         dae = new DateDetail(first.clone());
-        $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event " + id+ "'><a href='#' title='" + $('#title').val() + "' desc='" + dae.GetDateText() + "' id='" + id + "'>" + GetText($('#title').val(), 155, $(".event").css('font-size')) + "</a></li>");
+        len = $("." + dae.GetUniqueDateId() + " > ul > li").size();
+        if (len < 4) {
+
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event' id='" + id + "'><a href='#' title='" + t + "' desc='" + dae.GetDateText() + "' id='" + id + "'>" + GetText(t, 155, $(".event").css('font-size')) + "</a></li>");
+        }
+        else if (len == 4) {
+
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='eventmore'><a href='#' date='" + dae.GetUniqueDateId() + "'> More</a></li>");
+
+        }
     }
 
     $(".event > a").click(function () {
@@ -177,7 +200,7 @@ function LoadValues(viewId, increment) {
             $("#body").html(GetDayValues(increment));
             break;
     }
-    UpdateRightSide();
+    UpdateRightSide(true);
     InitializeDialog();
     UpdateEvents(viewId);
     SetOption(viewId);
@@ -194,7 +217,7 @@ function InitializeDialog() {
     });
 }
 
-function UpdateRightSide() {
+function UpdateRightSide(update) {
     var references = ['inputstartdate', 'inputenddate'];
     var rvalues = [];
     rvalues.push(istartDate);
@@ -206,11 +229,11 @@ function UpdateRightSide() {
         data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
         dataType: "json",
         success: function (res) {
-            WriteContents(res);
+            WriteContents(res,update);
         }
     });
 }
-function WriteContents(result) {
+function WriteContents(result,update) {
     var parseResult = JSON.parse(result.d);
     var result;
     if (parseResult.length == 0) {
@@ -236,7 +259,8 @@ function WriteContents(result) {
             result += parseResult[i].StartDate + " to " + parseResult[i].EndDate;
             result += "</td>";
             result += "</tr>";
-            UpdateInnerEvents(parseDbDate(parseResult[i].StartDate), parseDbDate(parseResult[i].EndDate), parseResult[i].eventid);
+            if(update)
+            UpdateInnerEvents(parseDbDate(parseResult[i].StartDate), parseDbDate(parseResult[i].EndDate), parseResult[i].EventId, parseResult[i].Title);
         }
         result += "</tbody>";
         result += "</table>";
