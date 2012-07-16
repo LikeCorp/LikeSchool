@@ -17,9 +17,15 @@
                 <a class="brand" href="#">Like School</a>
                 <div class="nav-collapse">
                     <ul class="nav">
-                        <li><a href="#"><i class="icon-home icon-white"></i>Home</a></li>
-                        <li><a href="../calendar.aspx"><i class="icon-calendar icon-white"></i>Calendar</a>
+                        <li><a href="#"><i class="icon-home icon-black"></i>&nbsp;Home</a></li>
+                        <li><a href="../attendance.aspx"><i class="icon-ok icon-black"></i>&nbsp;Attendance Manager</a></li>
+                        <li><a href="../timetable.aspx"><i class="icon-th icon-black"></i>&nbsp;TimeTable Manager</a></li>
+                        <li><a href="../leave.aspx"><i class="icon-list-alt icon-black"></i>&nbsp;Leave Manager</a></li>
+                        <li><a href="../calendar.aspx"><i class="icon-calendar icon-black"></i>&nbsp;Calendar</a>
                         </li>
+                    </ul>
+                    <ul class="nav pull-right">
+                        <li><a href="#">Sign In</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,6 +33,5 @@
     </div>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
-   
 </body>
 </html>

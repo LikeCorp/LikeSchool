@@ -38,8 +38,8 @@ ul > li {
 
 #pagetitle {
     float: left;
-    width: 150px;
-    padding-top: 5px;
+    padding-left: 9px;
+    padding-top: 8px;
 }
 
     #pagetitle > h2 {
@@ -103,16 +103,19 @@ ul > li {
 #startTime {
     margin-right: 87px;
 }
-
-
+.row-fluid .left {
+   width:    27.893617%;
+}
+.row-fluid .right {
+   width:  48.978723%
+}
 #topsection {
     position: absolute;
     z-index: 1000;
 }
 
 #wrapper {
-    float: left;
-    width: 100%;
+    float: left;  
 }
 
 #weekbodyright {
@@ -123,7 +126,7 @@ ul > li {
 #weekbodyleft {
     float: left;
     width: 52px;
-    margin-left: -1225px;
+    margin-left: -1223px;
     margin-top: 32px;
 }
 
@@ -159,17 +162,16 @@ ul > li {
     color: #878787;
 }
 
-#options, #iterator {
+#options, #iterator,#dateShow {
     font-family: Tahoma;
     font-size: 8pt;
     padding-top: 10px;
     float: left;
-    width: 300px;
+    
     margin: 0px;
 }
 
-.calendarheader {
-    margin-top: 20px;
+.calendarheader {   
     height: 50px;
 }
 
@@ -198,7 +200,7 @@ hr {
 
 .settings {
     margin: 10px;
-    margin-top: 3px;
+   
     margin-bottom: 20px;
 }
 

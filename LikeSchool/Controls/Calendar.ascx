@@ -15,38 +15,52 @@
 <script type="text/javascript" src="../js/calendar/calendar.js"></script>
 <script type="text/javascript" src="../js/utilities/utilities.js"></script>
 <div class="container_calendar">
-    <div class="calendarheader">
-        <div id="pagetitle">
-            <h2>Calendar</h2>
-        </div>
-        <div class="btn-group" data-toggle="buttons-radio" id="options">
-            <button class="btn" id="month" viewid="0">Month</button>
-            <button class="btn" id="week" viewid="1">Week</button>
-            <button type="button" class="btn" id="day" viewid="2">Day</button>
-        </div>
-        <div id="iterator">
-            <a href="#" class="btn" id="previous"><i class="icon-chevron-left icon-black"></i>
-            </a>
-            <input type="button" class="btn" id="today" value="Today" />
-            <a href="#" class="btn" id="after"><i class="icon-chevron-right icon-black"></i>
-            </a><span id="dateShow"></span>
-        </div>
-    </div>
-    <div class="calendarleftbody">
-        <div id="body">
-        </div>
-    </div>
-    <div class="calendarrightbody">
-        <div class="settings">
-            <a href="#" class="btn btn-danger appointment"><i class="icon-plus icon-black"></i>&nbsp;Add
-                an Event </a>
-        </div>
-        <hr />
-        <div class="settings">
-            <span id="eventTitle">Events of this Month</span>
-        </div>
-        <div class="settings" id="events">
-
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3">
+                <div class="span8">
+                    <div id="pagetitle">
+                        <h2>Calendar</h2>
+                    </div>
+                </div>
+                <div class="settings">
+                    <a href="#" class="btn btn-danger appointment"><i class="icon-plus icon-black"></i>&nbsp;Add
+                        an Event </a>
+                </div>
+                <hr />
+                <div class="settings">
+                    <span id="eventTitle">Events of this Month</span>
+                </div>
+                <div class="settings" id="events">
+                </div>
+            </div>
+            <div class="span9">
+                <div class="calendarheader">
+                    <div class="row-fluid show-grid">
+                        <div class="span5">
+                            <div class="btn-group" data-toggle="buttons-radio" id="options">
+                                <button class="btn" id="month" viewid="0">Month</button>
+                                <button class="btn" id="week" viewid="1">Week</button>
+                                <button type="button" class="btn" id="day" viewid="2">Day</button>
+                            </div>
+                        </div>
+                        <div class="span4">
+                            <span id="dateShow"></span>
+                        </div>
+                        <div class="sapn5">
+                            <div id="iterator">
+                                <a href="#" class="btn" id="previous"><i class="icon-chevron-left icon-black"></i>
+                                </a>
+                                <input type="button" class="btn" id="today" value="Today" />
+                                <a href="#" class="btn" id="after"><i class="icon-chevron-right icon-black"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="body">
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -101,7 +115,7 @@
                     <textarea id="description"></textarea>
                 </div>
             </div>
-            <div class="control-group">                
+            <div class="control-group">
                 <div class="controls">
                     <label class="checkbox">
                         <input type="checkbox" id="recursive" />
