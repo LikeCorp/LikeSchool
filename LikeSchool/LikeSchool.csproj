@@ -58,6 +58,8 @@
   <ItemGroup>
     <Content Include="attendance.aspx" />
     <Content Include="calendar.aspx" />
+    <Content Include="css\fullcalendar.css" />
+    <Content Include="css\fullcalendar.print.css" />
     <Content Include="css\main.css" />
     <Content Include="css\uicss\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
     <Content Include="css\uicss\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
@@ -87,8 +89,12 @@
     <Content Include="css\uicss\jquery.ui.tabs.css" />
     <Content Include="css\uicss\jquery.ui.theme.css" />
     <Content Include="img\databg.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="index.aspx" />
     <Content Include="js\calendar\calendar.js" />
+    <Content Include="js\fullcalendar.js" />
     <Content Include="js\jquery\core\jquery-1.7.2.js" />
+    <Content Include="js\jquery\ui\jquery-ui-1.8.17.custom.min.js" />
     <Content Include="js\jquery\ui\jquery.ui.button.js" />
     <Content Include="js\jquery\ui\jquery.ui.core.js" />
     <Content Include="js\jquery\ui\jquery.ui.datepicker.js" />
@@ -112,6 +118,7 @@
     <Content Include="js\bootstrap_modal.js" />
     <Content Include="js\bootstrap_scrollspy.js" />
     <Content Include="leave.aspx" />
+    <Content Include="login.aspx" />
     <Content Include="Services\EventService.asmx" />
     <Content Include="timetable.aspx" />
     <Content Include="Web.config">
@@ -140,12 +147,33 @@
     <Compile Include="Controls\Calendar.ascx.designer.cs">
       <DependentUpon>Calendar.ascx</DependentUpon>
     </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="leave.aspx.cs">
       <DependentUpon>leave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="leave.aspx.designer.cs">
       <DependentUpon>leave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Masterpages\Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Masterpages\Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
     </Compile>
     <Compile Include="Masterpages\mainpage.Master.cs">
       <DependentUpon>mainpage.Master</DependentUpon>
@@ -185,6 +213,11 @@
       <Name>LikeSchool.Services.DB</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Masterpages\Login.Master" />
+    <None Include="Properties\PublishProfiles\LikeSchool.pubxml" />
+    <None Include="Properties\PublishProfiles\Profile1.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -198,13 +231,12 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>55847</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:31225/</IISUrl>
+          <IISUrl>http://localhost:3225</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://likeschool.com</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

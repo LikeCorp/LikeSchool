@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Login.master.cs" Inherits="LikeSchool.Masterpages.Login" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Like School-Login</title>
+    <link rel="icon" type="image/gif" href="../img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css" />    
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">Like School</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+            <p>(C) All rights reserved to Like Corp Pvt Ltd.</p>
+        </footer>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

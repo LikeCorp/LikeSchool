@@ -23,11 +23,10 @@ ul > li {
 .event {
     width: 155px;
     height: 15px;
-    background-color: #9FC6E7;
+ 
     margin: 0px;
     font-size: 10px;
-    line-height: 13px;
-    text-align: center;
+    line-height: 13px;    
     margin-top: 1px;
 }
 

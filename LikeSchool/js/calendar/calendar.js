@@ -1,4 +1,5 @@
 ﻿var viewid;
+var defaultColor = '9FC6E7';
 var increment = 0;
 var totalCount = 42;
 var todayDate = new DateDetail(Date.today());
@@ -28,6 +29,9 @@ var times = ["00:00",
 "21:00",
 "22:00",
 "23:00"];
+
+var colors = ['5484ED', 'A4BDFC', '46D6DB', '51B749', 'FBD75B', 'FFB878', 'FF887C', 'DC2127', 'DBADFF', 'E1E1E1'];
+
 //Initializer
 $(document).ready(function () {
     $("#wholeDay").click(function () {
@@ -98,7 +102,7 @@ function Check(res) {
     var first = parseDate($('#startDate').val());
     var second = parseDate($('#endDate').val());
     var title = $('#title').val();
-    UpdateInnerEvents(first, second, res.d, title);
+    UpdateInnerEvents(first, second, res.d, title,defaultColor);
     UpdateRightSide(false);
 
 }
@@ -113,7 +117,7 @@ function UpdateInnerEvents(first, second, id, t) {
             dae = new DateDetail(temp.addDays(day));
             len = $("." + dae.GetUniqueDateId() + " > ul > li").size();
             if (len < 4) {
-                $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event' id='" + id + "'><a href='#' title='" + t + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + id + "'>" + GetText(t, 155, $(".event").css('font-size')) + "</a></li>");
+                $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event' id='" + id + "' style='backgroundcolor:#"+defaultColor +"'><a href='#' title='" + t + "' desc='" + (new DateDetail(first)).GetDateText() + "-" + (new DateDetail(second)).GetDateText() + "' id='" + id + "'>" + GetText(t, 155, $(".event").css('font-size')) + "</a></li>");
 
             }
             else if (len == 4) {
@@ -128,7 +132,7 @@ function UpdateInnerEvents(first, second, id, t) {
         len = $("." + dae.GetUniqueDateId() + " > ul > li").size();
         if (len < 4) {
 
-            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event' id='" + id + "'><a href='#' title='" + t + "' desc='" + dae.GetDateText() + "' id='" + id + "'>" + GetText(t, 155, $(".event").css('font-size')) + "</a></li>");
+            $("." + dae.GetUniqueDateId() + " > ul").append("<li class='event' id='" + id + "'style='backgroundcolor:#" + defaultColor + "'><a href='#' title='" + t + "' desc='" + dae.GetDateText() + "' id='" + id + "'>" + GetText(t, 155, $(".event").css('font-size')) + "</a></li>");
         }
         else if (len == 4) {
 

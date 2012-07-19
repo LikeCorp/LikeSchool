@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 11
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool", "LikeSchool\LikeSchool.csproj", "{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Test", "LikeSchool.Test\LikeSchool.Test.csproj", "{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool", "LikeSchool\LikeSchool.csproj", "{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.DB", "LikeSchool.Services.DB\LikeSchool.Services.DB.csproj", "{B62A62F4-C902-4567-BEF4-20A474D8A05F}"
 EndProject

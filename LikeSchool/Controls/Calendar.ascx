@@ -1,19 +1,102 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Calendar.ascx.cs" Inherits="LikeSchool.Calendar" %>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="../css/uicss/jquery.ui.all.css" />
 <link rel="stylesheet" type="text/css" href="../css/calendar/calendar.css" />
+<link rel="stylesheet" type="text/css" href="../css/fullcalendar.css" />
 <script type="text/javascript" src="../js/jquery/core/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="../js/bootstrap_button.js"></script>
 <script type="text/javascript" src="../js/bootstrap_modal.js"></script>
 <script type="text/javascript" src="../js/thirdparty/json2.js"></script>
-<script type="text/javascript" src="../js/jquery/ui/jquery.ui.core.js"></script>
-<script type="text/javascript" src="../js/jquery/ui/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="../js/jquery/ui/jquery.ui.button.js"></script>
-<script type="text/javascript" src="../js/jquery/ui/jquery.ui.datepicker.js"></script>
-<script type="text/javascript" src="../js/jquery/ui/jquery.ui.dialog.js"></script>
 <script type="text/javascript" src="../js/thirdparty/date.js"></script>
-<script type="text/javascript" src="../js/calendar/calendar.js"></script>
+<script type="text/javascript" src="js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="js/fullcalendar.js"></script>
+<%--<script type="text/javascript" src="../js/calendar/calendar.js"></script>--%>
 <script type="text/javascript" src="../js/utilities/utilities.js"></script>
+<script type='text/javascript'>
+
+    $(document).ready(function () {
+
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            selectable: true,
+            select: function (start, end, allDay) {
+                var title;
+                $("#eventWindow").modal({
+
+                });;
+                if (title) {
+                    calendar.fullCalendar('renderEvent',
+						{
+						    title: title,
+						    start: start,
+						    end: end,
+						    allDay: allDay
+						},
+						true // make the event "stick"
+					);
+                }
+                calendar.fullCalendar('unselect');
+            },
+            editable: true,
+            events: [
+				{
+				    title: 'All Day Event',
+				    start: new Date(y, m, 1)
+				},
+				{
+				    title: 'Long Event',
+				    start: new Date(y, m, d - 5),
+				    end: new Date(y, m, d - 2)
+				},
+				{
+				    id: 999,
+				    title: 'Repeating Event',
+				    start: new Date(y, m, d - 3, 16, 0),
+				    allDay: false
+				},
+				{
+				    id: 999,
+				    title: 'Repeating Event',
+				    start: new Date(y, m, d + 4, 16, 0),
+				    allDay: false
+				},
+				{
+				    title: 'Meeting',
+				    start: new Date(y, m, d, 10, 30),
+				    allDay: false
+				},
+				{
+				    title: 'Lunch',
+				    start: new Date(y, m, d, 12, 0),
+				    end: new Date(y, m, d, 14, 0),
+				    allDay: false
+				},
+				{
+				    title: 'Birthday Party',
+				    start: new Date(y, m, d + 1, 19, 0),
+				    end: new Date(y, m, d + 1, 22, 30),
+				    allDay: false
+				},
+				{
+				    title: 'Click for Google',
+				    start: new Date(y, m, 28),
+				    end: new Date(y, m, 29),
+				    url: 'http://google.com/'
+				}
+            ]
+        });
+
+    });
+
+</script>
 <div class="container_calendar">
     <div class="container-fluid">
         <div class="row-fluid">
@@ -35,30 +118,7 @@
                 </div>
             </div>
             <div class="span9">
-                <div class="calendarheader">
-                    <div class="row-fluid show-grid">
-                        <div class="span5">
-                            <div class="btn-group" data-toggle="buttons-radio" id="options">
-                                <button class="btn" id="month" viewid="0">Month</button>
-                                <button class="btn" id="week" viewid="1">Week</button>
-                                <button type="button" class="btn" id="day" viewid="2">Day</button>
-                            </div>
-                        </div>
-                        <div class="span4">
-                            <span id="dateShow"></span>
-                        </div>
-                        <div class="sapn5">
-                            <div id="iterator">
-                                <a href="#" class="btn" id="previous"><i class="icon-chevron-left icon-black"></i>
-                                </a>
-                                <input type="button" class="btn" id="today" value="Today" />
-                                <a href="#" class="btn" id="after"><i class="icon-chevron-right icon-black"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="body">
+                <div id="calendar">
                 </div>
             </div>
         </div>
