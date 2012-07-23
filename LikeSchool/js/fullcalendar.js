@@ -976,8 +976,7 @@ function EventManager(options, _sources) {
 					data[endParam] = Math.round(+rangeEnd / 1000);
 				}
 				pushLoading();
-				$.ajax($.extend({}, ajaxDefaults, source, {
-					data: data,
+				$.ajax($.extend({}, ajaxDefaults, source, {					
 					success: function(events) {
 						events = events || [];
 						var res = applyAll(success, this, arguments);

@@ -2,99 +2,20 @@
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="../css/calendar/calendar.css" />
 <link rel="stylesheet" type="text/css" href="../css/fullcalendar.css" />
+<link rel="stylesheet" type="text/css" href="../css/uicss/jquery-ui-1.8.21.custom.css" />
+<link rel="stylesheet" type="text/css" href="../css/uicss/jquery.ui.datepicker.css" />
 <script type="text/javascript" src="../js/jquery/core/jquery-1.7.2.js"></script>
 <script type="text/javascript" src="../js/bootstrap_button.js"></script>
 <script type="text/javascript" src="../js/bootstrap_modal.js"></script>
 <script type="text/javascript" src="../js/thirdparty/json2.js"></script>
 <script type="text/javascript" src="../js/thirdparty/date.js"></script>
 <script type="text/javascript" src="js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery/ui/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="js/fullcalendar.js"></script>
-<%--<script type="text/javascript" src="../js/calendar/calendar.js"></script>--%>
+<script type="text/javascript" src="../js/calendar/calendar.js"></script>
 <script type="text/javascript" src="../js/utilities/utilities.js"></script>
 <script type='text/javascript'>
 
-    $(document).ready(function () {
-
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-        $('#calendar').fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            selectable: true,
-            select: function (start, end, allDay) {
-                var title;
-                $("#eventWindow").modal({
-
-                });;
-                if (title) {
-                    calendar.fullCalendar('renderEvent',
-						{
-						    title: title,
-						    start: start,
-						    end: end,
-						    allDay: allDay
-						},
-						true // make the event "stick"
-					);
-                }
-                calendar.fullCalendar('unselect');
-            },
-            editable: true,
-            events: [
-				{
-				    title: 'All Day Event',
-				    start: new Date(y, m, 1)
-				},
-				{
-				    title: 'Long Event',
-				    start: new Date(y, m, d - 5),
-				    end: new Date(y, m, d - 2)
-				},
-				{
-				    id: 999,
-				    title: 'Repeating Event',
-				    start: new Date(y, m, d - 3, 16, 0),
-				    allDay: false
-				},
-				{
-				    id: 999,
-				    title: 'Repeating Event',
-				    start: new Date(y, m, d + 4, 16, 0),
-				    allDay: false
-				},
-				{
-				    title: 'Meeting',
-				    start: new Date(y, m, d, 10, 30),
-				    allDay: false
-				},
-				{
-				    title: 'Lunch',
-				    start: new Date(y, m, d, 12, 0),
-				    end: new Date(y, m, d, 14, 0),
-				    allDay: false
-				},
-				{
-				    title: 'Birthday Party',
-				    start: new Date(y, m, d + 1, 19, 0),
-				    end: new Date(y, m, d + 1, 22, 30),
-				    allDay: false
-				},
-				{
-				    title: 'Click for Google',
-				    start: new Date(y, m, 28),
-				    end: new Date(y, m, 29),
-				    url: 'http://google.com/'
-				}
-            ]
-        });
-
-    });
 
 </script>
 <div class="container_calendar">
@@ -118,6 +39,7 @@
                 </div>
             </div>
             <div class="span9">
+                <div id='loading' style='display: none'>loading...</div>
                 <div id="calendar">
                 </div>
             </div>
@@ -139,7 +61,9 @@
                 <div id="sTime">
                     <label class="control-label" for="startTime">Start Time</label>
                     <div class="controls">
-                        <select class="span4" id="startTime">
+                        <select class="span2" id="startTime">
+                        </select>
+                        <select class="span1" id="startdesignator">
                         </select>
                     </div>
                 </div>
@@ -152,7 +76,9 @@
                 <div id="eTime">
                     <label class="control-label" for="endTime">End Time</label>
                     <div class="controls">
-                        <select class="span4" id="endTime">
+                        <select class="span2" id="endTime">
+                        </select>
+                        <select class="span1" id="enddesignator">
                         </select>
                     </div>
                 </div>
@@ -175,14 +101,6 @@
                     <textarea id="description"></textarea>
                 </div>
             </div>
-            <div class="control-group">
-                <div class="controls">
-                    <label class="checkbox">
-                        <input type="checkbox" id="recursive" />
-                        Add it as a recursive event
-                    </label>
-                </div>
-            </div>
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal" id="cancel"><i class="icon-remove icon-black">
@@ -197,12 +115,11 @@
         <h3 id="eventviewtitle"></h3>
     </div>
     <div class="modal-body">
-        <label>When :</label>
         <span id="durationdetail"></span>
     </div>
     <div class="modal-footer">
         <a href="#" class="btn btn-info" id="a1"><i class=" icon-trash icon-black"></i>Delete
-        </a>&nbsp; <a href="#" class="btn" id="A2"><i class="icon-remove icon-black"></i>Cancel
-        </a>
+        </a>&nbsp; <a href="#" class="btn" data-dismiss="modal" id="A2"><i class="icon-remove icon-black">
+        </i>Cancel </a>
     </div>
 </div>

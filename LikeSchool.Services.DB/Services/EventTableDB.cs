@@ -7,6 +7,7 @@ using System.Web.Services;
 using LikeSchool.Services.DB.Modals;
 
 using System.Web.Script.Services;
+using System.Text;
 
 namespace LikeSchool.Services.DB.Services
 {
@@ -30,13 +31,14 @@ namespace LikeSchool.Services.DB.Services
         }
 
         [WebMethod]
-        public string SelectEventTable(string jsonValue)
+        public string SelectEventTable()
         {
+            StringBuilder outString=new StringBuilder();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
-            List<EventTableModal> output = modal.GetEvents(Constants.SP_SelectEventTable, modal);
-            return serializer.Serialize(output);
+            EventTableModal modal = new EventTableModal();
+            List<EventTableModal> output = modal.GetEvents(Constants.SP_SelectEventTable);
+            serializer.Serialize(output, outString);
+            return outString.ToString();
         }
-
     }
 }

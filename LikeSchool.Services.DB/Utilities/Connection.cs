@@ -14,7 +14,10 @@ namespace LikeSchool.Services.DB
        private static IDbConnection connection;
        public static void OpenConnection()
         {
-            DbConnection.Open();           
+            if (DbConnection.State == ConnectionState.Closed)
+            {
+                DbConnection.Open();
+            }
         }
         public static void CloseConnection()
         {

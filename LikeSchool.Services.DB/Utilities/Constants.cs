@@ -17,16 +17,13 @@ namespace LikeSchool.Services.DB
         public const string LikeConnectionString = "likeconnectionstring";
 
         #region EventTable
-        public const string SDate = "@sDate";
-        public const string STime = "@sTime";
-        public const string EDate = "@eDate";
-        public const string ETime = "@eTime";
+        public const string SDate = "@sDate";       
+        public const string EDate = "@eDate";       
         public const string TitleString = "@title";
-        public const string DescString = "@desc";
-        public const string Recursive = "@recursive";       
-        public const string EventId = "@id";
-        public const string InputSDate="@iSDate";
-        public const string InputEDate = "@iEDate";
+        public const string DescString = "@desc";           
+        public const string EventId = "@id";        
+        public const string EventColor = "@eColor";
+        public const string WholeDay = "@all";
         #endregion
     }
 }

@@ -10,46 +10,41 @@ namespace LikeSchool.Services.DB.Modals
 {
     public class EventTableModal : Connection
     {
-        public string StartDate
+        public string Start
         {
             get;
             set;
         }
-        public int StartTime { get; set; }
-        public string EndDate { get; set; }
-        public int EndTime { get; set; }
+        
+        public string End { get; set; }
+       
         public string Title { get; set; }
         public string Description { get; set; }
-        public string IsRecursive { get; set; }
-        public int EventId { get; set; }
-        public string InputStartDate { get; set; }
-        public string InputEndDate { get; set; }
+     
+        public int Id { get; set; }
+        public bool AllDay { get; set; }
+        public string EventColor { get; set; }
 
         public string InsertEvents(string procedureName, EventTableModal parameter)
         {
             OpenConnection();
             var dynamic = new DynamicParameters();
-            dynamic.Add(Constants.SDate, parameter.StartDate);
-            dynamic.Add(Constants.STime, parameter.StartTime);
-            dynamic.Add(Constants.EDate, parameter.EndDate);
-            dynamic.Add(Constants.ETime, parameter.EndTime);
             dynamic.Add(Constants.TitleString, parameter.Title);
             dynamic.Add(Constants.DescString, parameter.Description);
-            dynamic.Add(Constants.Recursive, parameter.IsRecursive);
+            dynamic.Add(Constants.SDate, parameter.Start);            
+            dynamic.Add(Constants.EDate, parameter.End);
+            dynamic.Add(Constants.EventColor, parameter.EventColor);
+            dynamic.Add(Constants.WholeDay, parameter.AllDay.ToString());
             dynamic.Add(Constants.EventId, dbType: DbType.Int32, direction: ParameterDirection.Output);
             DbConnection.Execute(Constants.SP_InsertEventTable, dynamic, null, null, CommandType.StoredProcedure);
             CloseConnection();
             return dynamic.Get<int>(Constants.EventId).ToString();
         }
 
-        public List<EventTableModal> GetEvents(string procedureName, EventTableModal parameter)
+        public List<EventTableModal> GetEvents(string procedureName)
         {
             OpenConnection();
-            List<EventTableModal> result = DbConnection.Query<EventTableModal>(Constants.SP_SelectEventTable, new
-            {
-                iSDate = parameter.InputStartDate,
-                iEDate = parameter.InputEndDate
-            },
+            List<EventTableModal> result = DbConnection.Query<EventTableModal>(procedureName,
             commandType: CommandType.StoredProcedure).ToList<EventTableModal>();
             CloseConnection();
             return result;

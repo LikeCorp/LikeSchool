@@ -40,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper">
-      <HintPath>..\..\..\..\Desktop\DapperDemo\DapperDemo\lib\Dapper.dll</HintPath>
+      <HintPath>..\Thrid party\Dapper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
