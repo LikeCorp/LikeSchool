@@ -14,10 +14,6 @@
 <script type="text/javascript" src="js/fullcalendar.js"></script>
 <script type="text/javascript" src="../js/calendar/calendar.js"></script>
 <script type="text/javascript" src="../js/utilities/utilities.js"></script>
-<script type='text/javascript'>
-
-
-</script>
 <div class="container_calendar">
     <div class="container-fluid">
         <div class="row-fluid">
@@ -56,7 +52,7 @@
             <div class="control-group">
                 <label class="control-label" for="startDate">Start Date</label>
                 <div class="controls">
-                    <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [mm/dd/yyyy]" />
+                    <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [dd/mmmm/yy]" />
                 </div>
                 <div id="sTime">
                     <label class="control-label" for="startTime">Start Time</label>
@@ -71,7 +67,7 @@
             <div class="control-group">
                 <label class="control-label" for="endDate">End Date</label>
                 <div class="controls">
-                    <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [mm/dd/yyyy]" />
+                    <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [dd/mmmm/yy]" />
                 </div>
                 <div id="eTime">
                     <label class="control-label" for="endTime">End Time</label>

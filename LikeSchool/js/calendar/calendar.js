@@ -24,28 +24,28 @@ var times = ["01:00",
 "12:00",
 "12:30"];
 var designators = ["AM", "PM"];
-
+//Todo: Need to create an option for the event colors
 var colors = ['5484ED', 'A4BDFC', '46D6DB', '51B749', 'FBD75B', 'FFB878', 'FF887C', 'DC2127', 'DBADFF', 'E1E1E1'];
 
+//This method initializes on loading
 function InitializeValues() {
     $("#wholeDay").click(function () {
         HideTimes();
     });
     $("#startTime,#endTime").append(GetOptions(times));
     $("#startdesignator,#enddesignator").append(GetOptions(designators));
-    $("#startDate").datepicker({ dateFormat: 'dd/MM/yy' });
-    $("#endDate").datepicker({ dateFormat: 'dd/MM/yy' });
+    $("#startDate").datepicker({ dateFormat: 'dd/MMMM/yy' });
+    $("#endDate").datepicker({ dateFormat: 'dd/MMMM/yy' });
     $("#datepicker").datepicker({ inline: true });
     InitializeDialog();
 }
-
+//Loading function
 $(document).ready(function () {
     InitializeValues();
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
+    InitializeCalendar(); 
+});
+//This method load the Full calendar functionalities
+function InitializeCalendar() {
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
@@ -53,67 +53,8 @@ $(document).ready(function () {
             right: 'month,agendaWeek,agendaDay'
         },
         selectable: true,
-        select: function (start, end, allDay) {
-            var title;
-            var startDate = new DateDetail(start);
-            var endDate = new DateDetail(end);
-
-            $('#startDate').val(startDate.GetDateText());
-            $('#endDate').val(endDate.GetDateText());
-            $('#startTime').val(startDate.GetTime());
-            $('#startdesignator').val(startDate.GetDesignator());
-            $('#endTime').val(endDate.GetTime());
-            $('#enddesignator').val(endDate.GetDesignator());
-            $("#wholeDay").click();
-            $('#wholeDay').attr('checked', allDay);
-            if (!allDay) {
-                $("#wholeDay").click();
-                $('#wholeDay').attr('checked', false);
-            }
-            else {
-                $("#wholeDay").click();
-                $('#wholeDay').attr('checked', true);
-            }
-            $("#eventWindow").modal({
-
-            });
-            $("#add").click(function () {
-                var references = ['start', 'end', 'title', 'description', 'allday', 'eventcolor'];
-                var rvalues = [];
-                var formattedstart = FormatDate($('#startDate').val(), $("#startTime option:selected").text(), $("#startdesignator option:selected").text(), allDay);
-                rvalues.push(formattedstart);
-                var formattedend = FormatDate($('#endDate').val(), $("#endTime option:selected").text(), $("#enddesignator option:selected").text(), allDay);
-                rvalues.push(formattedend);
-                rvalues.push($('#title').val());
-                rvalues.push($('#description').val());
-                rvalues.push(allDay);
-                rvalues.push('3366CC');
-
-                $.ajax({
-                    url: "/Services/EventService.asmx/InsertEventTable",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
-                    dataType: "json",
-                    success: function (res) {
-                        $('#calendar').fullCalendar('renderEvent',
-						{
-						    id: res.d,
-						    title: $('#title').val(),
-						    start: formattedstart,
-						    end: formattedend,
-						    allDay: allDay,
-						    description: $('#description').val(),
-						    eventcolor: '#3366CC'
-						},
-						true // make the event "stick"
-					);
-                        $('#calendar').fullCalendar('unselect');
-                        $("#eventWindow").modal('hide');
-                    }
-                });
-            });
-
+        select: function (start, end, allDay) {         
+            AddEvent(start, end, allDay);
         },
         loading: function (bool) {
             if (bool) $('#loading').show();
@@ -122,12 +63,7 @@ $(document).ready(function () {
         editable: true,
         eventClick: function (calEvent, jsEvent, view) {
             var dateDetail;
-            if (calEvent.start != null)
-                dateDetail = calEvent.start.toShortTimeString();
-
-            if (calEvent.end != null)
-                dateDetail += ' to ' + calEvent.end.toShortTimeString();
-
+            dateDetail = GetDisplayDate(calEvent);
             $("#eventviewtitle").text(calEvent.title);
             $("#durationdetail").text(dateDetail);
             $("#eventView").modal({});
@@ -147,7 +83,7 @@ $(document).ready(function () {
                             id: result[i].Id,
                             title: result[i].Title,
                             description: result[i].Description,
-                            start:new Date(result[i].Start),
+                            start: new Date(result[i].Start),
                             end: new Date(result[i].End),
                             eventcolor: '#' + result[i].EventColor,
                             allDay: result[i].AllDay
@@ -161,9 +97,97 @@ $(document).ready(function () {
 
         },
     });
+}
+function AddEvent(start,end,allDay)
+{
+    var title;
+    var startDate = new DateDetail(start);
+    var endDate = new DateDetail(end);
 
-});
+    $('#startDate').val(startDate.GetDateText());
+    $('#endDate').val(endDate.GetDateText());
+    $('#startTime').val(startDate.GetTime());
+    $('#startdesignator').val(startDate.GetDesignator());
+    $('#endTime').val(endDate.GetTime());
+    $('#enddesignator').val(endDate.GetDesignator());
+    $("#wholeDay").click();
+    $('#wholeDay').attr('checked', allDay);
+    if (!allDay) {
+        $("#wholeDay").click();
+        $('#wholeDay').attr('checked', false);
+    }
+    else {
+        $("#wholeDay").click();
+        $('#wholeDay').attr('checked', true);
+    }
+    $("#eventWindow").modal({
 
+    });
+    $("#add").click(function () {
+        var references = ['start', 'end', 'title', 'description', 'allday', 'eventcolor'];
+        var rvalues = [];
+        var formattedstart = FormatDate(GetHtmlElementValue('startDate'), GetHtmlElementValue('startTime'), GetHtmlElementValue('startdesignator'), allDay);
+        rvalues.push(formattedstart);
+        var formattedend = FormatDate(GetHtmlElementValue('endDate'), GetHtmlElementValue('endTime'), GetHtmlElementValue('enddesignator'), allDay);
+        rvalues.push(formattedend);
+        rvalues.push(GetHtmlElementValue('title'));
+        rvalues.push(GetHtmlElementValue('description'));
+        rvalues.push(allDay);
+        rvalues.push('3366CC');
+
+        $.ajax({
+            url: "/Services/EventService.asmx/InsertEventTable",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
+            dataType: "json",
+            success: function (res) {
+                $('#calendar').fullCalendar('renderEvent',
+						{
+						    id: res.d,
+						    title: GetHtmlElementValue('title'),
+						    start: formattedstart,
+						    end: formattedend,
+						    allDay: allDay,
+						    description: GetHtmlElementValue('description'),
+						    eventcolor: '#3366CC'
+						},
+						true // make the event "stick"
+					);
+                $('#calendar').fullCalendar('unselect');
+                $("#eventWindow").modal('hide');
+            }
+        });
+    });
+}
+
+function GetDisplayDate(calEvent)
+{
+    var dateDetail;
+    var sDate;
+    var eDate;
+    if (calEvent.start != null) {
+        sDate = new DateDetail(calEvent.start);
+    }
+    if (calEvent.end != null) {
+        eDate = new DateDetail(calEvent.end);
+    }
+
+    if (calEvent.allDay) {
+        if (calEvent.start != null)
+            dateDetail = sDate.GetDateText();
+
+        if (calEvent.end != null)
+            dateDetail += ' to ' + eDate.GetDateText();
+    }
+    else {
+        dateDetail = sDate.GetDateText();
+        dateDetail += ' - ' + sDate.GetTimeWithDesignator() + ' to ' + eDate.GetTimeWithDesignator();
+    }
+
+    return dateDetail;
+}
+//This method clears the values of the Event Modal
 function ClearValues() {
     $('#startDate').val('');
     $('#startTime').prop('selectedIndex', 0);
@@ -174,7 +198,7 @@ function ClearValues() {
     $('#recursive').attr('checked', false);
     $('#wholeDay').attr('checked', true);
 }
-
+//This method hides the time in the Event modal 
 function HideTimes() {
 
     if ($("#wholeDay").is(":checked")) {
@@ -187,6 +211,7 @@ function HideTimes() {
     }
 }
 
+//This method Initializes the dialog for create event button
 function InitializeDialog() {
     $(".appointment").click(function () {
         ClearValues();
@@ -196,7 +221,7 @@ function InitializeDialog() {
         });
     });
 }
-
+//This method formats the date,time,designator
 function FormatDate(date, time, designator, allDay) {
     var formatDate;
     if (allDay)
@@ -206,13 +231,7 @@ function FormatDate(date, time, designator, allDay) {
     }
     return formatDate;
 }
-function GetOptions(arrayValues) {
-    var resultHtml = "";
-    for (var x = 0; x < arrayValues.length; x++) {
-        resultHtml += "<option value='" + arrayValues[x] + "'>" + arrayValues[x] + "</option>";
-    }
-    return resultHtml;
-}
+
 /*DateDetail class for date details*/
 function DateDetail(date, isBefore, isAfter, isNow) {
     this.Date = date;
@@ -238,7 +257,10 @@ function DateDetail(date, isBefore, isAfter, isNow) {
     };
     this.GetDesignator = function () {
         return this.Date.toString('tt');
-    }
+    };
+    this.GetTimeWithDesignator = function () {
+        return this.GetTime() + ' ' + this.GetDesignator();
+    };
     this.GetUniqueDateId = function () {
         return this.DayNo.toString() + this.MonthNo.toString() + this.Year.toString() + this.WeekDayNo.toString();
     };

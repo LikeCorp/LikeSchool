@@ -201,9 +201,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Calendar\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Masterpages\mainpage.Master" />
   </ItemGroup>
