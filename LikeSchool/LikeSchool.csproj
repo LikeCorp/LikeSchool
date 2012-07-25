@@ -119,6 +119,7 @@
     <Content Include="js\bootstrap_scrollspy.js" />
     <Content Include="leave.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
     <Content Include="timetable.aspx" />
     <Content Include="Web.config">

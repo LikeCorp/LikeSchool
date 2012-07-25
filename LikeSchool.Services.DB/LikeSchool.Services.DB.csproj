@@ -63,8 +63,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modals\LoginTableModal.cs" />
     <Compile Include="Modals\EventTableModal.cs" />
     <Compile Include="Services\EventTableDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Services\LoginDB.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilities\Connection.cs" />

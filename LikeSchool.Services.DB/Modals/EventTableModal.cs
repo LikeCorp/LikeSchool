@@ -15,12 +15,12 @@ namespace LikeSchool.Services.DB.Modals
             get;
             set;
         }
-        
+
         public string End { get; set; }
-       
+
         public string Title { get; set; }
         public string Description { get; set; }
-     
+
         public int Id { get; set; }
         public bool AllDay { get; set; }
         public string EventColor { get; set; }
@@ -31,7 +31,7 @@ namespace LikeSchool.Services.DB.Modals
             var dynamic = new DynamicParameters();
             dynamic.Add(Constants.TitleString, parameter.Title);
             dynamic.Add(Constants.DescString, parameter.Description);
-            dynamic.Add(Constants.SDate, parameter.Start);            
+            dynamic.Add(Constants.SDate, parameter.Start);
             dynamic.Add(Constants.EDate, parameter.End);
             dynamic.Add(Constants.EventColor, parameter.EventColor);
             dynamic.Add(Constants.WholeDay, parameter.AllDay.ToString());

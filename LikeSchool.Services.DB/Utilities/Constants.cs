@@ -13,6 +13,7 @@ namespace LikeSchool.Services.DB
         /*Stored procedures need to be appended with SP_[storedprocedure name]*/
         public const string SP_InsertEventTable = "InsertEventTable";
         public const string SP_SelectEventTable = "SelectEventTable";
+        public const string SP_SelectLoginTable = "SelectLoginTable";
 
         public const string LikeConnectionString = "likeconnectionstring";
 
@@ -24,6 +25,11 @@ namespace LikeSchool.Services.DB
         public const string EventId = "@id";        
         public const string EventColor = "@eColor";
         public const string WholeDay = "@all";
+        #endregion
+
+        #region Login
+        public const string User = "@user";
+        public const string Pass = "@pass";
         #endregion
     }
 }
