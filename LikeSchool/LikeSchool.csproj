@@ -88,6 +88,7 @@
     <Content Include="css\uicss\jquery.ui.slider.css" />
     <Content Include="css\uicss\jquery.ui.tabs.css" />
     <Content Include="css\uicss\jquery.ui.theme.css" />
+    <Content Include="Global.asax" />
     <Content Include="img\databg.png" />
     <Content Include="img\favicon.ico" />
     <Content Include="index.aspx" />
@@ -100,6 +101,7 @@
     <Content Include="js\jquery\ui\jquery.ui.datepicker.js" />
     <Content Include="js\jquery\ui\jquery.ui.dialog.js" />
     <Content Include="js\jquery\ui\jquery.ui.widget.js" />
+    <Content Include="js\login.js" />
     <Content Include="js\thirdparty\date.js" />
     <Content Include="js\thirdparty\json2.js" />
     <Content Include="js\utilities\utilities.js" />
@@ -119,6 +121,7 @@
     <Content Include="js\bootstrap_scrollspy.js" />
     <Content Include="leave.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
     <Content Include="timetable.aspx" />
@@ -148,6 +151,9 @@
     <Compile Include="Controls\Calendar.ascx.designer.cs">
       <DependentUpon>Calendar.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +174,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Masterpages\Login.Master.cs">
       <DependentUpon>Login.Master</DependentUpon>

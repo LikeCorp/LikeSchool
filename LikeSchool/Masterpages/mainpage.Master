@@ -26,7 +26,7 @@
                         </li>
                     </ul>
                     <ul class="nav pull-right">
-                        <li><a href="#">Sign In</a></li>
+                        <li><a href="../logout.aspx">Log out</a></li>
                     </ul>
                 </div>
             </div>

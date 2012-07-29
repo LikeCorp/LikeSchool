@@ -7,12 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace LikeSchool
 {
-    public partial class mainpage : System.Web.UI.MasterPage
+    public partial class logout : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            HttpContext.Current.User = null;
+            Response.Redirect("~/login.aspx");
         }
-
     }
 }
