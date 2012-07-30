@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script type="text/javascript" src="../js/jquery/core/jquery-1.7.2.js"></script>
     <script type="text/javascript" src="../js/login.js"></script>
+    <script type="text/javascript" src="../js/utilities/utilities.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

@@ -14,13 +14,15 @@
                     <div class="control-group">
                         <label class="control-label" for="user">Username or UserId</label>
                         <div class="controls">
-                            <input type="text" class="input-xlarge" id="user" runat="server" onfocus="javascript:fnHideMessage()">
+                            <input type="text" class="input-xlarge usernameClass" id="user" runat="server" onfocus="javascript:fnHideMessage()" onblur="javascript:fnValidateUser()" >
+                            <span class="error" id="erroruser">Enter the Username or UserId</span>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="pass">Password</label>
                         <div class="controls">
-                            <input type="password" class="input-xlarge" id="pass" runat="server">
+                            <input type="password" class="input-xlarge passwordClass" id="pass" runat="server"  onblur="javascript:fnValidatePass()">
+                            <span class="error" id="errorpass">Enter the Password</span>
                         </div>
                     </div>
                     <div class="controls">

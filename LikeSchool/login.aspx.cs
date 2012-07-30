@@ -20,39 +20,45 @@ namespace LikeSchool
 
         void login_ServerClick(object sender, EventArgs e)
         {
-            var userName = user.Value;
-            var password = pass.Value;
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            LoginTableModal userDetails = serializer.Deserialize<LoginTableModal>(LoginDB.SelectLoginTable(userName, password));
-            if (userDetails != null)
+            string userName = user.Value;
+            string password = pass.Value;
+            if (userName == string.Empty)
             {
-                RemoveJavaScriptError();
-                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userName, DateTime.Now, DateTime.Now.AddMinutes(50), rememberCheckbox.Checked, userDetails.Roles, FormsAuthentication.FormsCookiePath);
-                string hashCookies = FormsAuthentication.Encrypt(ticket);
-                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hashCookies);
-                Response.Cookies.Add(cookie);
-                string returnUrl = Request.QueryString["ReturnUrl"];
-                if (returnUrl == null) returnUrl = "~/index.aspx";
-                Response.Redirect(returnUrl);
+                SetJavaScriptFunction("fnValidateUser()");
+            }
+            else if (password == string.Empty)
+            {
+                SetJavaScriptFunction("fnValidatePass()");
             }
             else
             {
-                user.Value = string.Empty;
-                pass.Value = string.Empty;
-                rememberCheckbox.Checked = false;
-                SetJavaScriptError();
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                LoginTableModal userDetails = serializer.Deserialize<LoginTableModal>(LoginDB.SelectLoginTable(userName, password));
+                if (userDetails != null)
+                {
+                    SetJavaScriptFunction("fnHideMessage()");
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userName, DateTime.Now, DateTime.Now.AddMinutes(50), rememberCheckbox.Checked, userDetails.Roles, FormsAuthentication.FormsCookiePath);
+                    string hashCookies = FormsAuthentication.Encrypt(ticket);
+                    HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hashCookies);
+                    Response.Cookies.Add(cookie);
+                    string returnUrl = Request.QueryString["ReturnUrl"];
+                    if (returnUrl == null) returnUrl = "~/index.aspx";
+                    Response.Redirect(returnUrl);
+                }
+                else
+                {
+                    user.Value = string.Empty;
+                    pass.Value = string.Empty;
+                    rememberCheckbox.Checked = false;
+                    SetJavaScriptFunction("fnShowMessage()");
+                }
             }
         }
 
-        private void SetJavaScriptError()
+        private void SetJavaScriptFunction(string message)
         {
             ClientScript.RegisterStartupScript
-       (GetType(), "Javascript", "javascript: fnShowMessage(); ", true);
-        }
-        private void RemoveJavaScriptError()
-        {
-            ClientScript.RegisterStartupScript
-           (GetType(), "Javascript", "javascript: fnHideMessage(); ", true);
+       (GetType(), "Javascript", string.Format("javascript: {0}; ", message), true);
         }
     }
 

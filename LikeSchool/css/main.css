@@ -1,7 +1,7 @@
 ﻿
 
 .brand,h1 {
-    color: #63B8E3 !important;
+    color: #63B8E3 !important;   
 }
 
 
@@ -16,8 +16,12 @@
 		margin: 0 auto;
 		}
 .error {
-    color: #f00;
+    color: #DD4B39;
+    
 }
-#errorid {
+.usernameClass, .passwordClass {
+   border: 1px thin black;
+}
+#errorid,#erroruser,#errorpass {
     display: none;
 }
