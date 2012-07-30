@@ -40,12 +40,12 @@ namespace LikeSchool {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox rememberCheckbox;
         
         /// <summary>
-        /// loginBtn control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton loginBtn;
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

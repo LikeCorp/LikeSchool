@@ -4,16 +4,13 @@
 <link rel="stylesheet" type="text/css" href="../css/fullcalendar.css" />
 <link rel="stylesheet" type="text/css" href="../css/uicss/jquery-ui-1.8.21.custom.css" />
 <link rel="stylesheet" type="text/css" href="../css/uicss/jquery.ui.datepicker.css" />
-<script type="text/javascript" src="../js/jquery/core/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="../js/bootstrap_button.js"></script>
-<script type="text/javascript" src="../js/bootstrap_modal.js"></script>
+
 <script type="text/javascript" src="../js/thirdparty/json2.js"></script>
 <script type="text/javascript" src="../js/thirdparty/date.js"></script>
-<script type="text/javascript" src="js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
 <script type="text/javascript" src="../js/jquery/ui/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="js/fullcalendar.js"></script>
 <script type="text/javascript" src="../js/calendar/calendar.js"></script>
-<script type="text/javascript" src="../js/utilities/utilities.js"></script>
+
 <div class="container_calendar">
     <div class="container-fluid">
         <div class="row-fluid">

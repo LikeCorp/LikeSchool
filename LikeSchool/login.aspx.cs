@@ -15,10 +15,16 @@ namespace LikeSchool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.loginBtn.ServerClick += login_ServerClick;
+
         }
 
-        void login_ServerClick(object sender, EventArgs e)
+        private void SetJavaScriptFunction(string message)
+        {
+            ClientScript.RegisterStartupScript
+       (GetType(), "Javascript", string.Format("javascript: {0}; ", message), true);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
         {
             string userName = user.Value;
             string password = pass.Value;
@@ -53,12 +59,6 @@ namespace LikeSchool
                     SetJavaScriptFunction("fnShowMessage()");
                 }
             }
-        }
-
-        private void SetJavaScriptFunction(string message)
-        {
-            ClientScript.RegisterStartupScript
-       (GetType(), "Javascript", string.Format("javascript: {0}; ", message), true);
         }
     }
 

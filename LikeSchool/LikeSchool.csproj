@@ -93,6 +93,7 @@
     <Content Include="img\favicon.ico" />
     <Content Include="index.aspx" />
     <Content Include="js\calendar\calendar.js" />
+    <Content Include="js\bootstrap-dropdown.js" />
     <Content Include="js\fullcalendar.js" />
     <Content Include="js\jquery\core\jquery-1.7.2.js" />
     <Content Include="js\jquery\ui\jquery-ui-1.8.17.custom.min.js" />

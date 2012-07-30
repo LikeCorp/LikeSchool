@@ -5,23 +5,24 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div id="right" style="width: 350px; float: right; margin: 0;">
+        <div id="right" style="width: 300px; float: right; margin: 0;">
             <div id="span5 offset5">
-                <form class="form-horizontal">
+                <form class="form-well" runat="server">
                 <fieldset>
                     <legend>Login</legend>
-                    
                     <div class="control-group">
                         <label class="control-label" for="user">Username or UserId</label>
                         <div class="controls">
-                            <input type="text" class="input-xlarge usernameClass" id="user" runat="server" onfocus="javascript:fnHideMessage()" onblur="javascript:fnValidateUser()" >
+                            <input type="text" class="input-xlarge usernameClass" id="user" runat="server" onfocus="javascript:fnHideMessage()"
+                                onblur="javascript:fnValidateUser()">
                             <span class="error" id="erroruser">Enter the Username or UserId</span>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="pass">Password</label>
                         <div class="controls">
-                            <input type="password" class="input-xlarge passwordClass" id="pass" runat="server"  onblur="javascript:fnValidatePass()">
+                            <input type="password" class="input-xlarge passwordClass" id="pass" runat="server"
+                                onblur="javascript:fnValidatePass()">
                             <span class="error" id="errorpass">Enter the Password</span>
                         </div>
                     </div>
@@ -32,7 +33,8 @@
                         </label>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-info" id="loginBtn" runat="server">Login</button>
+                        <asp:Button ID="Button1" class="btn btn-info" runat="server" Text="Login" OnClick="Button1_Click" />
+                        <%--<button type="button" class="btn btn-info" id="loginBtn" runat="server">Login</button>--%>
                         <button class="btn">Forgot Password ?</button>
                     </div>
                     <span class="error" id="errorid">Invalid Username and Password</span>
@@ -51,7 +53,7 @@
             </p>
             <br />
             <p>
-               <strong> Like School </strong>is suitable for Educational Institutions:
+                <strong>Like School </strong>is suitable for Educational Institutions:
             </p>
             <ul id="features">
                 <li>Schools</li>
