@@ -1,10 +1,8 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Calendar.ascx.cs" Inherits="LikeSchool.Calendar" %>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="calendar.ascx.cs" Inherits="LikeSchool.Calendar" %>
 <link rel="stylesheet" type="text/css" href="../css/calendar/calendar.css" />
 <link rel="stylesheet" type="text/css" href="../css/fullcalendar.css" />
 <link rel="stylesheet" type="text/css" href="../css/uicss/jquery-ui-1.8.21.custom.css" />
 <link rel="stylesheet" type="text/css" href="../css/uicss/jquery.ui.datepicker.css" />
-
 <script type="text/javascript" src="../js/thirdparty/json2.js"></script>
 <script type="text/javascript" src="../js/thirdparty/date.js"></script>
 <script type="text/javascript" src="../js/jquery/ui/jquery.ui.datepicker.js"></script>
