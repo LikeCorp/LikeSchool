@@ -40,6 +40,7 @@ function fnValidatePass() {
         return true;
     }
 }
+
 $(document).ready(function () {
     $('.usernameClass').focus();
 });

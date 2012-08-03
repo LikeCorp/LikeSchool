@@ -58,6 +58,7 @@
   <ItemGroup>
     <Content Include="attendance.aspx" />
     <Content Include="calendar.aspx" />
+    <Content Include="Controls\support.ascx" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\fullcalendar.print.css" />
     <Content Include="css\main.css" />
@@ -94,6 +95,7 @@
     <Content Include="index.aspx" />
     <Content Include="js\calendar\calendar.js" />
     <Content Include="js\bootstrap-dropdown.js" />
+    <Content Include="js\support.js" />
     <Content Include="js\fullcalendar.js" />
     <Content Include="js\jquery\core\jquery-1.7.2.js" />
     <Content Include="js\jquery\ui\jquery-ui-1.8.17.custom.min.js" />
@@ -106,7 +108,7 @@
     <Content Include="js\thirdparty\date.js" />
     <Content Include="js\thirdparty\json2.js" />
     <Content Include="js\utilities\utilities.js" />
-    <Content Include="Controls\Calendar.ascx" />
+    <Content Include="Controls\calendar.ascx" />
     <Content Include="css\calendar\calendar.css" />
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
@@ -145,12 +147,19 @@
     <Compile Include="calendar.aspx.designer.cs">
       <DependentUpon>calendar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Calendar.ascx.cs">
-      <DependentUpon>Calendar.ascx</DependentUpon>
+    <Compile Include="Controls\calendar.ascx.cs">
+      <DependentUpon>calendar.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\Calendar.ascx.designer.cs">
-      <DependentUpon>Calendar.ascx</DependentUpon>
+    <Compile Include="Controls\calendar.ascx.designer.cs">
+      <DependentUpon>calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\support.ascx.cs">
+      <DependentUpon>support.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\support.ascx.designer.cs">
+      <DependentUpon>support.ascx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -183,12 +192,12 @@
     <Compile Include="logout.aspx.designer.cs">
       <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Masterpages\Login.Master.cs">
-      <DependentUpon>Login.Master</DependentUpon>
+    <Compile Include="Masterpages\login.Master.cs">
+      <DependentUpon>login.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Masterpages\Login.Master.designer.cs">
-      <DependentUpon>Login.Master</DependentUpon>
+    <Compile Include="Masterpages\login.Master.designer.cs">
+      <DependentUpon>login.Master</DependentUpon>
     </Compile>
     <Compile Include="Masterpages\mainpage.Master.cs">
       <DependentUpon>mainpage.Master</DependentUpon>
@@ -227,7 +236,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Masterpages\Login.Master" />
+    <Content Include="Masterpages\login.Master" />
     <None Include="Properties\PublishProfiles\LikeSchool.pubxml" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
   </ItemGroup>

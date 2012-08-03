@@ -3,7 +3,9 @@
 .brand,h1 {
     color: #63B8E3 !important;   
 }
-
+#features > li {    
+  margin-top: 10px;
+}
 
 .wrapper {
     min-height: 100%;
@@ -16,7 +18,8 @@
 		margin: 0 auto;
 		}
 .error {
-    color: #DD4B39;
+    color: #DD4B39 !important;
+    border-color: #DD4B39 !important;
     
 }
 .usernameClass, .passwordClass {
@@ -24,4 +27,27 @@
 }
 #errorid,#erroruser,#errorpass {
     display: none;
+}
+.createSupport > .modal {
+    width: 790px;
+    top: 33%;
+    left: 43%;
+}
+
+.createSupport > .modal > .modal-body {
+    max-height: none;
+    height: 600px;
+}
+
+#sDesc, #description {
+   
+    margin-top: 10px;
+}
+
+#sDesc {
+    margin-bottom: 10px;
+}
+
+#description {
+    height: 250px;
 }

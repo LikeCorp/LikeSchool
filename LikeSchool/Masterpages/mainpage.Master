@@ -1,5 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mainpage.master.cs" Inherits="LikeSchool.mainpage" %>
 
+<%@ Register Src="~/Controls/support.ascx" TagPrefix="uc1" TagName="Support" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -43,11 +44,13 @@
                         </a></li>
                         <li><a href="../calendar.aspx"><i class="icon-calendar icon-black"></i>&nbsp;Calendar
                         </a></li>
+                        <li><a href="#" id="supportId"><i class="icon-envelope"></i>&nbsp;Support</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    <uc1:Support runat="server" ID="support"></uc1:Support>
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
     <hr />

@@ -33,9 +33,7 @@
                         </label>
                     </div>
                     <div class="form-actions">
-                        <asp:Button ID="Button1" class="btn btn-info" runat="server" Text="Login" OnClick="Button1_Click" />
-                        <%--<button type="button" class="btn btn-info" id="loginBtn" runat="server">Login</button>--%>
-                        <button class="btn">Forgot Password ?</button>
+                        <asp:Button ID="Button1" class="btn btn-info" runat="server" Text="Login" OnClick="Button1_Click" />                                              
                     </div>
                     <span class="error" id="errorid">Invalid Username and Password</span>
                 </fieldset>
