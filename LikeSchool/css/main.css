@@ -7,7 +7,11 @@
 #features > li {
     margin-top: 10px;
 }
-
+.dash {
+    margin-top: -25px;
+    z-index: 1000;
+    text-align: center;
+}
 .wrapper {
     min-height: 100%;
     height: auto !important;
