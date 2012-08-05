@@ -1,10 +1,11 @@
 ﻿
 
-.brand,h1 {
-    color: #63B8E3 !important;   
+.brand, h1 {
+    color: #63B8E3 !important;
 }
-#features > li {    
-  margin-top: 10px;
+
+#features > li {
+    margin-top: 10px;
 }
 
 .wrapper {
@@ -13,34 +14,37 @@
     height: 100%;
     margin: 0 auto -4em;
 }
+
 #calendar {
-		width: 1100px;
-		margin: 0 auto;
-		}
+    width: 1100px;
+    margin: 0 auto;
+}
+
 .error {
-    color: #DD4B39 !important;
+    color: #DD4B39;
     border-color: #DD4B39 !important;
-    
 }
+
 .usernameClass, .passwordClass {
-   border: 1px thin black;
+    border: 1px thin black;
 }
-#errorid,#erroruser,#errorpass {
+
+#errorid, #erroruser, #errorpass {
     display: none;
 }
+
 .createSupport > .modal {
-    width: 790px;
+    width: 797px;
     top: 33%;
     left: 43%;
 }
 
-.createSupport > .modal > .modal-body {
-    max-height: none;
-    height: 600px;
-}
+    .createSupport > .modal > .modal-body {
+        max-height: none;
+        height: 700px;
+    }
 
 #sDesc, #description {
-   
     margin-top: 10px;
 }
 
@@ -51,3 +55,17 @@
 #description {
     height: 250px;
 }
+
+#loader {
+    display: none;
+    float: left;
+    width: 185px;
+}
+
+.loadmodal {
+    background: url('../img/ajax-loader (1).gif') 50% 50% no-repeat;
+    width: 20px;
+    height: 20px;
+    float: left;
+}
+

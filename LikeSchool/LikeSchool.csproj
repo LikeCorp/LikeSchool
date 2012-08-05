@@ -90,6 +90,7 @@
     <Content Include="css\uicss\jquery.ui.tabs.css" />
     <Content Include="css\uicss\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\ajax-loader.gif" />
     <Content Include="img\databg.png" />
     <Content Include="img\favicon.ico" />
     <Content Include="index.aspx" />
@@ -164,6 +165,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\Supporthandler.ashx.cs">
+      <DependentUpon>Supporthandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -234,9 +238,14 @@
       <Project>{b62a62f4-c902-4567-bef4-20a474d8a05f}</Project>
       <Name>LikeSchool.Services.DB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LikeSchool.Services.Email\LikeSchool.Services.Email.csproj">
+      <Project>{529f05ef-3ab3-4f8a-9c84-d091f9147dd8}</Project>
+      <Name>LikeSchool.Services.Email</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Masterpages\login.Master" />
+    <Content Include="Handlers\Supporthandler.ashx" />
     <None Include="Properties\PublishProfiles\LikeSchool.pubxml" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
   </ItemGroup>

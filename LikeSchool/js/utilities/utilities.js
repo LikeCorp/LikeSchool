@@ -52,6 +52,7 @@ function clear_form_elements(ele) {
 
 function SetErrorIfEmpty(element)
 {
+    var noError = true;
     $(element).find(':input').each(function () {
         switch (this.type) {
             case 'password':
@@ -59,22 +60,36 @@ function SetErrorIfEmpty(element)
             case 'select-one':
             case 'text':
             case 'textarea':
-                if ($(this).val() == '')
+                if ($(this).val() == '') {
                     SetErrorBorder(this);
+                    noError = false;
+                }
                 else
                     ClearErrorBorder(this);
                 break;          
         }
-    });   
+    });
+    return noError;
 }
 
 function SetErrorBorder(id)
 {
     $(id).addClass(' error');
+    if ($(id).nextAll('span.error').length == 0) {
+        $(id).parent().append("<span class='error'>Required</span>");
+    }
 }
 function ClearErrorBorder(id)
 {
     $(id).removeClass(' error');
+    $(id).nextAll('span.error').remove()
+}
+
+function RemoveModalErrors(element)
+{
+    $(element).find(':input').each(function () {
+        ClearErrorBorder(this);
+    });
 }
 
 

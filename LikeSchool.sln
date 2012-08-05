@@ -7,12 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool", "LikeSchool\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.DB", "LikeSchool.Services.DB\LikeSchool.Services.DB.csproj", "{B62A62F4-C902-4567-BEF4-20A474D8A05F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.Email", "LikeSchool.Services.Email\LikeSchool.Services.Email.csproj", "{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Release|Any CPU.ActiveCfg = Release|Any CPU

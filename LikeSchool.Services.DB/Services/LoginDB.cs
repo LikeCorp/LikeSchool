@@ -21,12 +21,11 @@ namespace LikeSchool.Services.DB.Services
     public class LoginDB : System.Web.Services.WebService
     {
         [WebMethod]
-        public static string SelectLoginTable(string user, string pass)
+        public static string SelectLoginTable(LoginTableModal modal)
         {
             StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            LoginTableModal modal = new LoginTableModal();
-            LoginTableModal output = modal.GetLogin(Constants.SP_SelectLoginTable, user, pass);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();            
+            LoginTableModal output = modal.GetLogin(Constants.SP_SelectLoginTable, modal.UserName, modal.Password);
             serializer.Serialize(output, outString);
             return outString.ToString();
         }

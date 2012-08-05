@@ -39,7 +39,10 @@ namespace LikeSchool
             else
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                LoginTableModal userDetails = serializer.Deserialize<LoginTableModal>(LoginDB.SelectLoginTable(userName, password));
+                LoginTableModal modal = new LoginTableModal();
+                modal.UserName = userName;
+                modal.Password = password;
+                LoginTableModal userDetails = serializer.Deserialize<LoginTableModal>(LoginDB.SelectLoginTable(modal));
                 if (userDetails != null)
                 {
                     SetJavaScriptFunction("fnHideMessage()");
