@@ -10,7 +10,7 @@
             <div class="control-group">
                 <label class="control-label" for="email">Enter your Email Address.[*]</label>
                 <div class="controls">
-                    <input class="span5" type="text" id="email" />
+                    <input class="span5" type="text" id="email" errortext="Provide the valid Email Id." validationtype="email"/>
                 </div>
             </div>
             <div class="control-group">

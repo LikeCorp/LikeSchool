@@ -34,8 +34,8 @@ function InitializeValues() {
     });
     $("#startTime,#endTime").append(GetOptions(times));
     $("#startdesignator,#enddesignator").append(GetOptions(designators));
-    $("#startDate").datepicker({ dateFormat: 'dd/MMMM/yy' });
-    $("#endDate").datepicker({ dateFormat: 'dd/MMMM/yy' });
+    $("#startDate").datepicker();
+    $("#endDate").datepicker();
     $("#datepicker").datepicker({ inline: true });
     InitializeDialog();
 }
@@ -123,9 +123,15 @@ function AddEvent(start,end,allDay)
     $("#eventWindow").modal({
 
     });
+    AddEvent();    
+}
+
+function AddEvent()
+{
     $("#add").click(function () {
         var references = ['start', 'end', 'title', 'description', 'allday', 'eventcolor'];
         var rvalues = [];
+        var allDay = GetHtmlElementValue('wholeDay');
         var formattedstart = FormatDate(GetHtmlElementValue('startDate'), GetHtmlElementValue('startTime'), GetHtmlElementValue('startdesignator'), allDay);
         rvalues.push(formattedstart);
         var formattedend = FormatDate(GetHtmlElementValue('endDate'), GetHtmlElementValue('endTime'), GetHtmlElementValue('enddesignator'), allDay);
@@ -219,15 +225,16 @@ function InitializeDialog() {
         $("#eventWindow").modal({
 
         });
+        AddEvent();
     });
 }
 //This method formats the date,time,designator
 function FormatDate(date, time, designator, allDay) {
     var formatDate;
     if (allDay)
-        formatDate = Date.parseExact(date, 'dd/MMMM/yy');
+        formatDate = Date.parseExact(date, 'dd/mm/yyyy');
     else {
-        formatDate = Date.parseExact(date + ' ' + time + ' ' + designator, 'dd/MMMM/yy hh:mm tt');
+        formatDate = Date.parseExact(date + ' ' + time + ' ' + designator, 'dd/mm/yyyy hh:mm tt');
     }
     return formatDate;
 }
@@ -247,7 +254,7 @@ function DateDetail(date, isBefore, isAfter, isNow) {
         return this.Date.toString("MMM-yyyy");
     };
     this.GetDateText = function () {
-        return this.Date.toString("dd/MMMM/yy");
+        return this.Date.toString("dd/mm/yyyy");
     };
     this.GetDBDate = function () {
         return this.Date.toString('yyyy-MM-dd');

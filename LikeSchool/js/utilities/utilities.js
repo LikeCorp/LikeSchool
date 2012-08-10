@@ -1,4 +1,5 @@
 ﻿
+var emailRegEx = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 //This method gets the values and keys and gives you back the json key value pair
 function GetJsonString(references, values) {
     var jsonArray = [];
@@ -27,7 +28,16 @@ function GetHtmlElementValue(id) {
             break;
         case 'textarea':
         case 'input':
-            returnValue = $('#' + id).val();
+            {
+                switch ($('#' + id).attr('type')) {
+                    case 'text':
+                        returnValue = $('#' + id).val();
+                        break;
+                    case 'checkbox':
+                        returnValue = $('#' + id).attr('checked')=='checked' ? true:false;
+                        break;
+                }
+            }
             break;
 
     }
@@ -47,11 +57,10 @@ function clear_form_elements(ele) {
             case 'radio':
                 this.checked = false;
         }
-    });   
+    });
 }
 
-function SetErrorIfEmpty(element)
-{
+function SetErrorIfEmpty(element) {
     var noError = true;
     $(element).find(':input').each(function () {
         switch (this.type) {
@@ -60,33 +69,50 @@ function SetErrorIfEmpty(element)
             case 'select-one':
             case 'text':
             case 'textarea':
-                if ($(this).val() == '') {
-                    SetErrorBorder(this);
-                    noError = false;
-                }
-                else
-                    ClearErrorBorder(this);
-                break;          
+                noError = SetErrorBorder(this);
+                if (!noError)
+                    return noError;
+                break;
         }
     });
     return noError;
 }
 
-function SetErrorBorder(id)
-{
-    $(id).addClass(' error');
-    if ($(id).nextAll('span.error').length == 0) {
-        $(id).parent().append("<span class='error'>Required</span>");
+function SetErrorBorder(inputId) {
+    var validationType = $(inputId).attr('validationtype');
+    var errorText = '';
+    var value = $(inputId).val();
+    var check = true;
+    if (value == '') {
+        errorText = 'Required';
     }
+    else {
+        switch (validationType) {
+            case 'email':
+                if (!emailRegEx.test($(inputId).val())) {
+                    errorText = "Enter Valid Mail Address";
+                }
+                break;
+        }
+    }
+    if (errorText != '') {
+        check = false;
+        $(inputId).addClass(' error');
+        if ($(inputId).nextAll('span.error').length == 0) {
+            $(inputId).parent().append("<span class='error'>" + errorText + "</span>");
+        }
+    } else {
+        ClearErrorBorder(inputId);
+    }
+
+    return check;
 }
-function ClearErrorBorder(id)
-{
+function ClearErrorBorder(id) {
     $(id).removeClass(' error');
     $(id).nextAll('span.error').remove()
 }
 
-function RemoveModalErrors(element)
-{
+function RemoveModalErrors(element) {
     $(element).find(':input').each(function () {
         ClearErrorBorder(this);
     });
