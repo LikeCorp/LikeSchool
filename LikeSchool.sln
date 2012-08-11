@@ -9,12 +9,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.DB", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.Email", "LikeSchool.Services.Email\LikeSchool.Services.Email.csproj", "{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Helpers", "LikeSchool.Helpers\LikeSchool.Helpers.csproj", "{2CDC2B1A-A6E7-44EC-B357-E2BF162F7968}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CDC2B1A-A6E7-44EC-B357-E2BF162F7968}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CDC2B1A-A6E7-44EC-B357-E2BF162F7968}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CDC2B1A-A6E7-44EC-B357-E2BF162F7968}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CDC2B1A-A6E7-44EC-B357-E2BF162F7968}.Release|Any CPU.Build.0 = Release|Any CPU
 		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{529F05EF-3AB3-4F8A-9C84-D091F9147DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU

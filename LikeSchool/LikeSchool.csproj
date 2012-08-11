@@ -134,6 +134,7 @@
     <Content Include="leave.aspx" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
+    <Content Include="profile.aspx" />
     <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
     <Content Include="timetable.aspx" />
@@ -149,6 +150,7 @@
     <Compile Include="attendance.aspx.designer.cs">
       <DependentUpon>attendance.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="calendar.aspx.cs">
       <DependentUpon>calendar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,6 +178,7 @@
     <Compile Include="Handlers\Supporthandler.ashx.cs">
       <DependentUpon>Supporthandler.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Caching\ICacheManager.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,6 +221,13 @@
     <Compile Include="Masterpages\mainpage.Master.designer.cs">
       <DependentUpon>mainpage.Master</DependentUpon>
     </Compile>
+    <Compile Include="profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="timetable.aspx.cs">
       <DependentUpon>timetable.aspx</DependentUpon>
@@ -237,11 +247,17 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Masterpages\mainpage.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LikeSchool.Helpers\LikeSchool.Helpers.csproj">
+      <Project>{2cdc2b1a-a6e7-44ec-b357-e2bf162f7968}</Project>
+      <Name>LikeSchool.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LikeSchool.Services.DB\LikeSchool.Services.DB.csproj">
       <Project>{b62a62f4-c902-4567-bef4-20a474d8a05f}</Project>
       <Name>LikeSchool.Services.DB</Name>
