@@ -103,6 +103,8 @@
     <Content Include="index.aspx" />
     <Content Include="js\calendar\calendar.js" />
     <Content Include="js\bootstrap-dropdown.js" />
+    <Content Include="js\bootstrap-tab.js" />
+    <Content Include="js\student.js" />
     <Content Include="js\masterpage.js" />
     <Content Include="js\support.js" />
     <Content Include="js\fullcalendar.js" />
@@ -134,7 +136,7 @@
     <Content Include="leave.aspx" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
-    <Content Include="profile.aspx" />
+    <Content Include="studentdetail.aspx" />
     <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
     <Content Include="timetable.aspx" />
@@ -221,12 +223,12 @@
     <Compile Include="Masterpages\mainpage.Master.designer.cs">
       <DependentUpon>mainpage.Master</DependentUpon>
     </Compile>
-    <Compile Include="profile.aspx.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
+    <Compile Include="studentdetail.aspx.cs">
+      <DependentUpon>studentdetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="profile.aspx.designer.cs">
-      <DependentUpon>profile.aspx</DependentUpon>
+    <Compile Include="studentdetail.aspx.designer.cs">
+      <DependentUpon>studentdetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="timetable.aspx.cs">

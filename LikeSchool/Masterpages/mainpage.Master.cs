@@ -10,20 +10,19 @@ namespace LikeSchool
 {
     public partial class mainpage : System.Web.UI.MasterPage
     {
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
-                UpdatePageTitle();
-          
+            UpdatePageTitle();
         }
         private void UpdatePageTitle()
         {
-            string path = HelperMethods.GetSubString("/",".", HttpContext.Current.Request.Url.PathAndQuery);
+            string path = HelperMethods.GetSubString("/", ".", HttpContext.Current.Request.Url.PathAndQuery);
             string title = string.Empty;
-            switch(path.ToLower())
+            switch (path.ToLower())
             {
                 case "index":
-                    title =Constants.DashBoard;
+                    title = Constants.DashBoard;
                     break;
                 case "attendance":
                     title = Constants.Attendance;
@@ -41,7 +40,7 @@ namespace LikeSchool
                     title = Constants.Calendar;
                     break;
             }
-            Page.Header.Title = string.Format(Constants.TitlePrefix,title);
+            Page.Header.Title = string.Format(Constants.TitlePrefix, title);
         }
 
     }

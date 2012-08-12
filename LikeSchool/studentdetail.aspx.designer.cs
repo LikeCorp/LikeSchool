@@ -11,7 +11,7 @@ namespace LikeSchool
 {
 
 
-    public partial class profile
+    public partial class StudentDetail
     {
     }
 }

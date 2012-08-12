@@ -29,7 +29,7 @@
                     </i>
                         <%=HttpContext .Current.User.Identity.Name %><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="../profile.aspx">Profile</a></li>
+                        <li><a href="../studentdetail.aspx">Profile</a></li>
                         <li class="divider"></li>
                         <li><a href="../logout.aspx">Log Out</a></li>
                     </ul>

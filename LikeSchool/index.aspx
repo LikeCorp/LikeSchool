@@ -10,12 +10,11 @@
         </div>        
     </div>
     <hr class="container"/>
-    <div class="container">
-        
+    <div class="container">        
         <div class="span2">
-            <a href="#">
+            <a href="studentdetail.aspx">
                 <img src="img/dashboard/profile.png" /></a>
-            <h3 class="dash">Profile</h3>
+            <h3 class="dash">Student Details</h3>
         </div>
         <div class="span2">
             <a href="attendance.aspx">
