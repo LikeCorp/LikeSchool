@@ -6,6 +6,7 @@
     <script type="text/javascript" src="js/student.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <form runat="server">
     <div class="container-fluid">
         <div class="page-header">
             <h2>Student Details<span id="subheading"></span></h2>
@@ -15,10 +16,7 @@
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list prof">
                         <li class="nav-header">Student Menu</li>
-                        <li class="active"><a href="#" hint="search"><i class="icon-search icon-black"></i>&nbsp;Search
-                            Student</a></li>
-                        <li><a href="#" hint="profile"><i class="icon-user icon-black"></i>&nbsp;View Profile
-                        </a></li>
+                        <li class="active"><a href="#" hint="profile"><i class=" icon-user icon-black"></i>&nbsp;View Profile</a></li>
                         <li><a href="#" hint="sendemail"><i class="icon-envelope icon-black"></i>&nbsp;Send
                             Email</a></li>
                         <li><a href="#" hint="report"><i class="icon-list-alt icon-black"></i>&nbsp;Report</a>
@@ -31,16 +29,8 @@
                     <ul id="myTab" class="nav nav-tabs">
                         <li class="active"><a href="#profileTab" data-toggle="tab">Profile</a></li>
                         <li class=""><a href="#communicationTab" data-toggle="tab">Contact Details</a></li>
-                        <li class=""><a href="#parentTab" data-toggle="tab">Parent/Guardian</a></li>
                         <li class=""><a href="#otherTab" data-toggle="tab">More Details</a></li>
-                        <li style="float: right">
-                            <form style="margin: 0 0 7px" class="form-search">
-                            <input type="text" class="search-query" />
-                            <button type="submit" class="btn">
-                                <i class="icon-search icon-black"></i>&nbsp;Search
-                            </button>
-                            </form>
-                        </li>
+                        <li class=""><a href="#parentTab" data-toggle="tab">Parent/Guardian</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="profileTab">
@@ -82,9 +72,11 @@
                                 </tbody>
                             </table>
                             <div class="form-actions">
-                                <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
-                                    &nbsp;Edit</button>
-                                <button type="button" class="btn btn-danger"><i class="icon-trash icon-white"></i>&nbsp;Delete
+                                <button type="button" class="btn btn-primary">
+                                    <i class="icon-pencil icon-white"></i>&nbsp;Edit
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
                         </div>
@@ -123,20 +115,22 @@
                                         <th>Phone2</th>
                                         <td>Larry</td>
                                     </tr>
-                                     <tr>
+                                    <tr>
                                         <th>Mobile No</th>
                                         <td>Larry</td>
                                     </tr>
-                                     <tr>
+                                    <tr>
                                         <th>Email</th>
                                         <td>Larry</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="form-actions">
-                                <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
-                                    &nbsp;Edit</button>
-                                <button type="button" class="btn btn-danger"><i class="icon-trash icon-white"></i>&nbsp;Delete
+                                <button type="button" class="btn btn-primary">
+                                    <i class="icon-pencil icon-white"></i>&nbsp;Edit
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
                         </div>
@@ -170,13 +164,15 @@
                                     <tr>
                                         <th>Religion</th>
                                         <td>Larry</td>
-                                    </tr>                                   
+                                    </tr>
                                 </tbody>
                             </table>
                             <div class="form-actions">
-                                <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
-                                    &nbsp;Edit</button>
-                                <button type="button" class="btn btn-danger"><i class="icon-trash icon-white"></i>&nbsp;Delete
+                                <button type="button" class="btn btn-primary">
+                                    <i class="icon-pencil icon-white"></i>&nbsp;Edit
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
                         </div>
@@ -184,12 +180,48 @@
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
-                                        <th>Address1</th>
+                                        <th>FirstName</th>
                                         <td>Mark</td>
                                     </tr>
                                     <tr>
-                                        <th>Address2</th>
+                                        <th>MiddleName</th>
                                         <td>Jacob</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LastName</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Relation</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date Of Birth</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Education</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Occupation</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Annual Income</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Office Address1</th>
+                                        <td>Larry</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Office Address2</th>
+                                        <td>Larry</td>
                                     </tr>
                                     <tr>
                                         <th>City</th>
@@ -204,43 +236,38 @@
                                         <td>Larry</td>
                                     </tr>
                                     <tr>
-                                        <th>Pincode</th>
+                                        <th>Office Phone1</th>
                                         <td>Larry</td>
                                     </tr>
                                     <tr>
-                                        <th>Phone1</th>
+                                        <th>Office Phone2</th>
                                         <td>Larry</td>
                                     </tr>
                                     <tr>
-                                        <th>Phone2</th>
-                                        <td>Larry</td>
-                                    </tr>
-                                     <tr>
                                         <th>Mobile No</th>
-                                        <td>Larry</td>
-                                    </tr>
-                                     <tr>
-                                        <th>Email</th>
                                         <td>Larry</td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="form-actions">
-                                <button type="button" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
-                                    &nbsp;Edit</button>
-                                <button type="button" class="btn btn-danger"><i class="icon-trash icon-white"></i>&nbsp;Delete
+                                <button type="button" class="btn btn-primary">
+                                    <i class="icon-pencil icon-white"></i>&nbsp;Edit
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div id="search" class="profs" style="display: none;">
-                </div>
                 <div id="sendemail" class="profs" style="display: none;">
+                    
                 </div>
                 <div id="report" class="profs" style="display: none;">
+                    
                 </div>
             </div>
         </div>
     </div>
+    </form>
 </asp:Content>

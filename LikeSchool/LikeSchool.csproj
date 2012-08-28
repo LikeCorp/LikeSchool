@@ -101,9 +101,11 @@
     <Content Include="img\databg.png" />
     <Content Include="img\favicon.ico" />
     <Content Include="index.aspx" />
+    <Content Include="js\bootstrap-typeahead.js" />
     <Content Include="js\calendar\calendar.js" />
     <Content Include="js\bootstrap-dropdown.js" />
     <Content Include="js\bootstrap-tab.js" />
+    <Content Include="js\searchstudent.js" />
     <Content Include="js\student.js" />
     <Content Include="js\masterpage.js" />
     <Content Include="js\support.js" />
@@ -136,6 +138,7 @@
     <Content Include="leave.aspx" />
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
+    <Content Include="searchstudent.aspx" />
     <Content Include="studentdetail.aspx" />
     <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
@@ -222,6 +225,13 @@
     </Compile>
     <Compile Include="Masterpages\mainpage.Master.designer.cs">
       <DependentUpon>mainpage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="searchstudent.aspx.cs">
+      <DependentUpon>searchstudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="searchstudent.aspx.designer.cs">
+      <DependentUpon>searchstudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="studentdetail.aspx.cs">
       <DependentUpon>studentdetail.aspx</DependentUpon>

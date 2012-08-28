@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
-        <div id="right" style="width: 300px; float: right; margin: 0;">
+        <div id="right" style="width: 280px; float: right; margin: 0;">
             <div id="span5 offset5">
                 <form class="form-well" runat="server">
                 <fieldset>

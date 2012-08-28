@@ -7,12 +7,13 @@
     <div class="container">
         <div class="span20">
             <h2>Like school Dashboard</h2>
-        </div>        
+        </div>
     </div>
-    <hr class="container"/>
-    <div class="container">        
+    <hr class="container" />
+    <!--Todo: the dashboard need to be called based on the roles -->
+    <div class="container">
         <div class="span2">
-            <a href="studentdetail.aspx">
+            <a href="searchstudent.aspx">
                 <img src="img/dashboard/profile.png" /></a>
             <h3 class="dash">Student Details</h3>
         </div>
@@ -35,7 +36,7 @@
             <a href="calendar.aspx">
                 <img src="img/dashboard/calendar.png" /></a>
             <h3 class="dash">Calendar</h3>
-        </div>        
+        </div>
         <div class="span2">
             <a href="#">
                 <img src="img/dashboard/support.png" /></a>
@@ -47,4 +48,13 @@
             <h3 class="dash">Settings</h3>
         </div>
     </div>
+    <br />
+    <br />
+    <hr class="container" />
+    <div class="container">
+        <div class="span20">
+           <h3>Events of this Month</h3>
+        </div>
+    </div>
+    <hr class="container" />
 </asp:Content>
