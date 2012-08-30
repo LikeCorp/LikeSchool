@@ -5,10 +5,9 @@ using System.Linq;
 using System.Web;
 using Dapper;
 
-
 namespace LikeSchool.Services.DB.Modals
 {
-    public class LoginTableModal : Connection
+    public class LoginTableModal : ILoginTableModal
     {
         public string UserName
         {
@@ -19,16 +18,5 @@ namespace LikeSchool.Services.DB.Modals
         public string Roles { get; set; }
         public int Id { get; set; }
         
-        public LoginTableModal GetLogin(string procedureName, string user, string pass)
-        {
-            OpenConnection();
-            var dynamic = new DynamicParameters();
-            dynamic.Add(Constants.User, user);
-            dynamic.Add(Constants.Pass, pass);
-            LoginTableModal result = DbConnection.Query<LoginTableModal>(procedureName, dynamic,
-            commandType: CommandType.StoredProcedure).FirstOrDefault<LoginTableModal>();
-            CloseConnection();
-            return result;
-        }
     }
 }

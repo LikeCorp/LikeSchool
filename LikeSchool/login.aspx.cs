@@ -6,23 +6,19 @@ using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LikeSchool.Core;
 using LikeSchool.Services.DB.Modals;
 using LikeSchool.Services.DB.Services;
 
 namespace LikeSchool
 {
-    public partial class login : System.Web.UI.Page
+    public partial class login : BaseSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void SetJavaScriptFunction(string message)
-        {
-            ClientScript.RegisterStartupScript
-       (GetType(), "Javascript", string.Format("javascript: {0}; ", message), true);
-        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -39,10 +35,10 @@ namespace LikeSchool
             else
             {
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
-                LoginTableModal modal = new LoginTableModal();
+                ILoginTableModal modal = new LoginTableModal();
                 modal.UserName = userName;
                 modal.Password = password;
-                LoginTableModal userDetails = serializer.Deserialize<LoginTableModal>(LoginDB.SelectLoginTable(modal));
+                ILoginTableModal userDetails = serializer.Deserialize<LoginTableModal>(LoginDB.SelectLoginTable(modal));
                 if (userDetails != null)
                 {
                     SetJavaScriptFunction("fnHideMessage()");

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LikeSchool.Core;
 
 namespace LikeSchool
 {
-    public partial class attendance : System.Web.UI.Page
+    public partial class attendance : BaseSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -139,6 +139,7 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="searchstudent.aspx" />
+    <Content Include="Services\StudentService.asmx" />
     <Content Include="studentdetail.aspx" />
     <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
@@ -176,6 +177,9 @@
     </Compile>
     <Compile Include="Controls\support.ascx.designer.cs">
       <DependentUpon>support.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\BaseSite.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

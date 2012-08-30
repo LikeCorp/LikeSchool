@@ -14,7 +14,11 @@ namespace LikeSchool.Services.DB
         public const string SP_InsertEventTable = "InsertEventTable";
         public const string SP_SelectEventTable = "SelectEventTable";
         public const string SP_SelectLoginTable = "SelectLoginTable";
-
+        public const string SP_SelectClassTable = "SelectClassTable";
+        public const string SP_SelectAdmissionNo = "SelectAdmissionNo";
+        public const string SP_SearchByAdNo = "SearchByAdNo";
+        public const string SP_SelectClassId = "SelectClassId";
+        public const string SP_SearchByClass = "SearchByClass";
         public const string LikeConnectionString = "likeconnectionstring";
 
         #region EventTable
@@ -31,5 +35,9 @@ namespace LikeSchool.Services.DB
         public const string User = "@user";
         public const string Pass = "@pass";
         #endregion
+
+        public const string AdmissionNo = "@admissionno";
+
+        public const string ClassId = "@classid";
     }
 }

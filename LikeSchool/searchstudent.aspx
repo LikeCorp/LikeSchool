@@ -6,7 +6,7 @@
     <script type="text/javascript" src="../js/searchstudent.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="search">
+    <form id="search" autocomplete="off">
     <div class="container">
         <h2>Search Student</h2>
     </div>
@@ -23,26 +23,26 @@
                     Admission No
                 </label>
                 <label class="radio inline">
-                    <input type="radio" name="optionsRadios" id="batchid" value="batch">
-                    Batch
-                </label>
-                <label class="radio inline">
                     <input type="radio" name="optionsRadios" id="classid" value="class">
-                    Class
+                    Class-Section
                 </label>
             </div>
         </div>
         <br />
         <div class="control-group">
             <div class="controls">
-                <input type="text" class="span7" id="searchtext" style="height: 30px" placeholder="" data-provide="typeahead" />
-                <button class="btn btn-info" type="submit" style="height: 40px; margin-top: -7px;
-                    width: 100px;">
+                <input type="text" class="span7" id="searchtext" style="height: 30px" placeholder=""
+                    data-provide="typeahead" data-source="" data-items="4" />
+                <button class="btn btn-info" type="button" style="height: 40px; margin-top: -7px;
+                    width: 100px;" id="searchSubmit">
                     <i class="icon-search icon-black"></i>&nbsp;Search
                 </button>
             </div>
         </div>
     </div>
     <hr class="container" />
+    <div class="container" id="searchResult">
+
+    </div>
     </form>
 </asp:Content>

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LikeSchool.Core;
 
 namespace LikeSchool
 {
-    public partial class logout : System.Web.UI.Page
+    public partial class logout : BaseSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {

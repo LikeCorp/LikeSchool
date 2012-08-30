@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
+using LikeSchool.Services.DB.AccesLayer;
 using LikeSchool.Services.DB.Modals;
 
 namespace LikeSchool.Services.DB.Services
@@ -21,11 +22,12 @@ namespace LikeSchool.Services.DB.Services
     public class LoginDB : System.Web.Services.WebService
     {
         [WebMethod]
-        public static string SelectLoginTable(LoginTableModal modal)
+        public static string SelectLoginTable(ILoginTableModal modal)
         {
             StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();            
-            LoginTableModal output = modal.GetLogin(Constants.SP_SelectLoginTable, modal.UserName, modal.Password);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            LoginAccessLayer al = new LoginAccessLayer(modal);
+            ILoginTableModal output = al.GetLogin(Constants.SP_SelectLoginTable);
             serializer.Serialize(output, outString);
             return outString.ToString();
         }

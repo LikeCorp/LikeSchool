@@ -8,6 +8,7 @@ using LikeSchool.Services.DB.Modals;
 
 using System.Web.Script.Services;
 using System.Text;
+using LikeSchool.Services.DB.AccesLayer;
 
 namespace LikeSchool.Services.DB.Services
 {
@@ -25,8 +26,9 @@ namespace LikeSchool.Services.DB.Services
         public string InsertEventTable(string jsonValue)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
-            string output = modal.InsertEvents(Constants.SP_InsertEventTable, modal);
+            IEventTableModal modal = serializer.Deserialize<IEventTableModal>(jsonValue);
+            EventAccessLayer al = new EventAccessLayer(modal);
+            string output = al.InsertEvents(Constants.SP_InsertEventTable);
             return output;
         }
 
@@ -35,8 +37,8 @@ namespace LikeSchool.Services.DB.Services
         {
             StringBuilder outString=new StringBuilder();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            EventTableModal modal = new EventTableModal();
-            List<EventTableModal> output = modal.GetEvents(Constants.SP_SelectEventTable);
+            EventAccessLayer al = new EventAccessLayer();
+            List<EventTableModal> output = al.SelectEvents(Constants.SP_SelectEventTable);
             serializer.Serialize(output, outString);
             return outString.ToString();
         }
