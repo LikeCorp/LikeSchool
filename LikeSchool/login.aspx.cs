@@ -6,8 +6,8 @@ using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using LikeSchool.Core;
-using LikeSchool.Services.DB.Modals;
+
+using LikeSchool.Modals;
 using LikeSchool.Services.DB.Services;
 
 namespace LikeSchool

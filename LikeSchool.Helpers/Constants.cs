@@ -15,5 +15,6 @@ namespace LikeSchool.Helpers
         public const string Leave = "Leave";
         public const string Settings = "Settings";
         public const string Calendar = "Calendar";
+        public const string Defaulter = "-";
     }
 }

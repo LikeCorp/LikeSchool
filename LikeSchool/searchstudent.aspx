@@ -2,8 +2,12 @@
     CodeBehind="searchstudent.aspx.cs" Inherits="LikeSchool.SearchStudent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datatables.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
+    <script type="text/javascript" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/bootstrap-typeahead.js"></script>
     <script type="text/javascript" src="../js/searchstudent.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datatables.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <form id="search" autocomplete="off">
@@ -18,16 +22,16 @@
             </label>
             <div class="controls searchRadio">
                 <label class="radio inline">
-                    <input type="radio" name="optionsRadios" id="adno" value="admission" checked="checked"
-                        oncl>
+                    <input type="radio" name="optionsRadios" id="adno" value="admission" checked="checked" />
                     Admission No
                 </label>
                 <label class="radio inline">
-                    <input type="radio" name="optionsRadios" id="classid" value="class">
+                    <input type="radio" name="optionsRadios" id="classid" value="class" />
                     Class-Section
                 </label>
             </div>
         </div>
+        ,
         <br />
         <div class="control-group">
             <div class="controls">
@@ -37,12 +41,21 @@
                     width: 100px;" id="searchSubmit">
                     <i class="icon-search icon-black"></i>&nbsp;Search
                 </button>
+                <span class="help-block">Type your search text and select the system suggested text.
+                </span>
             </div>
+        </div>
+        <div id="loader">
+            <div class="loadmodal"></div>
+            <p>Loading.Please Wait..</p>
         </div>
     </div>
     <hr class="container" />
+    <div class="container" id="resultSpan" style="display: none">
+        <h4>Search Result:</h4>
+    </div>
+    <br />
     <div class="container" id="searchResult">
-
     </div>
     </form>
 </asp:Content>

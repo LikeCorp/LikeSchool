@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LikeSchool.Services.DB.Modals
+namespace LikeSchool.Modals
 {
-    public class ClassTableModal : LikeSchool.Services.DB.Modals.IClassTableModal
+    public class ClassTableModal : IClassTableModal
     {
         public int ClassId { get; set; }
         public string ClassName { get; set; }

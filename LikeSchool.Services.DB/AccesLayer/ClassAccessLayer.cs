@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Dapper;
-using LikeSchool.Services.DB.Modals;
+using LikeSchool.Modals;
+using LikeSchool.Services.DB;
 
 namespace LikeSchool.Services.DB.AccesLayer
 {
@@ -43,7 +44,8 @@ namespace LikeSchool.Services.DB.AccesLayer
         {
             OpenConnection();
             var dynamic = new DynamicParameters();
-            dynamic.Add(Constants.ClassId, modal.ClassId);
+            dynamic.Add(Constants.ClassName, modal.ClassName);
+            dynamic.Add(Constants.Section, modal.Section);
             IClassTableModal result = DbConnection.Query<ClassTableModal>(procedureName,dynamic,
             commandType: System.Data.CommandType.StoredProcedure).FirstOrDefault<ClassTableModal>();
             CloseConnection();

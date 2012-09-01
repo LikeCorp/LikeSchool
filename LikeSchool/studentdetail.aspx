@@ -16,7 +16,8 @@
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list prof">
                         <li class="nav-header">Student Menu</li>
-                        <li class="active"><a href="#" hint="profile"><i class=" icon-user icon-black"></i>&nbsp;View Profile</a></li>
+                        <li class="active"><a href="#" hint="profile"><i class=" icon-user icon-black"></i>&nbsp;View
+                            Profile</a></li>
                         <li><a href="#" hint="sendemail"><i class="icon-envelope icon-black"></i>&nbsp;Send
                             Email</a></li>
                         <li><a href="#" hint="report"><i class="icon-list-alt icon-black"></i>&nbsp;Report</a>
@@ -34,43 +35,59 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="profileTab">
+                            <% if(StudentModal.Image==null){ %>
                             <img src="img/dashboard/profile.png" class="span2" />
+                            <%}else{ %>
+                            
+                            <%} %>
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
                                         <th>Admission No</th>
-                                        <td>Mark</td>
+                                        <td>
+                                            <%= StudentModal.AdmissionNo %></td>
                                     </tr>
                                     <tr>
                                         <th>Admission Date</th>
-                                        <td>Jacob</td>
+                                        <td>
+                                            <%= StudentModal.AdmissionDate %></td>
                                     </tr>
                                     <tr>
                                         <th>First Name</th>
-                                        <td>Larry</td>
+                                        <td>
+                                            <%= StudentModal.FirstName %></td>
                                     </tr>
                                     <tr>
                                         <th>Middle Name</th>
-                                        <td>Larry</td>
+                                        <td>
+                                            <%= StudentModal.MiddelName==null ? LikeSchool.Helpers.Constants.Defaulter : StudentModal.MiddelName %>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>Last Name</th>
-                                        <td>Larry</td>
+                                        <td>
+                                            <%= StudentModal.LastName %></td>
                                     </tr>
                                     <tr>
                                         <th>Class</th>
-                                        <td>Larry</td>
+                                        <td>
+                                            <%= StudentModal.ClassModal.ClassName %></td>
                                     </tr>
                                     <tr>
                                         <th>Section</th>
-                                        <td>Larry</td>
+                                        <td>
+                                            <%= StudentModal.ClassModal.Section %></td>
                                     </tr>
                                     <tr>
                                         <th>Batch</th>
-                                        <td>Larry</td>
+                                        <td>
+                                            <%= string.Format("{0}-{1}",StudentModal.BatchModal.From,StudentModal.BatchModal.To) %>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <% if (IsAdmin)
+                               { %>
                             <div class="form-actions">
                                 <button type="button" class="btn btn-primary">
                                     <i class="icon-pencil icon-white"></i>&nbsp;Edit
@@ -79,52 +96,61 @@
                                     <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
+                            <%} %>
                         </div>
                         <div class="tab-pane fade" id="communicationTab">
+                            <%if (StudentModal.ContactModal == null)
+                              { %>
+                            <span>Oops!.No entries of contact details.</span>
+                            <%}
+                              else
+                              { %>
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
                                         <th>Address1</th>
-                                        <td>Mark</td>
+                                        <td><%= StudentModal.ContactModal.Address1 %></td>
                                     </tr>
                                     <tr>
                                         <th>Address2</th>
-                                        <td>Jacob</td>
+                                        <td><%= StudentModal.ContactModal.Address2 == null ? LikeSchool.Helpers.Constants.Defaulter : StudentModal.ContactModal.Address2 %></td>
                                     </tr>
                                     <tr>
                                         <th>City</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.City %></td>
                                     </tr>
                                     <tr>
                                         <th>State</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.State %></td>
                                     </tr>
                                     <tr>
                                         <th>Country</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.Country %></td>
                                     </tr>
                                     <tr>
                                         <th>Pincode</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.Pincode %></td>
                                     </tr>
                                     <tr>
                                         <th>Phone1</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.Phone1 %></td>
                                     </tr>
                                     <tr>
                                         <th>Phone2</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.Phone2==null ? LikeSchool.Helpers.Constants.Defaulter : StudentModal.ContactModal.Phone2 %></td>
                                     </tr>
                                     <tr>
                                         <th>Mobile No</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.Mobile %></td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ContactModal.Email %></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <% if (IsAdmin)
+                               { %>
                             <div class="form-actions">
                                 <button type="button" class="btn btn-primary">
                                     <i class="icon-pencil icon-white"></i>&nbsp;Edit
@@ -133,40 +159,46 @@
                                     <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
+                            <%} %>
+                            <%} %>
                         </div>
                         <div class="tab-pane fade" id="otherTab">
+                            <% if(StudentModal.OtherModal==null){ %>
+                            <span>Oops!.No entries of other details.</span>
+                            <%}else { %>
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
                                         <th>Date of Birth</th>
-                                        <td>Mark</td>
+                                        <td><%= StudentModal.OtherModal.DateOfBirth %></td>
                                     </tr>
                                     <tr>
                                         <th>Blood Group</th>
-                                        <td>Jacob</td>
+                                        <td><%= StudentModal.OtherModal.BloodGroup %></td>
                                     </tr>
                                     <tr>
                                         <th>Gender</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.OtherModal.Gender %></td>
                                     </tr>
                                     <tr>
                                         <th>Nationality</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.OtherModal.Nationality %></td>
                                     </tr>
                                     <tr>
                                         <th>Language</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.OtherModal.Language %></td>
                                     </tr>
                                     <tr>
                                         <th>Category</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.OtherModal.Category %></td>
                                     </tr>
                                     <tr>
                                         <th>Religion</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.OtherModal.Religion %></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <%if(IsAdmin){ %>
                             <div class="form-actions">
                                 <button type="button" class="btn btn-primary">
                                     <i class="icon-pencil icon-white"></i>&nbsp;Edit
@@ -175,80 +207,86 @@
                                     <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
+                            <%} %>
+                            <%} %>
                         </div>
                         <div class="tab-pane fade" id="parentTab">
+                            <%if(StudentModal.ParentModal==null){ %>
+                            <span>Oops!.No entries of Parent or Gaurdian details.</span>
+                            <%}else{ %>
                             <table class="table table-striped table-bordered">
                                 <tbody>
                                     <tr>
                                         <th>FirstName</th>
-                                        <td>Mark</td>
+                                        <td><%= StudentModal.ParentModal.FirstName %></td>
                                     </tr>
                                     <tr>
                                         <th>MiddleName</th>
-                                        <td>Jacob</td>
+                                        <td><%= StudentModal.ParentModal.MiddleName == null ? LikeSchool.Helpers.Constants.Defaulter: StudentModal.ParentModal.MiddleName %></td>
                                     </tr>
                                     <tr>
                                         <th>LastName</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.LastName %></td>
                                     </tr>
                                     <tr>
                                         <th>Relation</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.Relation %></td>
                                     </tr>
                                     <tr>
                                         <th>Date Of Birth</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.DateOfBirth %></td>
                                     </tr>
                                     <tr>
                                         <th>Education</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.Education %></td>
                                     </tr>
                                     <tr>
                                         <th>Occupation</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.Occupation %></td>
                                     </tr>
                                     <tr>
                                         <th>Annual Income</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.Income %></td>
                                     </tr>
                                     <tr>
                                         <th>Email</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Email %></td>
                                     </tr>
                                     <tr>
                                         <th>Office Address1</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Address1 %></td>
                                     </tr>
                                     <tr>
                                         <th>Office Address2</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Address2 ==null? LikeSchool.Helpers.Constants.Defaulter: StudentModal.ParentModal.ContactModal.Address2 %></td>
                                     </tr>
                                     <tr>
                                         <th>City</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.City %></td>
                                     </tr>
                                     <tr>
                                         <th>State</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.State %></td>
                                     </tr>
                                     <tr>
                                         <th>Country</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Country %></td>
                                     </tr>
                                     <tr>
                                         <th>Office Phone1</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Phone1 %></td>
                                     </tr>
                                     <tr>
                                         <th>Office Phone2</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Phone2 %></td>
                                     </tr>
                                     <tr>
                                         <th>Mobile No</th>
-                                        <td>Larry</td>
+                                        <td><%= StudentModal.ParentModal.ContactModal.Mobile %></td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <% if(IsAdmin){ %>
                             <div class="form-actions">
                                 <button type="button" class="btn btn-primary">
                                     <i class="icon-pencil icon-white"></i>&nbsp;Edit
@@ -257,14 +295,14 @@
                                     <i class="icon-trash icon-white"></i>&nbsp;Delete
                                 </button>
                             </div>
+                            <%} %>
+                            <%} %>
                         </div>
                     </div>
                 </div>
                 <div id="sendemail" class="profs" style="display: none;">
-                    
                 </div>
                 <div id="report" class="profs" style="display: none;">
-                    
                 </div>
             </div>
         </div>

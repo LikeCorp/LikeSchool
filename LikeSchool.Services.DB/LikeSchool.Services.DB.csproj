@@ -67,16 +67,6 @@
     <Compile Include="AccesLayer\EventAccessLayer.cs" />
     <Compile Include="AccesLayer\LoginAccessLayer.cs" />
     <Compile Include="AccesLayer\StudentAccessLayer.cs" />
-    <Compile Include="Modals\AdmissionModal.cs" />
-    <Compile Include="Modals\ClassTableModal.cs" />
-    <Compile Include="Modals\IAdmissionModal.cs" />
-    <Compile Include="Modals\IClassTableModal.cs" />
-    <Compile Include="Modals\IEventTableModal.cs" />
-    <Compile Include="Modals\ILoginTableModal.cs" />
-    <Compile Include="Modals\IStudentTableModal.cs" />
-    <Compile Include="Modals\LoginTableModal.cs" />
-    <Compile Include="Modals\EventTableModal.cs" />
-    <Compile Include="Modals\StudentTableModal.cs" />
     <Compile Include="Services\StudentTableDB.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -105,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\LikeSchool.Services.DB.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LikeSchool.Modals\LikeSchool.Modals.csproj">
+      <Project>{b18dee65-39a3-4bb7-9194-12ea5c469c58}</Project>
+      <Name>LikeSchool.Modals</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

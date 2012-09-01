@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
-using LikeSchool.Services.DB.Modals;
+using LikeSchool.Modals;
 
 using System.Web.Script.Services;
 using System.Text;

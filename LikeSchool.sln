@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Helpers", "LikeS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Configuration", "LikeSchool.Configuration\LikeSchool.Configuration.csproj", "{2FE49AC6-9D30-45A6-B614-9C9109F8485D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Modals", "LikeSchool.Modals\LikeSchool.Modals.csproj", "{B18DEE65-39A3-4BB7-9194-12EA5C469C58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B76C948-820F-4B1B-AD91-0FB6FFFC54CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B18DEE65-39A3-4BB7-9194-12EA5C469C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B18DEE65-39A3-4BB7-9194-12EA5C469C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B18DEE65-39A3-4BB7-9194-12EA5C469C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B18DEE65-39A3-4BB7-9194-12EA5C469C58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B561841F-AB61-4AFE-B1B4-A02F7F8B4CC9}.Release|Any CPU.ActiveCfg = Release|Any CPU

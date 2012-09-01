@@ -59,8 +59,10 @@
     <Content Include="attendance.aspx" />
     <Content Include="calendar.aspx" />
     <Content Include="Controls\support.ascx" />
+    <Content Include="css\bootstrap-datatables.css" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\fullcalendar.print.css" />
+    <Content Include="css\jquery.dataTables.css" />
     <Content Include="css\main.css" />
     <Content Include="css\uicss\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
     <Content Include="css\uicss\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
@@ -91,6 +93,9 @@
     <Content Include="css\uicss\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
     <Content Include="img\ajax-loader.gif" />
+    <Content Include="img\back_disabled.png" />
+    <Content Include="img\back_enabled.png" />
+    <Content Include="img\back_enabled_hover.png" />
     <Content Include="img\dashboard\profile.png" />
     <Content Include="img\dashboard\calendar.png" />
     <Content Include="img\dashboard\leave.png" />
@@ -100,11 +105,21 @@
     <Content Include="img\dashboard\support.png" />
     <Content Include="img\databg.png" />
     <Content Include="img\favicon.ico" />
+    <Content Include="img\forward_disabled.png" />
+    <Content Include="img\forward_enabled.png" />
+    <Content Include="img\forward_enabled_hover.png" />
+    <Content Include="img\sort_asc.png" />
+    <Content Include="img\sort_asc_disabled.png" />
+    <Content Include="img\sort_both.png" />
+    <Content Include="img\sort_desc.png" />
+    <Content Include="img\sort_desc_disabled.png" />
     <Content Include="index.aspx" />
+    <Content Include="js\bootstrap-datatables.js" />
     <Content Include="js\bootstrap-typeahead.js" />
     <Content Include="js\calendar\calendar.js" />
     <Content Include="js\bootstrap-dropdown.js" />
     <Content Include="js\bootstrap-tab.js" />
+    <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\searchstudent.js" />
     <Content Include="js\student.js" />
     <Content Include="js\masterpage.js" />
@@ -273,6 +288,10 @@
     <ProjectReference Include="..\LikeSchool.Helpers\LikeSchool.Helpers.csproj">
       <Project>{2cdc2b1a-a6e7-44ec-b357-e2bf162f7968}</Project>
       <Name>LikeSchool.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LikeSchool.Modals\LikeSchool.Modals.csproj">
+      <Project>{b18dee65-39a3-4bb7-9194-12ea5c469c58}</Project>
+      <Name>LikeSchool.Modals</Name>
     </ProjectReference>
     <ProjectReference Include="..\LikeSchool.Services.DB\LikeSchool.Services.DB.csproj">
       <Project>{b62a62f4-c902-4567-bef4-20a474d8a05f}</Project>

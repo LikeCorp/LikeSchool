@@ -19,7 +19,11 @@ namespace LikeSchool.Services.DB
         public const string SP_SearchByAdNo = "SearchByAdNo";
         public const string SP_SelectClassId = "SelectClassId";
         public const string SP_SearchByClass = "SearchByClass";
+        public const string SP_SelectStudentDetail = "SelectStudentDetail";
         public const string LikeConnectionString = "likeconnectionstring";
+        
+        
+        
 
         #region EventTable
         public const string SDate = "@sDate";       
@@ -37,7 +41,11 @@ namespace LikeSchool.Services.DB
         #endregion
 
         public const string AdmissionNo = "@admissionno";
+        public const string BatchId = "@batchid";
 
         public const string ClassId = "@classid";
+
+        public const string ClassName = "@classname";
+        public const string Section = "@section";
     }
 }

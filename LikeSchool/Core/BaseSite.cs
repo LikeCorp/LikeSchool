@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 
-namespace LikeSchool.Core
+namespace LikeSchool
 {
     public class BaseSite : Page
     {
@@ -18,5 +18,14 @@ namespace LikeSchool.Core
             ClientScript.RegisterStartupScript
        (GetType(), "Javascript", string.Format("javascript: {0}; ", message), true);
         }
+
+        protected bool IsAdmin
+        {
+            get
+            {
+                return HttpContext.Current.User.IsInRole("admin");
+            }
+        }
+
     }
 }

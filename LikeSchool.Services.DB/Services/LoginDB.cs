@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
 using LikeSchool.Services.DB.AccesLayer;
-using LikeSchool.Services.DB.Modals;
+using LikeSchool.Modals;
 
 namespace LikeSchool.Services.DB.Services
 {

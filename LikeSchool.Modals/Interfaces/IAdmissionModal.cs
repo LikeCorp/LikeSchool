@@ -1,5 +1,5 @@
 ﻿using System;
-namespace LikeSchool.Services.DB.Modals
+namespace LikeSchool.Modals
 {
    public interface IAdmissionModal
     {

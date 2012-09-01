@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Services;
-using LikeSchool.Services.DB.Modals;
+using LikeSchool.Modals;
 
 using System.Web.Script.Services;
 using System.Text;
@@ -38,35 +38,60 @@ namespace LikeSchool.Services.DB.Services
             StringBuilder outString = new StringBuilder();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             StudentAccessLayer al = new StudentAccessLayer();
-            List<IAdmissionModal> output = al.SelectAdmissionNo(Constants.SP_SelectAdmissionNo);
+            List<IAdmissionModal> output = al.GetAdmissionIds(Constants.SP_SelectAdmissionNo);
             serializer.Serialize(output, outString);
             return outString.ToString();
         }
 
         [WebMethod]
+        public IStudentTableModal SelectStudentData(int admissionno, int batchId)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            StudentAccessLayer al = new StudentAccessLayer();
+            IStudentTableModal output = al.GetStudentData(Constants.SP_SelectStudentDetail,admissionno,batchId);
+            return output;        
+            
+        }
+
+        [WebMethod]
         public string SearchByAdmission(string jsonValue)
         {
+
             StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            IAdmissionModal modal = serializer.Deserialize<AdmissionModal>(jsonValue);
-            StudentAccessLayer al = new StudentAccessLayer();
-            List<IStudentTableModal> output = al.SelectStudentByAdmissionNo(Constants.SP_SearchByAdNo, modal);
-            serializer.Serialize(output, outString);
-            return outString.ToString();
+            try
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                IAdmissionModal modal = serializer.Deserialize<AdmissionModal>(jsonValue);
+                StudentAccessLayer al = new StudentAccessLayer();
+                List<IStudentTableModal> output = al.GetStudentByAdmissionId(Constants.SP_SearchByAdNo, modal);
+                serializer.Serialize(output, outString);
+                return outString.ToString();
+            }
+            catch(Exception err)
+            {
+                return outString.ToString();
+            }
         }
 
         [WebMethod]
         public string SearchByClass(string jsonValue)
         {
             StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            IClassTableModal modal = serializer.Deserialize<ClassTableModal>(jsonValue);
-            ClassAccessLayer al = new ClassAccessLayer(modal);
-            IClassTableModal resultModal = al.SelectClassById(Constants.SP_SelectClassId);
-            StudentAccessLayer sl=new StudentAccessLayer();
-            List<IStudentTableModal> ouput = sl.SelectStudentByClass(Constants.SP_SearchByClass, resultModal);
-            serializer.Serialize(ouput, outString);
-            return outString.ToString();
+            try
+            {
+                JavaScriptSerializer serializer = new JavaScriptSerializer();
+                IClassTableModal modal = serializer.Deserialize<ClassTableModal>(jsonValue);
+                ClassAccessLayer al = new ClassAccessLayer(modal);
+                IClassTableModal resultModal = al.SelectClassById(Constants.SP_SelectClassId);
+                StudentAccessLayer sl = new StudentAccessLayer();
+                List<IStudentTableModal> ouput = sl.GetStudentByClass(Constants.SP_SearchByClass, resultModal);
+                serializer.Serialize(ouput, outString);
+                return outString.ToString();
+            }
+            catch(Exception err)
+            {
+                return outString.ToString();
+            }
         }
     }
 }

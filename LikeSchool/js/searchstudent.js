@@ -10,57 +10,73 @@ $(document).ready(function () {
     $('#searchSubmit').click(function () {
         var searchURL = baseurl;
         var searchText = $('#searchtext').val();
-        var classModal;
-        var admissionNo;
-        var references=[];
-        var values=[];
-        switch (radioVal) {
-            case 'admission':
-                admissionNo = searchText;
-                searchURL += "SearchByAdmission";
-                references.push("AdmissionNo");
-                values.push(admissionNo);
-                break;
-            case 'class':
-                var items = searchText.split('-');
-                var clName = items[0];
-                var section = items[1];
-                searchURL += "SearchByClass";
-                references.push("ClassName");
-                values.push(clName);
-                references.push("Section");
-                values.push(section);
-                break;
-        }
-
-        $.ajax({
-            url: searchURL,
-            data: JSON.stringify({ jsonValue: GetJsonString(references, values) }),
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (res) {
-                $("#searchResult").empty();
-                var result = eval(res.d);
-                var resultText = ConstructSearchResult(result);
-                $("#searchResult").append(resultText);
+        if (searchText.length > 0) {
+            var classModal;
+            var admissionNo;
+            var references = [];
+            var values = [];
+            switch (radioVal) {
+                case 'admission':
+                    admissionNo = searchText;
+                    searchURL += "SearchByAdmission";
+                    references.push("AdmissionNo");
+                    values.push(admissionNo);
+                    break;
+                case 'class':
+                    var items = searchText.split('-');
+                    var clName = items[0];
+                    var section = items[1];
+                    searchURL += "SearchByClass";
+                    references.push("ClassName");
+                    values.push(clName);
+                    references.push("Section");
+                    values.push(section);
+                    break;
             }
-        });
+
+            $.ajax({
+                url: searchURL,
+                data: JSON.stringify({ jsonValue: GetJsonString(references, values) }),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: function () { $('#loader').css('display', 'block'); },
+                complete: function () { $('#loader').css('display', 'none'); },
+                success: function (res) {
+                    $("#resultSpan").css('display', 'none');
+                    $("#searchResult").empty();
+                    var result = eval(res.d);
+                    var resultText = ConstructSearchResult(result);
+                    $("#searchResult").append(resultText);
+                    $('#searchDataTable').dataTable({
+                        "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+                        "sPaginationType": "bootstrap",
+                        "oLanguage": {
+                            "sLengthMenu": "_MENU_ records per page"
+                        }
+                    });
+                }
+            });
+        }
 
     });
 
 });
 
 function ConstructSearchResult(result) {
-    if (result.length == 0)
-        return "Sorry your search does not matches the record.We request you to select the system suggested text";
+    $("#resultSpan").css('display', 'block');
+
+    if (result == undefined || result.length == 0)
+        return "Oops! your search does not matches the record. :(";
     else {
-        var table = "<table class='table table-striped table-bordered'>";
+        var table = " <table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='searchDataTable'>";
+        
         table += "<thead><tr>";
         table += "<th>No</th>";
         table += "<th> Admission No</th>";
-        table += "<th> Name </th>";
+        table += "<th> Name </th>";        
         table += "<th> Class-Section</th>";
+        table += "<th> Batch </th>";
         table += "</tr></thead>";
 
         table += "<tbody>";
@@ -68,9 +84,10 @@ function ConstructSearchResult(result) {
             var data = result[x];
             table += "<tr>";
             table += "<td>" + (x + 1) + "</td>";
-            table += "<td><a href='/studentdetail.aspx?adno=" + data.AdmissionNo + "'>" + data.AdmissionNo + "</a></td>";
+            table += "<td><a href='/studentdetail.aspx?adno=" + data.AdmissionNo + "&bno="+data.BatchModal.BatchId +"'>" + data.AdmissionNo + "</a></td>";
             table += "<td>" + data.FirstName + "</td>";
-            table += "<td>" + data.ClassName+"-"+data.Section + "</td>";
+            table += "<td>" + data.ClassModal.ClassName + "-" + data.ClassModal.Section + "</td>";
+            table += "<td>" + data.BatchModal.From + "-" + data.BatchModal.To + "</td>";
             table += "</tr>";
 
         }
