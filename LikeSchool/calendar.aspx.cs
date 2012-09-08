@@ -11,7 +11,12 @@ namespace LikeSchool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                LoginIdField.Value = LoginModal.Id.ToString();
+                LoginNameField.Value = LoginModal.UserName;
+                RoleNameField.Value = IsAdmin.ToString();
+            }
         }
     }
 }

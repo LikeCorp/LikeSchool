@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using Dapper;
+using LikeSchool.Helpers;
 using LikeSchool.Modals;
 
 namespace LikeSchool.Services.DB.AccesLayer
@@ -32,7 +33,7 @@ namespace LikeSchool.Services.DB.AccesLayer
             eventModal = modal;
         }
 
-        public string InsertEvents(string procedureName)
+        public int InsertEvents(string procedureName)
         {
             OpenConnection();
             var dynamic = new DynamicParameters();
@@ -42,19 +43,46 @@ namespace LikeSchool.Services.DB.AccesLayer
             dynamic.Add(Constants.EDate, Modal.End);
             dynamic.Add(Constants.EventColor, Modal.EventColor);
             dynamic.Add(Constants.WholeDay, Modal.AllDay.ToString());
+            dynamic.Add(Constants.CreatedId, Modal.UpdateModal.CreatedById);
+            dynamic.Add(Constants.CreatedTime, Modal.UpdateModal.CreatedTime);
+            dynamic.Add(Constants.LastModifiedId, Modal.UpdateModal.LastModifiedId);
+            dynamic.Add(Constants.LastModifiedTime, Modal.UpdateModal.LastModifiedTime);
             dynamic.Add(Constants.EventId, dbType: DbType.Int32, direction: ParameterDirection.Output);
-            DbConnection.Execute(Constants.SP_InsertEventTable, dynamic, null, null, CommandType.StoredProcedure);
+            DbConnection.Execute(procedureName, dynamic, null, null, CommandType.StoredProcedure);
             CloseConnection();
-            return dynamic.Get<int>(Constants.EventId).ToString();
+            return dynamic.Get<int>(Constants.EventId);           
+            
+        }
+
+        public bool DeleteEvent(string procedureName)
+        {
+            try
+            {
+                OpenConnection();
+                var dynamic = new DynamicParameters();
+                dynamic.Add(Constants.Id, Modal.Id);
+                DbConnection.Query(procedureName, dynamic, null, true, null, CommandType.StoredProcedure);
+                CloseConnection();
+                return true;
+            }
+            catch(Exception err)
+            {
+                return false;
+            }
         }
 
         public List<EventTableModal> SelectEvents(string procedureName)
         {
             OpenConnection();
-            List<EventTableModal> result = DbConnection.Query<EventTableModal>(procedureName,
-            commandType: CommandType.StoredProcedure).ToList<EventTableModal>();
+            List<EventTableModal> lists = new List<EventTableModal>();
+            DbConnection.Query<EventTableModal,UpdaterDetailTableModal,List<EventTableModal>>(procedureName,(eventTable,updateTable)=>{
+                eventTable.UpdateModal = updateTable;
+                lists.Add(eventTable);
+                return lists;
+            },splitOn:"CreatedById",
+            commandType: CommandType.StoredProcedure);
             CloseConnection();
-            return result;
+            return lists;
         }
     }
 }

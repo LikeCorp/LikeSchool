@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using Dapper;
+using LikeSchool.Helpers;
 using LikeSchool.Modals;
 
 namespace LikeSchool.Services.DB.AccesLayer

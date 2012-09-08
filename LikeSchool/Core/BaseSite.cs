@@ -26,7 +26,7 @@ namespace LikeSchool
         {
             get
             {
-                loginModal = Session["logindetails"] as ILoginTableModal;
+                loginModal = Session[Constants.SessionLoginName] as ILoginTableModal;
                 return loginModal;
             }
         }

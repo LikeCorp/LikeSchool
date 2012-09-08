@@ -27,6 +27,7 @@ function GetHtmlElementValue(id) {
             returnValue = $('#' + id + ' option:selected').text();
             break;
         case 'textarea':
+            returnValue = $('#' + id).val();
         case 'input':
             {
                 switch ($('#' + id).attr('type')) {

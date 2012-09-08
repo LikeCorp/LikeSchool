@@ -57,29 +57,42 @@ $(document).ready(function () {
         rvalues.push(allDay);
         rvalues.push('3366CC');
 
+        var loginReference = ['id', 'username'];
+        var loginValues = [];
+        loginValues.push(GetLoginId());
+        loginValues.push(GetLoginName());
+
         $.ajax({
             url: "/Services/EventService.asmx/InsertEventTable",
             type: "POST",
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
+            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) , loginValues: GetJsonString(loginReference,loginValues) }),
             dataType: "json",
             success: function (res) {
                 $('#calendar').fullCalendar('renderEvent',
 						{
-						    id: res.d,
+						    id:parseInt(res.d),
 						    title: GetHtmlElementValue('title'),
 						    start: formattedstart,
 						    end: formattedend,
 						    allDay: allDay,
 						    description: GetHtmlElementValue('description'),
-						    eventcolor: '#3366CC'
+						    eventcolor: '#3366CC',
+						    // createdById: result[i].UpdateModal.CreatedById,
+						    createdBy: GetLoginName(),
+						    // createdTime: result[i].UpdateModal.CreatedTime,
+						    //lastmodifiedId: result[i].UpdateModal.LastModifiedId,
+						    lastmodifiedBy: GetLoginName(),
+						    //lastmodifiedTime: result[i].UpdateModal.LastModifiedTime,
+
 						},
 						true // make the event "stick"
 					);
+                $('#calendar').fullCalendar('unselect');
                 $("#eventWindow").modal('hide');
             }
         });
-        $('#calendar').fullCalendar('unselect');
+        
     });
 });
 //This method load the Full calendar functionalities
@@ -99,12 +112,40 @@ function InitializeCalendar() {
             else $('#loading').hide();
         },
         editable: true,
+        viewDisplay:function(view){
+            //alert(new DateDetail(view.start).GetDateText());
+            //alert(new DateDetail(view.end).GetDateText());
+            alert(view.start);
+            alert(view.end);
+        },
         eventClick: function (calEvent, jsEvent, view) {
             var dateDetail;
             dateDetail = GetDisplayDate(calEvent);
             $("#eventviewtitle").text(calEvent.title);
             $("#durationdetail").text(dateDetail);
+            $("#createdby").text(calEvent.createdBy);
+            //$("#createdtime").text(GetDisplayDate(calEvent.createdTime));Need to convert the date(ms) to date
+            $("#lastmodifiedby").text(calEvent.lastmodifiedBy);
+            //$("#lastmodifiedtime").text(GetDisplayDate(calEvent.lastmodifiedTime));;Need to convert the date(ms) to date
             $("#eventView").modal({});
+            $("#deleteEvent").click(function () {
+                $("#eventView").modal('hide');
+                var id = calEvent.id;
+                var refs=['id'];
+                var vals=[];
+                vals.push(id);
+                $.ajax({
+                    url: "/Services/EventService.asmx/DeleteEventTable",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ jsonValue: GetJsonString(refs, vals)}) ,
+                    dataType: "json",
+                    success: function (res) {
+                        $(this).fullCalendar('refetchEvents');
+                    }
+                });
+
+            });
         },
         events: function (start, end, callback) {
             lineItems = new Object();
@@ -124,7 +165,13 @@ function InitializeCalendar() {
                             start: new Date(result[i].Start),
                             end: new Date(result[i].End),
                             eventcolor: '#' + result[i].EventColor,
-                            allDay: result[i].AllDay
+                            allDay: result[i].AllDay,
+                           // createdById: result[i].UpdateModal.CreatedById,
+                            createdBy: result[i].UpdateModal.CreatedBy,
+                           // createdTime: result[i].UpdateModal.CreatedTime,
+                            //lastmodifiedId: result[i].UpdateModal.LastModifiedId,
+                            lastmodifiedBy: result[i].UpdateModal.LastModifiedBy,
+                            //lastmodifiedTime: result[i].UpdateModal.LastModifiedTime,
                         });
                     }
                     var calevents = lineItems.Entrys;
@@ -237,16 +284,13 @@ function FormatDate(date, time, designator, allDay) {
 }
 
 /*DateDetail class for date details*/
-function DateDetail(date, isBefore, isAfter, isNow) {
+function DateDetail(date) {
     this.Date = date;
     this.MonthName = this.Date.toString("MMM");
     this.MonthNo = this.Date.getMonth();
     this.DayNo = this.Date.getDate();
     this.WeekDayNo = this.Date.getDay();
     this.Year = this.Date.getFullYear();
-    this.IsAfter = isAfter;
-    this.IsBefore = isBefore;
-    this.IsNow = isNow;
     this.GetMonthText = function () {
         return this.Date.toString("MMM-yyyy");
     };

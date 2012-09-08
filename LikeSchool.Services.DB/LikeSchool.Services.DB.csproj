@@ -80,7 +80,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilities\Connection.cs" />
-    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +99,10 @@
     <None Include="Properties\PublishProfiles\LikeSchool.Services.DB.pubxml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LikeSchool.Helpers\LikeSchool.Helpers.csproj">
+      <Project>{2cdc2b1a-a6e7-44ec-b357-e2bf162f7968}</Project>
+      <Name>LikeSchool.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LikeSchool.Modals\LikeSchool.Modals.csproj">
       <Project>{b18dee65-39a3-4bb7-9194-12ea5c469c58}</Project>
       <Name>LikeSchool.Modals</Name>

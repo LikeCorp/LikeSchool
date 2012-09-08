@@ -6,7 +6,7 @@ using System.Web.Script.Serialization;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using LikeSchool.Helpers;
 using LikeSchool.Modals;
 using LikeSchool.Services.DB.Services;
 
@@ -44,7 +44,7 @@ namespace LikeSchool
                 {
                     userDetails.LastLoginTime = CurrentServerDateTime;
                     bool updateLoginTime = Convert.ToBoolean(LoginDB.UpdateLoginTable(userDetails));
-                    Session["logindetails"] = userDetails as object;
+                    Session[Constants.SessionLoginName] = userDetails as object;
                     SetJavaScriptFunction("fnHideMessage()");
                     FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, userName, DateTime.Now, DateTime.Now.AddMinutes(50), rememberCheckbox.Checked, userDetails.Roles, FormsAuthentication.FormsCookiePath);
                     string hashCookies = FormsAuthentication.Encrypt(ticket);

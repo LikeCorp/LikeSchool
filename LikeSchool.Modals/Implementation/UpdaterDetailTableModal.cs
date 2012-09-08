@@ -12,5 +12,18 @@ namespace LikeSchool.Modals
         public string CreatedBy { get; set; }
         public DateTime CreatedTime { get; set; }
 
+
+
+        public int CreatedById
+        {
+            get;
+            set;
+        }
+
+        public int LastModifiedId
+        {
+            get;
+            set;
+        }
     }
 }

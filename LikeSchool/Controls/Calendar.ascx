@@ -8,7 +8,6 @@
 <script type="text/javascript" src="../js/jquery/ui/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="js/fullcalendar.js"></script>
 <script type="text/javascript" src="../js/calendar/calendar.js"></script>
-
 <div class="container_calendar">
     <div class="container-fluid">
         <div class="row-fluid">
@@ -107,9 +106,21 @@
     </div>
     <div class="modal-body">
         <span id="durationdetail"></span>
+        <div class="pre updater">
+        <ul>
+            <li>Created by <span id="createdby"></span>
+                <%-- at <span id="createdtime"></span>--%>
+            </li>
+            <li>Last Modified by <span id="lastmodifiedby"></span>
+                <%-- at <span id="lastmodifiedtime">
+            </span>--%>
+            </li>
+        </ul>
     </div>
+    </div>
+    
     <div class="modal-footer">
-        <a href="#" class="btn btn-info" id="a1"><i class=" icon-trash icon-black"></i>Delete
+        <a href="#" class="btn btn-info" id="deleteEvent"><i class=" icon-trash icon-black"></i>Delete
         </a>&nbsp; <a href="#" class="btn" data-dismiss="modal" id="A2"><i class="icon-remove icon-black">
         </i>Cancel </a>
     </div>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using Dapper;
+using LikeSchool.Helpers;
 using LikeSchool.Modals;
 
 namespace LikeSchool.Services.DB.AccesLayer
@@ -52,7 +53,7 @@ namespace LikeSchool.Services.DB.AccesLayer
                 OpenConnection();
                 var query = "update logintable set lastlogintime=@logintime where id=@id";
                 var dynamic = new DynamicParameters();
-                dynamic.Add(Constants.LoginId, Modal.Id);
+                dynamic.Add(Constants.Id, Modal.Id);
                 dynamic.Add(Constants.LoginTime, Modal.LastLoginTime);
                 DbConnection.Query(query, dynamic, commandType: CommandType.Text);
                 CloseConnection();

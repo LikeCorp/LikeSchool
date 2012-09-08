@@ -9,6 +9,7 @@ using LikeSchool.Modals;
 using System.Web.Script.Services;
 using System.Text;
 using LikeSchool.Services.DB.AccesLayer;
+using LikeSchool.Helpers;
 
 namespace LikeSchool.Services.DB.Services
 {
@@ -23,13 +24,18 @@ namespace LikeSchool.Services.DB.Services
     public class EventTableDB : System.Web.Services.WebService
     {
         [WebMethod]
-        public string InsertEventTable(string jsonValue)
+        public string InsertEventTable(string jsonValue, string loginValues)
         {
+            StringBuilder outString = new StringBuilder();
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            IEventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
+            EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
+            ILoginTableModal lTable = serializer.Deserialize<LoginTableModal>(loginValues);
+            modal.UpdateModal.CreatedById = modal.UpdateModal.LastModifiedId= lTable.Id;
+            modal.UpdateModal.CreatedTime = modal.UpdateModal.LastModifiedTime= DateTime.Now;
             EventAccessLayer al = new EventAccessLayer(modal);
-            string output = al.InsertEvents(Constants.SP_InsertEventTable);
-            return output;
+            int output = al.InsertEvents(Constants.SP_InsertEventTable);
+            serializer.Serialize(output, outString);
+            return outString.ToString();
         }
 
         [WebMethod]
@@ -41,6 +47,15 @@ namespace LikeSchool.Services.DB.Services
             List<EventTableModal> output = al.SelectEvents(Constants.SP_SelectEventTable);
             serializer.Serialize(output, outString);
             return outString.ToString();
+        }
+        [WebMethod]
+        public string DeleteEventTable(string jsonValue)
+        {
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            IEventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
+            EventAccessLayer al = new EventAccessLayer(modal);
+            bool result=al.DeleteEvent(Constants.SP_DeleteEventTable);
+            return result.ToString();
         }
     }
 }
