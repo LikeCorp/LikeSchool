@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Services.Email",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Helpers", "LikeSchool.Helpers\LikeSchool.Helpers.csproj", "{2CDC2B1A-A6E7-44EC-B357-E2BF162F7968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Configuration", "LikeSchool.Configuration\LikeSchool.Configuration.csproj", "{2FE49AC6-9D30-45A6-B614-9C9109F8485D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Modals", "LikeSchool.Modals\LikeSchool.Modals.csproj", "{B18DEE65-39A3-4BB7-9194-12EA5C469C58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LikeSchool.Configuration", "LikeSchool.Configuration\LikeSchool.Configuration.csproj", "{2FE49AC6-9D30-45A6-B614-9C9109F8485D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

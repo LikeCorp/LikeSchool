@@ -14,5 +14,6 @@ namespace LikeSchool.Modals
         public string Language { get; set; }
         public string Category { get; set; }
         public string Religion { get; set; }
+        public IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

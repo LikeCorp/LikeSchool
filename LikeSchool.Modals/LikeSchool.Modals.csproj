@@ -45,8 +45,10 @@
     <Compile Include="Implementation\ClassTableModal.cs" />
     <Compile Include="Implementation\ContactModal.cs" />
     <Compile Include="Implementation\EventTableModal.cs" />
-    <Compile Include="Implementation\IParentModal.cs" />
-    <Compile Include="Implementation\IStudentTableModal.cs" />
+    <Compile Include="Interfaces\IUpdaterDetailTableModal.cs" />
+    <Compile Include="Implementation\UpdaterDetailTableModal.cs" />
+    <Compile Include="Interfaces\IParentModal.cs" />
+    <Compile Include="Interfaces\IStudentTableModal.cs" />
     <Compile Include="Interfaces\IContactModal.cs" />
     <Compile Include="Interfaces\IOtherModal.cs" />
     <Compile Include="Implementation\OtherModal.cs" />

@@ -45,5 +45,24 @@ namespace LikeSchool.Services.DB.AccesLayer
             CloseConnection();
             return result;
         }
+        public bool UpdateLoginTime()
+        {
+            try
+            {
+                OpenConnection();
+                var query = "update logintable set lastlogintime=@logintime where id=@id";
+                var dynamic = new DynamicParameters();
+                dynamic.Add(Constants.LoginId, Modal.Id);
+                dynamic.Add(Constants.LoginTime, Modal.LastLoginTime);
+                DbConnection.Query(query, dynamic, commandType: CommandType.Text);
+                CloseConnection();
+                return true;
+            }
+            catch (Exception err)
+            {
+                return false;
+            }
+            
+        }
     }
 }

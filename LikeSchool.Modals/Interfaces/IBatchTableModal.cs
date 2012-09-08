@@ -6,5 +6,6 @@ namespace LikeSchool.Modals
         int BatchId { get; set; }
         int From { get; set; }
         int To { get; set; }
+        IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

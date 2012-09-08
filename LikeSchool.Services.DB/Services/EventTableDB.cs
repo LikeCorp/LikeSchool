@@ -26,7 +26,7 @@ namespace LikeSchool.Services.DB.Services
         public string InsertEventTable(string jsonValue)
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
-            IEventTableModal modal = serializer.Deserialize<IEventTableModal>(jsonValue);
+            IEventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
             EventAccessLayer al = new EventAccessLayer(modal);
             string output = al.InsertEvents(Constants.SP_InsertEventTable);
             return output;

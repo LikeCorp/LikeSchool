@@ -1,7 +1,7 @@
 ﻿
 var place;
 var radioVal;
-var baseurl = "/Services/StudentService.asmx/";
+var baseurl = "/Services/SearchStudentService.asmx/";
 $(document).ready(function () {
     UpdateSearchTextPlaceHolder();
     $('input[name=optionsRadios]').click(function () {

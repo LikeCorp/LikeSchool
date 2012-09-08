@@ -31,5 +31,13 @@ namespace LikeSchool.Services.DB.Services
             serializer.Serialize(output, outString);
             return outString.ToString();
         }
+        [WebMethod]
+        public static string UpdateLoginTable(ILoginTableModal modal)
+        {
+            LoginAccessLayer al = new LoginAccessLayer(modal);
+            bool result = al.UpdateLoginTime();
+            return result.ToString();
+        }
+        
     }
 }

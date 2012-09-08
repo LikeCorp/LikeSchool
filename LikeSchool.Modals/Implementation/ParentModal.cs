@@ -17,5 +17,6 @@ namespace LikeSchool.Modals
         public string Email { get; set; }
         public string Income { get; set; }
         public IContactModal ContactModal { get; set; }
+        public IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

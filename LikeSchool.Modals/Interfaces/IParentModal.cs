@@ -13,5 +13,6 @@ namespace LikeSchool.Modals
         string MiddleName { get; set; }
         string Occupation { get; set; }
         string Relation { get; set; }
+        IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

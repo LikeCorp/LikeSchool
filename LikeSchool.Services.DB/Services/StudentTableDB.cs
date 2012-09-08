@@ -53,45 +53,5 @@ namespace LikeSchool.Services.DB.Services
             
         }
 
-        [WebMethod]
-        public string SearchByAdmission(string jsonValue)
-        {
-
-            StringBuilder outString = new StringBuilder();
-            try
-            {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                IAdmissionModal modal = serializer.Deserialize<AdmissionModal>(jsonValue);
-                StudentAccessLayer al = new StudentAccessLayer();
-                List<IStudentTableModal> output = al.GetStudentByAdmissionId(Constants.SP_SearchByAdNo, modal);
-                serializer.Serialize(output, outString);
-                return outString.ToString();
-            }
-            catch(Exception err)
-            {
-                return outString.ToString();
-            }
-        }
-
-        [WebMethod]
-        public string SearchByClass(string jsonValue)
-        {
-            StringBuilder outString = new StringBuilder();
-            try
-            {
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                IClassTableModal modal = serializer.Deserialize<ClassTableModal>(jsonValue);
-                ClassAccessLayer al = new ClassAccessLayer(modal);
-                IClassTableModal resultModal = al.SelectClassById(Constants.SP_SelectClassId);
-                StudentAccessLayer sl = new StudentAccessLayer();
-                List<IStudentTableModal> ouput = sl.GetStudentByClass(Constants.SP_SearchByClass, resultModal);
-                serializer.Serialize(ouput, outString);
-                return outString.ToString();
-            }
-            catch(Exception err)
-            {
-                return outString.ToString();
-            }
-        }
     }
 }

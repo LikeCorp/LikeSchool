@@ -12,41 +12,13 @@
     <hr class="container" />
     <!--Todo: the dashboard need to be called based on the roles -->
     <div class="container">
+        <% foreach(LikeSchool.Configuration.MenuElement element in Elements){ %>
         <div class="span2">
-            <a href="searchstudent.aspx">
-                <img src="img/dashboard/profile.png" /></a>
-            <h3 class="dash">Student Details</h3>
+            <a href="<%=element.NavigateUrl %>">
+                <img src="<%=element.ImageUrl %>" /></a>
+            <h3 class="dash"><%=element.DisplayText %></h3>
         </div>
-        <div class="span2">
-            <a href="attendance.aspx">
-                <img src="img/dashboard/attendance.png" /></a>
-            <h3 class="dash">Attendance</h3>
-        </div>
-        <div class="span2">
-            <a href="leave.aspx">
-                <img src="img/dashboard/leave.png" /></a>
-            <h3 class="dash">Leave</h3>
-        </div>
-        <div class="span2">
-            <a href="timetable.aspx">
-                <img src="img/dashboard/timetable.png" /></a>
-            <h3 class="dash">TimeTable</h3>
-        </div>
-        <div class="span2">
-            <a href="calendar.aspx">
-                <img src="img/dashboard/calendar.png" /></a>
-            <h3 class="dash">Calendar</h3>
-        </div>
-        <div class="span2">
-            <a href="#">
-                <img src="img/dashboard/support.png" /></a>
-            <h3 class="dash">Support</h3>
-        </div>
-        <div class="span2">
-            <a href="#">
-                <img src="img/dashboard/settings.png" /></a>
-            <h3 class="dash">Settings</h3>
-        </div>
+        <%} %>        
     </div>
     <br />
     <br />

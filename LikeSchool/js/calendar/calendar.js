@@ -42,7 +42,45 @@ function InitializeValues() {
 //Loading function
 $(document).ready(function () {
     InitializeValues();
-    InitializeCalendar(); 
+    InitializeCalendar();
+    $("#add").click(function (e) {
+        e.preventDefault();
+        var references = ['start', 'end', 'title', 'description', 'allday', 'eventcolor'];
+        var rvalues = [];
+        var allDay = GetHtmlElementValue('wholeDay');
+        var formattedstart = FormatDate(GetHtmlElementValue('startDate'), GetHtmlElementValue('startTime'), GetHtmlElementValue('startdesignator'), allDay);
+        rvalues.push(formattedstart);
+        var formattedend = FormatDate(GetHtmlElementValue('endDate'), GetHtmlElementValue('endTime'), GetHtmlElementValue('enddesignator'), allDay);
+        rvalues.push(formattedend);
+        rvalues.push(GetHtmlElementValue('title'));
+        rvalues.push(GetHtmlElementValue('description'));
+        rvalues.push(allDay);
+        rvalues.push('3366CC');
+
+        $.ajax({
+            url: "/Services/EventService.asmx/InsertEventTable",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
+            dataType: "json",
+            success: function (res) {
+                $('#calendar').fullCalendar('renderEvent',
+						{
+						    id: res.d,
+						    title: GetHtmlElementValue('title'),
+						    start: formattedstart,
+						    end: formattedend,
+						    allDay: allDay,
+						    description: GetHtmlElementValue('description'),
+						    eventcolor: '#3366CC'
+						},
+						true // make the event "stick"
+					);
+                $("#eventWindow").modal('hide');
+            }
+        });
+        $('#calendar').fullCalendar('unselect');
+    });
 });
 //This method load the Full calendar functionalities
 function InitializeCalendar() {
@@ -54,7 +92,7 @@ function InitializeCalendar() {
         },
         selectable: true,
         select: function (start, end, allDay) {         
-            AddEvent(start, end, allDay);
+            ProcessEvent(start, end, allDay);
         },
         loading: function (bool) {
             if (bool) $('#loading').show();
@@ -98,7 +136,7 @@ function InitializeCalendar() {
         },
     });
 }
-function AddEvent(start,end,allDay)
+function ProcessEvent(start, end, allDay)
 {
     var title;
     var startDate = new DateDetail(start);
@@ -123,49 +161,9 @@ function AddEvent(start,end,allDay)
     $("#eventWindow").modal({
 
     });
-    AddEvent();    
+    
 }
 
-function AddEvent()
-{
-    $("#add").click(function () {
-        var references = ['start', 'end', 'title', 'description', 'allday', 'eventcolor'];
-        var rvalues = [];
-        var allDay = GetHtmlElementValue('wholeDay');
-        var formattedstart = FormatDate(GetHtmlElementValue('startDate'), GetHtmlElementValue('startTime'), GetHtmlElementValue('startdesignator'), allDay);
-        rvalues.push(formattedstart);
-        var formattedend = FormatDate(GetHtmlElementValue('endDate'), GetHtmlElementValue('endTime'), GetHtmlElementValue('enddesignator'), allDay);
-        rvalues.push(formattedend);
-        rvalues.push(GetHtmlElementValue('title'));
-        rvalues.push(GetHtmlElementValue('description'));
-        rvalues.push(allDay);
-        rvalues.push('3366CC');
-
-        $.ajax({
-            url: "/Services/EventService.asmx/InsertEventTable",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) }),
-            dataType: "json",
-            success: function (res) {
-                $('#calendar').fullCalendar('renderEvent',
-						{
-						    id: res.d,
-						    title: GetHtmlElementValue('title'),
-						    start: formattedstart,
-						    end: formattedend,
-						    allDay: allDay,
-						    description: GetHtmlElementValue('description'),
-						    eventcolor: '#3366CC'
-						},
-						true // make the event "stick"
-					);
-                $('#calendar').fullCalendar('unselect');
-                $("#eventWindow").modal('hide');
-            }
-        });
-    });
-}
 
 function GetDisplayDate(calEvent)
 {
@@ -224,8 +222,7 @@ function InitializeDialog() {
         HideTimes();
         $("#eventWindow").modal({
 
-        });
-        AddEvent();
+        });       
     });
 }
 //This method formats the date,time,designator
@@ -254,7 +251,7 @@ function DateDetail(date, isBefore, isAfter, isNow) {
         return this.Date.toString("MMM-yyyy");
     };
     this.GetDateText = function () {
-        return this.Date.toString("dd/mm/yyyy");
+        return this.Date.toString("dd/MM/yyyy");
     };
     this.GetDBDate = function () {
         return this.Date.toString('yyyy-MM-dd');

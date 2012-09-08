@@ -36,8 +36,10 @@ namespace LikeSchool.Services.DB
         #endregion
 
         #region Login
+        public const string LoginId = "@id";
         public const string User = "@user";
         public const string Pass = "@pass";
+        public const string LoginTime = "@logintime";
         #endregion
 
         public const string AdmissionNo = "@admissionno";

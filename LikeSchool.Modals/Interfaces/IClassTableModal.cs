@@ -6,5 +6,6 @@ namespace LikeSchool.Modals
         string ClassName { get; set; }
         int ClassId { get; set; }
         string Section { get; set; }
+        IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

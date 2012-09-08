@@ -56,6 +56,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="administration.aspx" />
+    <Content Include="admission.aspx" />
     <Content Include="attendance.aspx" />
     <Content Include="calendar.aspx" />
     <Content Include="Controls\support.ascx" />
@@ -96,6 +98,8 @@
     <Content Include="img\back_disabled.png" />
     <Content Include="img\back_enabled.png" />
     <Content Include="img\back_enabled_hover.png" />
+    <Content Include="img\dashboard\admission.png" />
+    <Content Include="img\dashboard\administration.png" />
     <Content Include="img\dashboard\profile.png" />
     <Content Include="img\dashboard\calendar.png" />
     <Content Include="img\dashboard\leave.png" />
@@ -154,6 +158,7 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="searchstudent.aspx" />
+    <Content Include="Services\SearchStudentService.asmx" />
     <Content Include="Services\StudentService.asmx" />
     <Content Include="studentdetail.aspx" />
     <Content Include="Services\LoginService.asmx" />
@@ -164,6 +169,20 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="administration.aspx.cs">
+      <DependentUpon>administration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administration.aspx.designer.cs">
+      <DependentUpon>administration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admission.aspx.cs">
+      <DependentUpon>admission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admission.aspx.designer.cs">
+      <DependentUpon>admission.aspx</DependentUpon>
+    </Compile>
     <Compile Include="attendance.aspx.cs">
       <DependentUpon>attendance.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -278,13 +297,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Masterpages\mainpage.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LikeSchool.Configuration\LikeSchool.Configuration.csproj">
+      <Project>{2fe49ac6-9d30-45a6-b614-9c9109f8485d}</Project>
+      <Name>LikeSchool.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LikeSchool.Helpers\LikeSchool.Helpers.csproj">
       <Project>{2cdc2b1a-a6e7-44ec-b357-e2bf162f7968}</Project>
       <Name>LikeSchool.Helpers</Name>
@@ -305,6 +326,7 @@
   <ItemGroup>
     <Content Include="Masterpages\login.Master" />
     <Content Include="Handlers\Supporthandler.ashx" />
+    <Content Include="Configuration\Menu.config" />
     <None Include="Properties\PublishProfiles\LikeSchool.pubxml" />
     <None Include="Properties\PublishProfiles\Profile1.pubxml" />
   </ItemGroup>

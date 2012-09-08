@@ -18,7 +18,16 @@
     height: 100%;
     margin: 0 auto -4em;
 }
-
+.updater {
+   font-family: tahoma; 
+   font-size: 11px;
+   color: #808080;   
+   float: right;
+}
+    .updater > ul {
+        
+        list-style-type: none;
+    }
 #calendar {
     width: 1100px;
     margin: 0 auto;

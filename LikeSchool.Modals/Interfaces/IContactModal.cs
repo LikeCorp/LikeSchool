@@ -13,5 +13,6 @@ namespace LikeSchool.Modals
         string Phone2 { get; set; }
         string Pincode { get; set; }
         string State { get; set; }
+        IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

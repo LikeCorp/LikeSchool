@@ -17,6 +17,6 @@ namespace LikeSchool.Modals
         public string Password { get; set; }
         public string Roles { get; set; }
         public int Id { get; set; }
-        
+        public DateTime LastLoginTime { get; set; }
     }
 }

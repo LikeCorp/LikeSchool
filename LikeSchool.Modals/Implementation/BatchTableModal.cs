@@ -10,6 +10,7 @@ namespace LikeSchool.Modals
         public int BatchId { get; set; }
         public int From { get; set; }
         public int To { get; set; }
+        public IUpdaterDetailTableModal UpdateModal { get; set; }
 
     }
 }

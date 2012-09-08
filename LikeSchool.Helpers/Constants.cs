@@ -16,5 +16,11 @@ namespace LikeSchool.Helpers
         public const string Settings = "Settings";
         public const string Calendar = "Calendar";
         public const string Defaulter = "-";
+
+        public const string Teacher = "teacher";
+        public const string ClassTeacher = "classteacher";
+        public const string Student = "student";
+        public const string Administrator = "admin";
+
     }
 }

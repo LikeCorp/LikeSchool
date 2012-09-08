@@ -22,6 +22,7 @@ namespace LikeSchool.Modals
         public IContactModal ContactModal { get; set; }
         public IOtherModal OtherModal { get; set; }
         public IParentModal ParentModal { get; set; }
+        public IUpdaterDetailTableModal UpdateModal { get; set; }
 
     }
 }
