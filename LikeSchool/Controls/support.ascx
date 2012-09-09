@@ -59,7 +59,6 @@
             <div id="loader">
                 <div class="loadmodal"></div>
                 <p>Processing.Please Wait..</p>
-
             </div>
             ​
             <div style="float: right">

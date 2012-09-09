@@ -3,15 +3,20 @@
 <link rel="stylesheet" type="text/css" href="../css/fullcalendar.css" />
 <link rel="stylesheet" type="text/css" href="../css/uicss/jquery-ui-1.8.21.custom.css" />
 <link rel="stylesheet" type="text/css" href="../css/uicss/jquery.ui.datepicker.css" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datatables.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="../js/thirdparty/json2.js"></script>
 <script type="text/javascript" src="../js/thirdparty/date.js"></script>
 <script type="text/javascript" src="../js/jquery/ui/jquery.ui.datepicker.js"></script>
 <script type="text/javascript" src="js/fullcalendar.js"></script>
 <script type="text/javascript" src="../js/calendar/calendar.js"></script>
+<script type="text/javascript" src="js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/bootstrap-datatables.js"></script>
 <div class="container_calendar">
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span3">
+            <div class="span4">
                 <div class="span8">
                     <div id="pagetitle">
                         <h2>Calendar</h2>
@@ -23,13 +28,21 @@
                 </div>
                 <hr />
                 <div class="settings">
-                    <span id="eventTitle">Events of this Month</span>
+                    <span id="eventTitle"></span>
                 </div>
-                <div class="settings" id="events">
+                <hr />
+                <div class="settings">
+                    <div id="events">
+                        <div class="loading" id='displayloading'>
+                            <span class='loadingText'>Loading...</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="span9">
-                <div id='loading' style='display: none'>loading...</div>
+            <div class="span8">
+                <div class="loading" id='calendarloading'>
+                    <span class='loadingText'>Loading...</span>
+                </div>
                 <div id="calendar">
                 </div>
             </div>
@@ -107,21 +120,20 @@
     <div class="modal-body">
         <span id="durationdetail"></span>
         <div class="pre updater">
-        <ul>
-            <li>Created by <span id="createdby"></span>
-                <%-- at <span id="createdtime"></span>--%>
-            </li>
-            <li>Last Modified by <span id="lastmodifiedby"></span>
-                <%-- at <span id="lastmodifiedtime">
+            <ul>
+                <li>Created by <span id="createdby"></span>
+                    <%-- at <span id="createdtime"></span>--%>
+                </li>
+                <li>Last Modified by <span id="lastmodifiedby"></span>
+                    <%-- at <span id="lastmodifiedtime">
             </span>--%>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    </div>
-    
     <div class="modal-footer">
-        <a href="#" class="btn btn-info" id="deleteEvent"><i class=" icon-trash icon-black"></i>Delete
-        </a>&nbsp; <a href="#" class="btn" data-dismiss="modal" id="A2"><i class="icon-remove icon-black">
+        <a href="#" class="btn btn-info" id="deleteEvent"><i class=" icon-trash icon-black">
+        </i>Delete </a>&nbsp; <a href="#" class="btn" data-dismiss="modal" id="A2"><i class="icon-remove icon-black">
         </i>Cancel </a>
     </div>
 </div>

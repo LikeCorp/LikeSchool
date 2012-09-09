@@ -2,22 +2,32 @@
 ul > li {
     list-style: none;
 }
-#loading {
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		}
+
+
+#displayloading {
+    background-position-x: 44%;
+}
+
+#calendarloading {
+    background-position-x: 47%;
+}
+
+
+
+div.dataTables_info {
+    padding-left: 30px !important;
+}
 
 .eventTitle {
     font-weight: bold;
 }
+
 .event {
     width: 155px;
     height: 15px;
- 
     margin: 0px;
     font-size: 10px;
-    line-height: 13px;    
+    line-height: 13px;
     margin-top: 1px;
 }
 
@@ -54,10 +64,10 @@ ul > li {
     left: 43%;
 }
 
-.createEvent > .modal > .modal-body {
-    max-height: none;
-    height: 675px;
-}
+    .createEvent > .modal > .modal-body {
+        max-height: none;
+        height: 675px;
+    }
 
 .eventWindow {
     display: none;
@@ -88,18 +98,20 @@ ul > li {
 }
 
 .row-fluid .left {
-   width:    27.893617%;
+    width: 27.893617%;
 }
+
 .row-fluid .right {
-   width:  48.978723%
+    width: 48.978723%;
 }
+
 #topsection {
     position: absolute;
     z-index: 1000;
 }
 
 #wrapper {
-    float: left;  
+    float: left;
 }
 
 #weekbodyright {
@@ -146,16 +158,15 @@ ul > li {
     color: #878787;
 }
 
-#options, #iterator,#dateShow {
+#options, #iterator, #dateShow {
     font-family: Tahoma;
     font-size: 8pt;
     padding-top: 10px;
     float: left;
-    
     margin: 0px;
 }
 
-.calendarheader {   
+.calendarheader {
     height: 50px;
 }
 
@@ -184,7 +195,6 @@ hr {
 
 .settings {
     margin: 10px;
-   
     margin-bottom: 20px;
 }
 
@@ -251,5 +261,3 @@ hr {
 .after {
     color: black;
 }
-
-

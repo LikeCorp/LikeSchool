@@ -11,5 +11,7 @@ namespace LikeSchool.Modals
         string Start { get; set; }
         string Title { get; set; }
         IUpdaterDetailTableModal UpdateModal { get; set; }
+        DateTime StartDT { get; set; }
+        DateTime EndDT { get; set; }
     }
 }

@@ -32,15 +32,32 @@ namespace LikeSchool.Services.DB.AccesLayer
         {
             eventModal = modal;
         }
+        public List<EventTableModal> SelectEventsWithConstrain(string procedureName)
+        {
+            OpenConnection();
+            var dynamic = new DynamicParameters();
+            dynamic.Add(Constants.SDate, Modal.StartDT);
+            dynamic.Add(Constants.EDate, Modal.EndDT);
+            List<EventTableModal> lists = new List<EventTableModal>();
+            DbConnection.Query<EventTableModal, UpdaterDetailTableModal, List<EventTableModal>>(procedureName, (eventTable, updateTable) =>
+            {
+                eventTable.UpdateModal = updateTable;
+                lists.Add(eventTable);
+                return lists;
+            }, dynamic, splitOn: "CreatedById",
+            commandType: CommandType.StoredProcedure);
 
+            CloseConnection();
+            return lists;
+        }
         public int InsertEvents(string procedureName)
         {
             OpenConnection();
             var dynamic = new DynamicParameters();
             dynamic.Add(Constants.TitleString, Modal.Title);
             dynamic.Add(Constants.DescString, Modal.Description);
-            dynamic.Add(Constants.SDate, Modal.Start);
-            dynamic.Add(Constants.EDate, Modal.End);
+            dynamic.Add(Constants.SDate, Modal.StartDT);
+            dynamic.Add(Constants.EDate, Modal.EndDT);
             dynamic.Add(Constants.EventColor, Modal.EventColor);
             dynamic.Add(Constants.WholeDay, Modal.AllDay.ToString());
             dynamic.Add(Constants.CreatedId, Modal.UpdateModal.CreatedById);
@@ -50,8 +67,8 @@ namespace LikeSchool.Services.DB.AccesLayer
             dynamic.Add(Constants.EventId, dbType: DbType.Int32, direction: ParameterDirection.Output);
             DbConnection.Execute(procedureName, dynamic, null, null, CommandType.StoredProcedure);
             CloseConnection();
-            return dynamic.Get<int>(Constants.EventId);           
-            
+            return dynamic.Get<int>(Constants.EventId);
+
         }
 
         public bool DeleteEvent(string procedureName)
@@ -65,7 +82,7 @@ namespace LikeSchool.Services.DB.AccesLayer
                 CloseConnection();
                 return true;
             }
-            catch(Exception err)
+            catch (Exception err)
             {
                 return false;
             }
@@ -75,11 +92,12 @@ namespace LikeSchool.Services.DB.AccesLayer
         {
             OpenConnection();
             List<EventTableModal> lists = new List<EventTableModal>();
-            DbConnection.Query<EventTableModal,UpdaterDetailTableModal,List<EventTableModal>>(procedureName,(eventTable,updateTable)=>{
+            DbConnection.Query<EventTableModal, UpdaterDetailTableModal, List<EventTableModal>>(procedureName, (eventTable, updateTable) =>
+            {
                 eventTable.UpdateModal = updateTable;
                 lists.Add(eventTable);
                 return lists;
-            },splitOn:"CreatedById",
+            }, splitOn: "CreatedById",
             commandType: CommandType.StoredProcedure);
             CloseConnection();
             return lists;

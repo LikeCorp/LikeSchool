@@ -10,6 +10,7 @@ using System.Web.Script.Services;
 using System.Text;
 using LikeSchool.Services.DB.AccesLayer;
 using LikeSchool.Helpers;
+using System.Threading;
 
 namespace LikeSchool.Services.DB.Services
 {
@@ -56,6 +57,17 @@ namespace LikeSchool.Services.DB.Services
             EventAccessLayer al = new EventAccessLayer(modal);
             bool result=al.DeleteEvent(Constants.SP_DeleteEventTable);
             return result.ToString();
+        }
+        [WebMethod]
+        public string SelectEventTableWithConstrain(string jsonValue)
+        {
+            StringBuilder outString = new StringBuilder();
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            IEventTableModal eventtable = serializer.Deserialize<EventTableModal>(jsonValue);
+            EventAccessLayer al = new EventAccessLayer(eventtable);
+            List<EventTableModal> result = al.SelectEventsWithConstrain(Constants.SP_SelectEventsConstrain);
+            serializer.Serialize(result, outString);
+            return outString.ToString();
         }
     }
 }

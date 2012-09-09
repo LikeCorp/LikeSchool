@@ -45,10 +45,6 @@
                 </span>
             </div>
         </div>
-        <div id="loader">
-            <div class="loadmodal"></div>
-            <p>Loading.Please Wait..</p>
-        </div>
     </div>
     <hr class="container" />
     <div class="container" id="resultSpan" style="display: none">
@@ -56,6 +52,9 @@
     </div>
     <br />
     <div class="container" id="searchResult">
+        <div class="loading" id='searchloading'>
+            <span class='loadingText'>Loading...</span>
+        </div>
     </div>
     </form>
 </asp:Content>

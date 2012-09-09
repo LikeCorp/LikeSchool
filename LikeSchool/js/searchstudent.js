@@ -8,6 +8,7 @@ $(document).ready(function () {
         UpdateSearchTextPlaceHolder();
     });
     $('#searchSubmit').click(function () {
+        $('#searchloading').show();
         var searchURL = baseurl;
         var searchText = $('#searchtext').val();
         if (searchText.length > 0) {
@@ -40,9 +41,8 @@ $(document).ready(function () {
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                beforeSend: function () { $('#loader').css('display', 'block'); },
-                complete: function () { $('#loader').css('display', 'none'); },
                 success: function (res) {
+                    $('#searchloading').hide();
                     $("#resultSpan").css('display', 'none');
                     $("#searchResult").empty();
                     var result = eval(res.d);

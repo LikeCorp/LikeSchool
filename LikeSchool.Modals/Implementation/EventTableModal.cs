@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -10,35 +11,61 @@ namespace LikeSchool.Modals
     {
         private IUpdaterDetailTableModal updateModal;
         private int id;
-        private DateTime start;
-        private DateTime end;
+        private DateTime startdt;
+        private DateTime enddt;
+        private string start;
+        private string end;
         public string Start
         {
-            get;
-            set;
+            get
+            {
+                return start;
+
+            }
+            set
+            {
+                start = value;
+                startdt = DateTime.ParseExact(start.Substring(0, 24), "ddd MMM d yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            }
         }
         public string End
         {
-            get;
-            set;
+            get
+            {
+                return end;
+
+            }
+            set
+            {
+                end = value;
+                enddt = DateTime.ParseExact(end.Substring(0, 24), "ddd MMM d yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            }
         }
-        internal DateTime StartDT
+        public DateTime StartDT
         {
             get
             {
-                return
-             DateTime.ParseExact(Start, "yyyy-MM-dd HH:mm tt",
-                                          null);
+                return startdt;
+            }
+            set
+            {
+                startdt = value;
+                start = startdt.ToString();
             }
         }
-        internal DateTime EndDT
+        public DateTime EndDT
         {
             get
             {
-                return DateTime.ParseExact(End, "yyyy-MM-dd HH:mm tt",
-                                          null);
+                return enddt;
+            }
+            set
+            {
+                enddt = value;
+                end = enddt.ToString();
             }
         }
+        
         public string Title { get; set; }
         public string Description { get; set; }
         public int Id

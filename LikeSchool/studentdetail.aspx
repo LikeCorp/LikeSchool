@@ -15,27 +15,25 @@
             <div class="span3">
                 <div class="well sidebar-nav">
                     <ul class="nav nav-list prof">
-
                         <li class="nav-header">Student Menu</li>
-                        <li><a href="searchstudent.aspx"><i class="icon-search" icon-black"></i>&nbsp;Search Student</a></li>
+                        <li><a href="searchstudent.aspx"><i class="icon-search icon-black"></i>&nbsp;Search
+                            Student</a></li>
                         <li class="active"><a href="#" hint="profile"><i class=" icon-user icon-black"></i>&nbsp;View
                             Profile</a></li>
                         <li><a href="#" hint="sendemail"><i class="icon-envelope icon-black"></i>&nbsp;Send
                             Email</a></li>
                         <li><a href="#" hint="report"><i class="icon-list-alt icon-black"></i>&nbsp;Report</a>
                         </li>
-                        
                     </ul>
                 </div>
             </div>
             <div class="span8">
                 <div id="profile" class="profs" style="display: none;">
-                    <ul id="myTab" class="nav nav-tabs">
+                    <ul id="myTab" class="nav nav-pills">
                         <li class="active"><a href="#profileTab" data-toggle="tab">Profile</a></li>
                         <li class=""><a href="#communicationTab" data-toggle="tab">Contact Details</a></li>
                         <li class=""><a href="#otherTab" data-toggle="tab">More Details</a></li>
                         <li class=""><a href="#parentTab" data-toggle="tab">Parent/Guardian</a></li>
-                        
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="profileTab">
@@ -199,7 +197,7 @@
                                 </button>
                             </div>
                             <%} %>
-                             <div class="pre updater">
+                            <div class="pre updater">
                                 <ul>
                                     <li>Created by
                                         <%=StudentModal.ContactModal.UpdateModal.CreatedBy %>

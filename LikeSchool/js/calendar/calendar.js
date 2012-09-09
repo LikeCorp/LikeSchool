@@ -108,15 +108,39 @@ function InitializeCalendar() {
             ProcessEvent(start, end, allDay);
         },
         loading: function (bool) {
-            if (bool) $('#loading').show();
-            else $('#loading').hide();
+            if (bool) $('#calendarloading').show();
+            else $('#calendarloading').hide();
         },
         editable: true,
         viewDisplay:function(view){
-            //alert(new DateDetail(view.start).GetDateText());
-            //alert(new DateDetail(view.end).GetDateText());
-            alert(view.start);
-            alert(view.end);
+            $("#eventTitle").html("Events of this " + view.name +" | <strong>"+view.title+"</strong>");
+            var displayrefs = ['start', 'end'];
+            var displayValues = [];
+            displayValues.push(view.start);
+            displayValues.push(view.end);
+            $("#displayloading").show();
+            $.ajax({
+                url: "/Services/EventService.asmx/SelectEventTableWithConstrain",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({ jsonValue: GetJsonString(displayrefs, displayValues) }),
+                dataType: "json",
+                success: function (res) {
+                    $("#displayloading").hide();
+                    $("#events").empty();
+                    var result = eval(res.d);
+                    var finalResult = ConstructTable(result, view);
+                    $("#events").append(finalResult);
+                    $('#calendarDataTable').dataTable({
+                        "bLengthChange": false,
+                        "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+                        "sPaginationType": "bootstrap",
+                        "oLanguage": {
+                            "sLengthMenu": "_MENU_ records per page"
+                        }
+                    });
+                }
+            });
         },
         eventClick: function (calEvent, jsEvent, view) {
             var dateDetail;
@@ -238,6 +262,31 @@ function GetDisplayDate(calEvent)
 
     return dateDetail;
 }
+function GetTableDate(result) {
+    var dateDetail;
+    var sDate;
+    var eDate;
+    if (result.Start != null) {
+        sDate = new DateDetail(Date.parse(result.Start));
+    }
+    if (result.End != null) {
+        eDate = new DateDetail(Date.parse(result.End));
+    }
+
+    if (result.AllDay) {
+        if (result.Start != null)
+            dateDetail = sDate.GetDateText();
+
+        if (result.End != null)
+            dateDetail += ' to ' + eDate.GetDateText();
+    }
+    else {
+        dateDetail = sDate.GetDateText();
+        dateDetail += ' - ' + sDate.GetTimeWithDesignator() + ' to ' + eDate.GetTimeWithDesignator();
+    }
+
+    return dateDetail;
+}
 //This method clears the values of the Event Modal
 function ClearValues() {
     $('#startDate').val('');
@@ -312,5 +361,39 @@ function DateDetail(date) {
     this.GetUniqueDateId = function () {
         return this.DayNo.toString() + this.MonthNo.toString() + this.Year.toString() + this.WeekDayNo.toString();
     };
+}
+
+function ConstructTable(result,view)
+{
+
+    if (result == undefined || result.length == 0)
+        return "Oops! No Events for this "+view.name;
+    else {
+        var table = " <table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='calendarDataTable'>";
+
+        table += "<thead><tr>";
+        table += "<th>Title</th>";
+        table += "<th>Date and Time</th>";
+        table += "<th>View</th>";
+        table += "<th>Edit</th>";
+        table += "<th>Delete</th>";
+        table += "</tr></thead>";
+
+        table += "<tbody>";
+        for (var x = 0; x < result.length; x++) {
+            var data = result[x];
+            table += "<tr>";
+            table += "<td>"+data.Title+ "</td>";
+            table += "<td>" + GetTableDate(data) + "</td>";
+            table += "<td><a href='#'><i class='icon-eye-open icon-black'></i></a></td>";
+            table += "<td><a href='#'><i class='icon-pencil icon-black'></i></a></td>";
+            table += "<td><a href='#'><i class='icon-remove icon-black'></i></a></td>";
+            table += "</tr>";
+
+        }
+        table += "</tbody>";
+        table += "</table>";
+        return table;
+    }
 }
 

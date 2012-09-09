@@ -3,7 +3,16 @@
 .brand, h1 {
     color: #63B8E3 !important;
 }
-
+.loading {
+    background-image: url(\\img\\ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+    text-align: center;
+    display: none;
+}
+.loadingText {
+    padding-left: 20px;
+}
 #features > li {
     margin-top: 10px;
 }
@@ -76,9 +85,12 @@
 }
 
 .loadmodal {
-    background: url('../img/ajax-loader (1).gif') 50% 50% no-repeat;
+    background: url('../img/ajax-loader.gif') 50% 50% no-repeat;
     width: 20px;
     height: 20px;
     float: left;
 }
 
+#searchloading {
+    background-position-x:47%;
+}
