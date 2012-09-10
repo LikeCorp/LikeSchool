@@ -1,4 +1,4 @@
-﻿
+﻿var currentid;
 var times = ["01:00",
 "01:30",
 "02:00",
@@ -34,8 +34,8 @@ function InitializeValues() {
     });
     $("#startTime,#endTime").append(GetOptions(times));
     $("#startdesignator,#enddesignator").append(GetOptions(designators));
-    $("#startDate").datepicker();
-    $("#endDate").datepicker();
+    $("#startDate").datepicker({ dateFormat: 'dd/mm/yy' });
+    $("#endDate").datepicker({ dateFormat: 'dd/mm/yy' });
     $("#datepicker").datepicker({ inline: true });
     InitializeDialog();
 }
@@ -66,12 +66,14 @@ $(document).ready(function () {
             url: "/Services/EventService.asmx/InsertEventTable",
             type: "POST",
             contentType: "application/json; charset=utf-8",
-            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues) , loginValues: GetJsonString(loginReference,loginValues) }),
+            data: JSON.stringify({ jsonValue: GetJsonString(references, rvalues), loginValues: GetJsonString(loginReference, loginValues) }),
             dataType: "json",
             success: function (res) {
+                var view = $('#calendar').fullCalendar('getView');
+                UpdateView(view);
                 $('#calendar').fullCalendar('renderEvent',
 						{
-						    id:parseInt(res.d),
+						    id: parseInt(res.d),
 						    title: GetHtmlElementValue('title'),
 						    start: formattedstart,
 						    end: formattedend,
@@ -92,9 +94,72 @@ $(document).ready(function () {
                 $("#eventWindow").modal('hide');
             }
         });
-        
+
+    });
+
+    $("#deleteEvent").click(function () {
+        DeleteEvent();
+    });
+
+    $(".delete > a").click(function () {
+        currentid = $(this).attr('eventid');
+        DeleteEvent();
     });
 });
+
+function UpdateView(view) {
+    $("#eventTitle").html("Events of this " + view.name + " | <strong>" + view.title + "</strong>");
+    var displayrefs = ['start', 'end'];
+    var displayValues = [];
+    displayValues.push(view.start);
+    displayValues.push(view.end);
+    $("#displayloading").show();
+    $.ajax({
+        url: "/Services/EventService.asmx/SelectEventTableWithConstrain",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ jsonValue: GetJsonString(displayrefs, displayValues) }),
+        dataType: "json",
+        success: function (res) {
+            $("#displayloading").hide();
+            $("#events").empty();
+            var result = eval(res.d);
+            var finalResult = ConstructTable(result, view);
+            $("#events").append(finalResult);
+            $('#calendarDataTable').dataTable({
+                "bLengthChange": false,
+                "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
+                "sPaginationType": "bootstrap",
+                "oLanguage": {
+                    "sLengthMenu": "_MENU_ records per page"
+                }
+            });
+        }
+    });
+}
+function DeleteEvent() {
+
+    if (!confirm("Do you want to delete this event?"))
+        return;
+
+    $("#eventView").modal('hide');
+    var view = $('#calendar').fullCalendar('getView');
+    var id = currentid;
+    var refs = ['id'];
+    var vals = [];
+    vals.push(id);
+    $.ajax({
+        url: "/Services/EventService.asmx/DeleteEventTable",
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify({ jsonValue: GetJsonString(refs, vals) }),
+        dataType: "json",
+        success: function (res) {
+            $('#calendar').fullCalendar('removeEvents', id);
+            UpdateView(view);
+        }
+    });
+}
 //This method load the Full calendar functionalities
 function InitializeCalendar() {
     $('#calendar').fullCalendar({
@@ -104,7 +169,7 @@ function InitializeCalendar() {
             right: 'month,agendaWeek,agendaDay'
         },
         selectable: true,
-        select: function (start, end, allDay) {         
+        select: function (start, end, allDay) {
             ProcessEvent(start, end, allDay);
         },
         loading: function (bool) {
@@ -112,35 +177,8 @@ function InitializeCalendar() {
             else $('#calendarloading').hide();
         },
         editable: true,
-        viewDisplay:function(view){
-            $("#eventTitle").html("Events of this " + view.name +" | <strong>"+view.title+"</strong>");
-            var displayrefs = ['start', 'end'];
-            var displayValues = [];
-            displayValues.push(view.start);
-            displayValues.push(view.end);
-            $("#displayloading").show();
-            $.ajax({
-                url: "/Services/EventService.asmx/SelectEventTableWithConstrain",
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                data: JSON.stringify({ jsonValue: GetJsonString(displayrefs, displayValues) }),
-                dataType: "json",
-                success: function (res) {
-                    $("#displayloading").hide();
-                    $("#events").empty();
-                    var result = eval(res.d);
-                    var finalResult = ConstructTable(result, view);
-                    $("#events").append(finalResult);
-                    $('#calendarDataTable').dataTable({
-                        "bLengthChange": false,
-                        "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
-                        "sPaginationType": "bootstrap",
-                        "oLanguage": {
-                            "sLengthMenu": "_MENU_ records per page"
-                        }
-                    });
-                }
-            });
+        viewDisplay: function (view) {
+            UpdateView(view);
         },
         eventClick: function (calEvent, jsEvent, view) {
             var dateDetail;
@@ -152,24 +190,7 @@ function InitializeCalendar() {
             $("#lastmodifiedby").text(calEvent.lastmodifiedBy);
             //$("#lastmodifiedtime").text(GetDisplayDate(calEvent.lastmodifiedTime));;Need to convert the date(ms) to date
             $("#eventView").modal({});
-            $("#deleteEvent").click(function () {
-                $("#eventView").modal('hide');
-                var id = calEvent.id;
-                var refs=['id'];
-                var vals=[];
-                vals.push(id);
-                $.ajax({
-                    url: "/Services/EventService.asmx/DeleteEventTable",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify({ jsonValue: GetJsonString(refs, vals)}) ,
-                    dataType: "json",
-                    success: function (res) {
-                        $(this).fullCalendar('refetchEvents');
-                    }
-                });
-
-            });
+            currentid = calEvent.id;
         },
         events: function (start, end, callback) {
             lineItems = new Object();
@@ -190,9 +211,9 @@ function InitializeCalendar() {
                             end: new Date(result[i].End),
                             eventcolor: '#' + result[i].EventColor,
                             allDay: result[i].AllDay,
-                           // createdById: result[i].UpdateModal.CreatedById,
+                            // createdById: result[i].UpdateModal.CreatedById,
                             createdBy: result[i].UpdateModal.CreatedBy,
-                           // createdTime: result[i].UpdateModal.CreatedTime,
+                            // createdTime: result[i].UpdateModal.CreatedTime,
                             //lastmodifiedId: result[i].UpdateModal.LastModifiedId,
                             lastmodifiedBy: result[i].UpdateModal.LastModifiedBy,
                             //lastmodifiedTime: result[i].UpdateModal.LastModifiedTime,
@@ -207,8 +228,7 @@ function InitializeCalendar() {
         },
     });
 }
-function ProcessEvent(start, end, allDay)
-{
+function ProcessEvent(start, end, allDay) {
     var title;
     var startDate = new DateDetail(start);
     var endDate = new DateDetail(end);
@@ -232,12 +252,11 @@ function ProcessEvent(start, end, allDay)
     $("#eventWindow").modal({
 
     });
-    
+
 }
 
 
-function GetDisplayDate(calEvent)
-{
+function GetDisplayDate(calEvent) {
     var dateDetail;
     var sDate;
     var eDate;
@@ -277,7 +296,7 @@ function GetTableDate(result) {
         if (result.Start != null)
             dateDetail = sDate.GetDateText();
 
-        if (result.End != null)
+        if (result.End != null && result.End != result.Start)
             dateDetail += ' to ' + eDate.GetDateText();
     }
     else {
@@ -318,7 +337,7 @@ function InitializeDialog() {
         HideTimes();
         $("#eventWindow").modal({
 
-        });       
+        });
     });
 }
 //This method formats the date,time,designator
@@ -363,11 +382,11 @@ function DateDetail(date) {
     };
 }
 
-function ConstructTable(result,view)
-{
+function ConstructTable(result, view) {
 
+    var cview = $('#calendar').fullCalendar('getView');
     if (result == undefined || result.length == 0)
-        return "Oops! No Events for this "+view.name;
+        return "Oops! No Events for this " + view.name;
     else {
         var table = " <table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='calendarDataTable'>";
 
@@ -383,11 +402,11 @@ function ConstructTable(result,view)
         for (var x = 0; x < result.length; x++) {
             var data = result[x];
             table += "<tr>";
-            table += "<td>"+data.Title+ "</td>";
+            table += "<td>" + data.Title + "</td>";
             table += "<td>" + GetTableDate(data) + "</td>";
-            table += "<td><a href='#'><i class='icon-eye-open icon-black'></i></a></td>";
-            table += "<td><a href='#'><i class='icon-pencil icon-black'></i></a></td>";
-            table += "<td><a href='#'><i class='icon-remove icon-black'></i></a></td>";
+            table += "<td><a href='#' ><i class='icon-eye-open icon-black'></i></a></td>";
+            table += "<td><a href='#' ><i class='icon-pencil icon-black'></i></a></td>";
+            table += "<td class='delete'><a href='#' eventid='" + data.Id + "' ><i class='icon-remove icon-black'></i></a></td>";
             table += "</tr>";
 
         }

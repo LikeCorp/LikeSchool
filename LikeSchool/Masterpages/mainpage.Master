@@ -56,7 +56,7 @@
     </asp:ContentPlaceHolder>
     <hr />
     <footer>
-            <p style="padding-left: 30px;">(C) All rights reserved to Like Corp Pvt Ltd.</p>
+            <p style="padding-left: 30px;">(C) All rights reserved to Like Corp Pvt Ltd. We recommed <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Google Chrome </a>browser to view the portal.</p>
         </footer>
 </body>
 </html>

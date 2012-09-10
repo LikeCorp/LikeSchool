@@ -59,7 +59,7 @@
             <div class="control-group">
                 <label class="control-label" for="startDate">Start Date</label>
                 <div class="controls">
-                    <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [mm/dd/yy]" />
+                    <input class="span4" type="text" id="startDate" placeholder="Enter the Start Date [dd/mm/yy]" />
                 </div>
                 <div id="sTime">
                     <label class="control-label" for="startTime">Start Time</label>
@@ -74,7 +74,7 @@
             <div class="control-group">
                 <label class="control-label" for="endDate">End Date</label>
                 <div class="controls">
-                    <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [mm/dd/yy]" />
+                    <input class="span4" type="text" id="endDate" placeholder="Enter the End Date [dd/mm/yy]" />
                 </div>
                 <div id="eTime">
                     <label class="control-label" for="endTime">End Time</label>
@@ -132,7 +132,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn btn-info" id="deleteEvent"><i class=" icon-trash icon-black">
+        <a href="#" class="btn btn-info" id="deleteEvent" ><i class=" icon-trash icon-black">
         </i>Delete </a>&nbsp; <a href="#" class="btn" data-dismiss="modal" id="A2"><i class="icon-remove icon-black">
         </i>Cancel </a>
     </div>
