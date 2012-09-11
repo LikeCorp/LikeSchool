@@ -14,7 +14,7 @@
     <div class="container">
         <% foreach(LikeSchool.Configuration.MenuElement element in Elements){ %>
         <div class="span2">
-            <a href="<%=element.NavigateUrl %>">
+            <a href="<%=element.NavigateUrl %>" onclick="<%=element.ClientClickEvent %>">
                 <img src="<%=element.ImageUrl %>" /></a>
             <h3 class="dash"><%=element.DisplayText %></h3>
         </div>

@@ -2,10 +2,7 @@
 $(document).ready(function () {
 
     $('#supportId').click(function () {
-        $("#email").focus();
-        $("#supportWindow").modal({
-
-        });
+        InitializeSupport();
     });
 
     $('#submitSupport').click(function () {
@@ -54,3 +51,11 @@ $(document).ready(function () {
         RemoveModalErrors("#supportElements");
     });
 });
+
+function InitializeSupport()
+{
+    $("#email").focus();
+    $("#supportWindow").modal({
+
+    });
+}

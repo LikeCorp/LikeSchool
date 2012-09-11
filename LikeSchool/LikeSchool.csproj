@@ -57,10 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="administration.aspx" />
-    <Content Include="admission.aspx" />
+    <Content Include="administration\admission.aspx" />
+    <Content Include="administration\classmanager.aspx" />
     <Content Include="attendance.aspx" />
     <Content Include="calendar.aspx" />
     <Content Include="Controls\support.ascx" />
+    <Content Include="administration\course.aspx" />
     <Content Include="css\bootstrap-datatables.css" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\fullcalendar.print.css" />
@@ -98,6 +100,9 @@
     <Content Include="img\back_disabled.png" />
     <Content Include="img\back_enabled.png" />
     <Content Include="img\back_enabled_hover.png" />
+    <Content Include="img\dashboard\class.png" />
+    <Content Include="img\dashboard\course.png" />
+    <Content Include="img\dashboard\teacher.png" />
     <Content Include="img\dashboard\admission.png" />
     <Content Include="img\dashboard\administration.png" />
     <Content Include="img\dashboard\profile.png" />
@@ -160,9 +165,11 @@
     <Content Include="searchstudent.aspx" />
     <Content Include="Services\SearchStudentService.asmx" />
     <Content Include="Services\StudentService.asmx" />
+    <Content Include="settings.aspx" />
     <Content Include="studentdetail.aspx" />
     <Content Include="Services\LoginService.asmx" />
     <Content Include="Services\EventService.asmx" />
+    <Content Include="administration\teacher.aspx" />
     <Content Include="timetable.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -176,12 +183,19 @@
     <Compile Include="administration.aspx.designer.cs">
       <DependentUpon>administration.aspx</DependentUpon>
     </Compile>
-    <Compile Include="admission.aspx.cs">
+    <Compile Include="administration\admission.aspx.cs">
       <DependentUpon>admission.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="admission.aspx.designer.cs">
+    <Compile Include="administration\admission.aspx.designer.cs">
       <DependentUpon>admission.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="administration\classmanager.aspx.cs">
+      <DependentUpon>classmanager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administration\classmanager.aspx.designer.cs">
+      <DependentUpon>classmanager.aspx</DependentUpon>
     </Compile>
     <Compile Include="attendance.aspx.cs">
       <DependentUpon>attendance.aspx</DependentUpon>
@@ -214,6 +228,13 @@
     </Compile>
     <Compile Include="Core\BaseSite.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administration\course.aspx.cs">
+      <DependentUpon>course.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administration\course.aspx.designer.cs">
+      <DependentUpon>course.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,6 +292,13 @@
     <Compile Include="searchstudent.aspx.designer.cs">
       <DependentUpon>searchstudent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="settings.aspx.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="settings.aspx.designer.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+    </Compile>
     <Compile Include="studentdetail.aspx.cs">
       <DependentUpon>studentdetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -279,6 +307,13 @@
       <DependentUpon>studentdetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="administration\teacher.aspx.cs">
+      <DependentUpon>teacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="administration\teacher.aspx.designer.cs">
+      <DependentUpon>teacher.aspx</DependentUpon>
+    </Compile>
     <Compile Include="timetable.aspx.cs">
       <DependentUpon>timetable.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

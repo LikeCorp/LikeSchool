@@ -10,8 +10,8 @@ namespace LikeSchool.Helpers
         public static string GetSubString(string firstIndexString, string lastIndexString,string originalValue)
         {
             int startIndex = originalValue.LastIndexOf(firstIndexString)+1;
-            int lastIndex = originalValue.LastIndexOf(lastIndexString)-1;
-            return originalValue.Substring(startIndex, lastIndex);
+            int lastIndex = originalValue.LastIndexOf(lastIndexString);
+            return originalValue.Substring(startIndex, lastIndex-startIndex);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿var currentid;
+var viewResults;
 var times = ["01:00",
 "01:30",
 "02:00",
@@ -98,13 +99,9 @@ $(document).ready(function () {
     });
 
     $("#deleteEvent").click(function () {
-        DeleteEvent();
+        DeleteEvent(currentid);
     });
-
-    $(".delete > a").click(function () {
-        currentid = $(this).attr('eventid');
-        DeleteEvent();
-    });
+    
 });
 
 function UpdateView(view) {
@@ -137,14 +134,28 @@ function UpdateView(view) {
         }
     });
 }
-function DeleteEvent() {
+function ViewEvent(eventPosition)
+{
+    var eventData = viewResults[eventPosition];
+    var dateDetail;
+    dateDetail = GetTableDate(eventData);
+    $("#eventviewtitle").text(eventData.Title);
+    $("#durationdetail").text(dateDetail);
+    $("#createdby").text(eventData.UpdateModal.CreatedBy);
+    //$("#createdtime").text(GetDisplayDate(calEvent.createdTime));Need to convert the date(ms) to date
+    $("#lastmodifiedby").text(eventData.UpdateModal.LastModifiedBy);
+    //$("#lastmodifiedtime").text(GetDisplayDate(calEvent.lastmodifiedTime));;Need to convert the date(ms) to date
+    $("#eventView").modal({});
+    currentid = eventData.Id;
+}
+function DeleteEvent(cid) {
 
     if (!confirm("Do you want to delete this event?"))
         return;
 
     $("#eventView").modal('hide');
     var view = $('#calendar').fullCalendar('getView');
-    var id = currentid;
+    var id = cid;
     var refs = ['id'];
     var vals = [];
     vals.push(id);
@@ -388,6 +399,7 @@ function ConstructTable(result, view) {
     if (result == undefined || result.length == 0)
         return "Oops! No Events for this " + view.name;
     else {
+        viewResults = result;
         var table = " <table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered' id='calendarDataTable'>";
 
         table += "<thead><tr>";
@@ -404,9 +416,9 @@ function ConstructTable(result, view) {
             table += "<tr>";
             table += "<td>" + data.Title + "</td>";
             table += "<td>" + GetTableDate(data) + "</td>";
-            table += "<td><a href='#' ><i class='icon-eye-open icon-black'></i></a></td>";
+            table += "<td><a href='#' onclick='ViewEvent("+x+")' ><i class='icon-eye-open icon-black'></i></a></td>";
             table += "<td><a href='#' ><i class='icon-pencil icon-black'></i></a></td>";
-            table += "<td class='delete'><a href='#' eventid='" + data.Id + "' ><i class='icon-remove icon-black'></i></a></td>";
+            table += "<td class='delete'><a href='#' onclick='DeleteEvent(" + data.Id + ");' ><i class='icon-remove icon-black'></i></a></td>";
             table += "</tr>";
 
         }

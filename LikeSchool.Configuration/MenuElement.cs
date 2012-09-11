@@ -32,7 +32,7 @@ namespace LikeSchool.Configuration
                 return Convert.ToInt32(this["highlevelid"]);
             }
         }
-        
+
         [System.Configuration.ConfigurationProperty("image", IsRequired = true)]
         public string ImageUrl
         {
@@ -63,6 +63,19 @@ namespace LikeSchool.Configuration
             get
             {
                 return this["roletype"] as string;
+            }
+        }
+        [System.Configuration.ConfigurationProperty("clientclickevent", IsRequired = true)]
+        public string ClientClickEvent
+        {
+            get
+            {
+                if (this["clientclickevent"] as string == null)
+                {
+                    return string.Empty;
+
+                }
+                return this["clientclickevent"] as string;
             }
         }
     }
