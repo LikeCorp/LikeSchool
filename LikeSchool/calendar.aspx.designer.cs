@@ -13,6 +13,15 @@ namespace LikeSchool {
     public partial class calendar {
         
         /// <summary>
+        /// BreadCrumb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::LikeSchool.Controls.breadcrumb BreadCrumb;
+        
+        /// <summary>
         /// Calendar control.
         /// </summary>
         /// <remarks>

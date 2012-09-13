@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace LikeSchool
 {
-    public partial class classmanager : System.Web.UI.Page
+    public partial class classmanager : BaseSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BreadCrumb.HeaderText = "Class Manager";
         }
     }
 }

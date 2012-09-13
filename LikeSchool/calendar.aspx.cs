@@ -11,6 +11,7 @@ namespace LikeSchool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            BreadCrumb.HeaderText = "Calendar";
             if (!Page.IsPostBack)
             {
                 LoginIdField.Value = LoginModal.Id.ToString();

@@ -19,6 +19,7 @@ namespace LikeSchool
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            BreadCrumb.HeaderText = "Student Detail";
             var adQuery = Request.QueryString["adno"];
             var batchQuery = Request.QueryString["bno"];
             var sessionAd = Session["adno"];

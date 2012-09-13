@@ -61,12 +61,14 @@
     <Content Include="administration\classmanager.aspx" />
     <Content Include="attendance.aspx" />
     <Content Include="calendar.aspx" />
+    <Content Include="Controls\breadcrumb.ascx" />
     <Content Include="Controls\support.ascx" />
     <Content Include="administration\course.aspx" />
     <Content Include="css\bootstrap-datatables.css" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\fullcalendar.print.css" />
     <Content Include="css\jquery.dataTables.css" />
+    <Content Include="css\layout.css" />
     <Content Include="css\main.css" />
     <Content Include="css\uicss\images\ui-bg_diagonals-thick_75_f3d8d8_40x40.png" />
     <Content Include="css\uicss\images\ui-bg_dots-small_65_a6a6a6_2x2.png" />
@@ -129,6 +131,7 @@
     <Content Include="js\bootstrap-dropdown.js" />
     <Content Include="js\bootstrap-tab.js" />
     <Content Include="js\jquery.dataTables.js" />
+    <Content Include="js\layoutnavigator.js" />
     <Content Include="js\searchstudent.js" />
     <Content Include="js\student.js" />
     <Content Include="js\masterpage.js" />
@@ -211,6 +214,13 @@
     </Compile>
     <Compile Include="calendar.aspx.designer.cs">
       <DependentUpon>calendar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\breadcrumb.ascx.cs">
+      <DependentUpon>breadcrumb.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\breadcrumb.ascx.designer.cs">
+      <DependentUpon>breadcrumb.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\calendar.ascx.cs">
       <DependentUpon>calendar.ascx</DependentUpon>
