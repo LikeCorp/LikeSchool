@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\SubjectCollection.cs" />
     <Compile Include="Implementation\AdmissionModal.cs" />
     <Compile Include="Implementation\BatchTableModal.cs" />
     <Compile Include="Implementation\ClassTableModal.cs" />
     <Compile Include="Implementation\ContactModal.cs" />
     <Compile Include="Implementation\EventTableModal.cs" />
+    <Compile Include="Interfaces\ISubjectModal.cs" />
+    <Compile Include="Implementation\SubjectModal.cs" />
     <Compile Include="Interfaces\IUpdaterDetailTableModal.cs" />
     <Compile Include="Implementation\UpdaterDetailTableModal.cs" />
     <Compile Include="Interfaces\IParentModal.cs" />

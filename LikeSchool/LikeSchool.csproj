@@ -65,6 +65,7 @@
     <Content Include="Controls\support.ascx" />
     <Content Include="administration\course.aspx" />
     <Content Include="css\bootstrap-datatables.css" />
+    <Content Include="css\chosen.css" />
     <Content Include="css\fullcalendar.css" />
     <Content Include="css\fullcalendar.print.css" />
     <Content Include="css\jquery.dataTables.css" />
@@ -130,6 +131,8 @@
     <Content Include="js\calendar\calendar.js" />
     <Content Include="js\bootstrap-dropdown.js" />
     <Content Include="js\bootstrap-tab.js" />
+    <Content Include="img\chosen-sprite.png" />
+    <Content Include="js\chosen.jquery.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\layoutnavigator.js" />
     <Content Include="js\searchstudent.js" />

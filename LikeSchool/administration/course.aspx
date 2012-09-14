@@ -5,10 +5,13 @@
     <link href="../css/layout.css" rel="stylesheet" />
     <link href="../css/bootstrap-datatables.css" rel="stylesheet" />
     <link href="../css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="../css/chosen.css" rel="stylesheet" />
     <script src="../js/jquery.dataTables.js"></script>
     <script src="../js/bootstrap-datatables.js"></script>
     <script type="text/javascript" src="../js/bootstrap-tab.js"></script>
+     <script src="../js/chosen.jquery.js"></script>
     <script type="text/javascript" src="../js/layoutnavigator.js"></script>
+   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -31,12 +34,12 @@
             </div>
             <div class="span8">
                 <div id="first" class="profs" style="display: none;">
-                    <div class="tabbable tabs-right">
-                        <ul id="myTab" class="nav nav-tabs">
+                    
+                        <ul id="myTab" class="nav nav-pills">
                             <li class="active"><a href="#viewTab" data-toggle="tab">View Courses</a></li>
                             <li class=""><a href="#addTab" data-toggle="tab">Add Course</a></li>
                         </ul>
-                        <div id="myTabContent" class="tab-content">
+                        <div id="myTabContent" class="tab-content" style="overflow:visible">
                             <div class="tab-pane fade active in" id="viewTab">
                                 <legend>Courses</legend>
                                 <table cellpadding='0' cellspacing='0' border='0' class='table table-striped table-bordered sDataTable'>
@@ -83,7 +86,12 @@
                                     <div class="control-group">
                                         <label class="control-label" for="inputNoStudents">Subjects</label>
                                         <div class="controls">
-                                            <input type="button" class="btn" value="Assign Subjects"/>
+                                            <select data-placeholder="Assign Subjects" id="assignSubject" multiple style="width:350px;" >
+                                                <%foreach (LikeSchool.Modals.SubjectModal modal in SubjectCollection)
+                                                  { %>
+                                                <option value="<%= modal.SubjectName %>"><%=modal.SubjectName %></option>
+                                                <%} %>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -95,11 +103,10 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    
                 </div>
-                <div id="second" class="profs" style="display: none;">
-                    <div class="tabbable tabs-right">
-                        <ul id="subjectHead" class="nav nav-tabs">
+                <div id="second" class="profs" style="display: none;">                    
+                        <ul id="subjectHead" class="nav nav-pills">
                             <li class="active"><a href="#viewSTab" data-toggle="tab">View Subjects</a></li>
                             <li class=""><a href="#addSTab" data-toggle="tab">Add Subject</a></li>
                         </ul>
@@ -149,8 +156,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
-                    </div>
+                        </div>                    
                 </div>
                 <div id="third" class="profs" style="display: none;">
                 </div>
