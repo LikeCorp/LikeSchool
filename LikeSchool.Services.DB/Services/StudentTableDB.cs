@@ -26,31 +26,24 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public string SelectClassTable()
         {
-            StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             ClassAccessLayer al = new ClassAccessLayer();
-            List<IClassTableModal> output = al.SelectClass(Constants.SP_SelectClassTable);
-            serializer.Serialize(output, outString);
-            return outString.ToString();
+            ClassCollection output = al.SelectClass(Constants.SP_SelectClassTable);
+            return Serializer.GetSerialized<ClassCollection>(output);
         }
         [WebMethod]
         public string SelectAdmissionNoTable()
         {
-            StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             StudentAccessLayer al = new StudentAccessLayer();
-            List<IAdmissionModal> output = al.GetAdmissionIds(Constants.SP_SelectAdmissionNo);
-            serializer.Serialize(output, outString);
-            return outString.ToString();
+            AdmissionCollection output = al.GetAdmissionIds(Constants.SP_SelectAdmissionNo);
+            return Serializer.GetSerialized<AdmissionCollection>(output);
         }
 
         [WebMethod]
         public IStudentTableModal SelectStudentData(int admissionno, int batchId)
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             StudentAccessLayer al = new StudentAccessLayer();
             IStudentTableModal output = al.GetStudentData(Constants.SP_SelectStudentDetail,admissionno,batchId);
-            return output;        
+            return output;    
             
         }
 

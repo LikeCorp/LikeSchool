@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#assignSubject").chosen();
+    
     $('#first').show();
     $('li.active').find('i').removeClass('icon-black');
     $('li.active').find('i').addClass('icon-white');

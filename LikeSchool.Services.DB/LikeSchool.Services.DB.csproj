@@ -67,6 +67,10 @@
     <Compile Include="AccesLayer\EventAccessLayer.cs" />
     <Compile Include="AccesLayer\LoginAccessLayer.cs" />
     <Compile Include="AccesLayer\StudentAccessLayer.cs" />
+    <Compile Include="IDB.cs" />
+    <Compile Include="Services\CourseDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Services\SearchStudentTableDB.cs">
       <SubType>Component</SubType>
     </Compile>

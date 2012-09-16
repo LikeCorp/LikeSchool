@@ -37,14 +37,10 @@ namespace LikeSchool.Services.DB.AccesLayer
 
         public ILoginTableModal GetLogin(string procedureName)
         {
-            OpenConnection();
             var dynamic = new DynamicParameters();
             dynamic.Add(Constants.User, Modal.UserName);
             dynamic.Add(Constants.Pass, Modal.Password);
-            LoginTableModal result = DbConnection.Query<LoginTableModal>(procedureName, dynamic,
-            commandType: CommandType.StoredProcedure).FirstOrDefault<LoginTableModal>();
-            CloseConnection();
-            return result;
+            return GetQueryiedFirst<LoginTableModal>(procedureName, dynamic);
         }
         public bool UpdateLoginTime()
         {

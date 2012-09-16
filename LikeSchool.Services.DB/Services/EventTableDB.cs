@@ -27,33 +27,26 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public string InsertEventTable(string jsonValue, string loginValues)
         {
-            StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            EventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
-            ILoginTableModal lTable = serializer.Deserialize<LoginTableModal>(loginValues);
+            EventTableModal modal = Serializer.GetDeserialized<EventTableModal>(jsonValue);
+            ILoginTableModal lTable = Serializer.GetDeserialized<LoginTableModal>(loginValues);
             modal.UpdateModal.CreatedById = modal.UpdateModal.LastModifiedId= lTable.Id;
             modal.UpdateModal.CreatedTime = modal.UpdateModal.LastModifiedTime= DateTime.Now;
             EventAccessLayer al = new EventAccessLayer(modal);
             int output = al.InsertEvents(Constants.SP_InsertEventTable);
-            serializer.Serialize(output, outString);
-            return outString.ToString();
+            return Serializer.GetSerialized<int>(output);
         }
 
         [WebMethod]
         public string SelectEventTable()
         {
-            StringBuilder outString=new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             EventAccessLayer al = new EventAccessLayer();
-            List<EventTableModal> output = al.SelectEvents(Constants.SP_SelectEventTable);
-            serializer.Serialize(output, outString);
-            return outString.ToString();
+            EventCollection output = al.SelectEvents(Constants.SP_SelectEventTable);
+            return Serializer.GetSerialized<EventCollection>(output);
         }
         [WebMethod]
         public string DeleteEventTable(string jsonValue)
         {
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            IEventTableModal modal = serializer.Deserialize<EventTableModal>(jsonValue);
+            IEventTableModal modal = Serializer.GetDeserialized<EventTableModal>(jsonValue);
             EventAccessLayer al = new EventAccessLayer(modal);
             bool result=al.DeleteEvent(Constants.SP_DeleteEventTable);
             return result.ToString();
@@ -61,13 +54,10 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public string SelectEventTableWithConstrain(string jsonValue)
         {
-            StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            IEventTableModal eventtable = serializer.Deserialize<EventTableModal>(jsonValue);
+            IEventTableModal eventtable = Serializer.GetDeserialized<EventTableModal>(jsonValue);
             EventAccessLayer al = new EventAccessLayer(eventtable);
-            List<EventTableModal> result = al.SelectEventsWithConstrain(Constants.SP_SelectEventsConstrain);
-            serializer.Serialize(result, outString);
-            return outString.ToString();
+            EventCollection result = al.SelectEventsWithConstrain(Constants.SP_SelectEventsConstrain);
+            return Serializer.GetSerialized<EventCollection>(result);
         }
     }
 }

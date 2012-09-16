@@ -32,11 +32,11 @@ namespace LikeSchool.Services.DB.AccesLayer
                 modal = value;
             }
         }
-        public List<IClassTableModal> SelectClass(string procedureName)
+        public ClassCollection SelectClass(string procedureName)
         {
             OpenConnection();
-            List<IClassTableModal> result = DbConnection.Query<ClassTableModal>(procedureName,
-            commandType: System.Data.CommandType.StoredProcedure).ToList<IClassTableModal>();
+            ClassCollection result = DbConnection.Query<ClassTableModal>(procedureName,
+            commandType: System.Data.CommandType.StoredProcedure) as ClassCollection;
             CloseConnection();
             return result;
         }

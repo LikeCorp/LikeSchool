@@ -32,14 +32,14 @@ namespace LikeSchool.Services.DB.AccesLayer
         {
             eventModal = modal;
         }
-        public List<EventTableModal> SelectEventsWithConstrain(string procedureName)
+        public EventCollection SelectEventsWithConstrain(string procedureName)
         {
             OpenConnection();
             var dynamic = new DynamicParameters();
             dynamic.Add(Constants.SDate, Modal.StartDT);
             dynamic.Add(Constants.EDate, Modal.EndDT);
-            List<EventTableModal> lists = new List<EventTableModal>();
-            DbConnection.Query<EventTableModal, UpdaterDetailTableModal, List<EventTableModal>>(procedureName, (eventTable, updateTable) =>
+            EventCollection lists = new EventCollection();
+            DbConnection.Query<EventTableModal, UpdaterDetailTableModal, EventCollection>(procedureName, (eventTable, updateTable) =>
             {
                 eventTable.UpdateModal = updateTable;
                 lists.Add(eventTable);
@@ -88,11 +88,11 @@ namespace LikeSchool.Services.DB.AccesLayer
             }
         }
 
-        public List<EventTableModal> SelectEvents(string procedureName)
+        public EventCollection SelectEvents(string procedureName)
         {
             OpenConnection();
-            List<EventTableModal> lists = new List<EventTableModal>();
-            DbConnection.Query<EventTableModal, UpdaterDetailTableModal, List<EventTableModal>>(procedureName, (eventTable, updateTable) =>
+            EventCollection lists = new EventCollection();
+            DbConnection.Query<EventTableModal, UpdaterDetailTableModal, EventCollection>(procedureName, (eventTable, updateTable) =>
             {
                 eventTable.UpdateModal = updateTable;
                 lists.Add(eventTable);

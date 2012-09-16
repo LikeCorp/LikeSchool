@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Script.Serialization;
+
 
 namespace LikeSchool.Helpers
 {
     public static class HelperMethods
     {
+        
         public static string GetSubString(string firstIndexString, string lastIndexString, string originalValue)
         {
             int startIndex = originalValue.LastIndexOf(firstIndexString) + 1;
@@ -23,5 +26,7 @@ namespace LikeSchool.Helpers
             strArray[0] = char.ToUpper(strArray[0]);
             return new string(strArray);
         }
+        
+        
     }
 }

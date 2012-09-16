@@ -133,6 +133,7 @@
     <Content Include="js\bootstrap-tab.js" />
     <Content Include="img\chosen-sprite.png" />
     <Content Include="js\chosen.jquery.js" />
+    <Content Include="js\coursemanager.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\layoutnavigator.js" />
     <Content Include="js\searchstudent.js" />

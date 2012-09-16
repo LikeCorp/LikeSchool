@@ -25,12 +25,9 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public static string SelectLoginTable(ILoginTableModal modal)
         {
-            StringBuilder outString = new StringBuilder();
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
             LoginAccessLayer al = new LoginAccessLayer(modal);
             ILoginTableModal output = al.GetLogin(Constants.SP_SelectLoginTable);
-            serializer.Serialize(output, outString);
-            return outString.ToString();
+            return Serializer.GetSerialized<LoginTableModal>(output as LoginTableModal);
         }
         [WebMethod]
         public static string UpdateLoginTable(ILoginTableModal modal)

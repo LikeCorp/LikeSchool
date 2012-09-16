@@ -43,9 +43,9 @@ namespace LikeSchool.Helpers
         public const string SP_SelectEventsConstrain = "SelectEventsConstrain";
         public const string LikeConnectionString = "likeconnectionstring";
 
-
-
-
+        public const string Query_Contact = "select C.*,M.username as LastModifiedBy,C.lastmodifiedtime,L.username as CreatedBy,C.createdtime  from dbo.communicationtable C inner join logintable M on C.lastmodifiedid=M.id inner join logintable L on C.createdid=L.id where fk_admissionno=@admissionno";
+        public const string Query_Other = "select C.dob as DateOfBirth,C.bg as BloodGroup,C.gender,C.nationality,C.language,C.category,C.religion,M.username as LastModifiedBy,C.lastmodifiedtime,L.username as CreatedBy,C.createdtime from dbo.othertable C inner join logintable M on C.lastmodifiedid=M.id inner join logintable L on C.createdid=L.id where fk_admissionno=@admissionno";
+        public const string Query_Parent = "select firstname,middlename,lastname,relation,dob as DateOfBirth,education,occupation,income,offaddress1 as address1,offaddress2 as address2,city,state,country,pincode,offphone1 as phone1,offphone2 as phone2,mobile,M.username as LastModifiedBy,C.lastmodifiedtime,L.username as CreatedBy,C.createdtime from dbo.parenttable C inner join logintable M on C.lastmodifiedid=M.id inner join logintable L on C.createdid=L.id where fk_admissionno=@admissionno";
         #region EventTable
         public const string SDate = "@sDate";
         public const string EDate = "@eDate";

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LikeSchool.Modals
 {
-    public class SubjectCollection : BaseCollection<SubjectModal>
+    public class ClassCollection : BaseCollection<ClassTableModal>
     {
     }
 }

@@ -1,4 +1,4 @@
-﻿using LikeSchool.Modals.Collections;
+﻿using LikeSchool.Modals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
