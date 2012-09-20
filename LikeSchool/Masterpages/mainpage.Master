@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script type="text/javascript" src="../js/jquery/core/jquery-1.7.2.js"></script>
-    <script type="text/javascript" src="js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
+    <script  type="text/javascript" src="../js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="../js/masterpage.js"></script>
     <script type="text/javascript" src="../js/utilities/utilities.js"></script>
     <script type="text/javascript" src="../js/bootstrap_button.js"></script>
@@ -25,8 +25,7 @@
             <div class="container">
                 <a class="brand" href="#">Like School</a>
                 <div class="btn-group pull-right">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user">
-                    </i>
+                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i>
                         <%=HttpContext .Current.User.Identity.Name %><span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="../studentdetail.aspx">Profile</a></li>
@@ -52,8 +51,10 @@
         </div>
     </div>
     <uc1:Support runat="server" ID="support"></uc1:Support>
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-    </asp:ContentPlaceHolder>
+   
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+    
     <hr />
     <footer>
             <p style="padding-left: 30px;">(C) All rights reserved to Like Corp Pvt Ltd. We recommed <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Google Chrome </a>browser to view the portal.</p>

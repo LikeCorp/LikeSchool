@@ -10,7 +10,7 @@ $(document).ready(function () {
             var fd = new FormData();
             fd.append('file', $('#fileInput')[0].files[0]);
             fd.append('email', $("#email").val());
-            fd.append('severity', GetHtmlElementValue('severity'));
+            fd.append('severity', GetHtmlElementValue('#severity'));
             fd.append('schoolname', $("#schoolName").val());
             fd.append('short', $("#sDesc").val());
             fd.append('desc', $("#description").val());

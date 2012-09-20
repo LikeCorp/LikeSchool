@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     
+    
     $('#first').show();
     $('li.active').find('i').removeClass('icon-black');
     $('li.active').find('i').addClass('icon-white');

@@ -20,22 +20,22 @@ function GetOptions(arrayValues) {
 }
 
 function GetHtmlElementValue(id) {
-    var tagName = $('#' + id)[0].tagName;
+    var tagName = $(id)[0].tagName;
     var returnValue;
     switch (tagName.toLowerCase()) {
         case 'select':
-            returnValue = $('#' + id + ' option:selected').text();
+            returnValue = $(id + ' option:selected').text();
             break;
         case 'textarea':
-            returnValue = $('#' + id).val();
+            returnValue = $(id).val();
         case 'input':
             {
-                switch ($('#' + id).attr('type')) {
+                switch ($(id).attr('type')) {
                     case 'text':
-                        returnValue = $('#' + id).val();
+                        returnValue = $(id).val();
                         break;
                     case 'checkbox':
-                        returnValue = $('#' + id).attr('checked')=='checked' ? true:false;
+                        returnValue = $(id).attr('checked')=='checked' ? true:false;
                         break;
                 }
             }
@@ -49,6 +49,8 @@ function clear_form_elements(ele) {
         switch (this.type) {
             case 'password':
             case 'select-multiple':
+                $(this).find('option').each(function(){$(this).prop('selected', false);});
+                break;
             case 'select-one':
             case 'text':
             case 'textarea':
@@ -82,7 +84,7 @@ function SetErrorIfEmpty(element) {
 function SetErrorBorder(inputId) {
     var validationType = $(inputId).attr('validationtype');
     var errorText = '';
-    var value = $(inputId).val();
+    var value = GetHtmlElementValue('#'+inputId.id);
     var check = true;
     if (value == '') {
         errorText = 'Required';

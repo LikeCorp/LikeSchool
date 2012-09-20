@@ -63,10 +63,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccesLayer\ClassAccessLayer.cs" />
-    <Compile Include="AccesLayer\EventAccessLayer.cs" />
-    <Compile Include="AccesLayer\LoginAccessLayer.cs" />
-    <Compile Include="AccesLayer\StudentAccessLayer.cs" />
+    <Compile Include="AccessLayer\ClassAccessLayer.cs" />
+    <Compile Include="AccessLayer\EventAccessLayer.cs" />
+    <Compile Include="AccessLayer\LoginAccessLayer.cs" />
+    <Compile Include="AccessLayer\StudentAccessLayer.cs" />
     <Compile Include="IDB.cs" />
     <Compile Include="Services\CourseDB.cs">
       <SubType>Component</SubType>

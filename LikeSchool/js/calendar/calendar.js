@@ -48,13 +48,13 @@ $(document).ready(function () {
         e.preventDefault();
         var references = ['start', 'end', 'title', 'description', 'allday', 'eventcolor'];
         var rvalues = [];
-        var allDay = GetHtmlElementValue('wholeDay');
-        var formattedstart = FormatDate(GetHtmlElementValue('startDate'), GetHtmlElementValue('startTime'), GetHtmlElementValue('startdesignator'), allDay);
+        var allDay = GetHtmlElementValue('#wholeDay');
+        var formattedstart = FormatDate(GetHtmlElementValue('#startDate'), GetHtmlElementValue('#startTime'), GetHtmlElementValue('#startdesignator'), allDay);
         rvalues.push(formattedstart);
-        var formattedend = FormatDate(GetHtmlElementValue('endDate'), GetHtmlElementValue('endTime'), GetHtmlElementValue('enddesignator'), allDay);
+        var formattedend = FormatDate(GetHtmlElementValue('#endDate'), GetHtmlElementValue('#endTime'), GetHtmlElementValue('#enddesignator'), allDay);
         rvalues.push(formattedend);
-        rvalues.push(GetHtmlElementValue('title'));
-        rvalues.push(GetHtmlElementValue('description'));
+        rvalues.push(GetHtmlElementValue('#title'));
+        rvalues.push(GetHtmlElementValue('#description'));
         rvalues.push(allDay);
         rvalues.push('3366CC');
 
@@ -75,11 +75,11 @@ $(document).ready(function () {
                 $('#calendar').fullCalendar('renderEvent',
 						{
 						    id: parseInt(res.d),
-						    title: GetHtmlElementValue('title'),
+						    title: GetHtmlElementValue('#title'),
 						    start: formattedstart,
 						    end: formattedend,
 						    allDay: allDay,
-						    description: GetHtmlElementValue('description'),
+						    description: GetHtmlElementValue('#description'),
 						    eventcolor: '#3366CC',
 						    // createdById: result[i].UpdateModal.CreatedById,
 						    createdBy: GetLoginName(),

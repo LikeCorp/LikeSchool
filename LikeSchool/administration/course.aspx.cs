@@ -25,7 +25,6 @@ namespace LikeSchool
         {
             if (!Page.IsPostBack)
             {
-                BreadCrumb.HeaderText = "Course Manager";
                 SubjectCollection.Add(new Modals.SubjectModal() { SubjectName = "Hindi" });
                 SubjectCollection.Add(new Modals.SubjectModal() { SubjectName = "English" });
                 SubjectCollection.Add(new Modals.SubjectModal() { SubjectName = "Tamil" });
@@ -33,7 +32,11 @@ namespace LikeSchool
                 SubjectCollection.Add(new Modals.SubjectModal() { SubjectName = "Chemistry" });
                 SubjectCollection.Add(new Modals.SubjectModal() { SubjectName = "Botany" });
                 SubjectCollection.Add(new Modals.SubjectModal() { SubjectName = "Zoology" });
+                
+                BreadCrumb.HeaderText = "Course Manager";
             }
+
+
         }
     }
 }
