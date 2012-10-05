@@ -39,6 +39,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Thrid party\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,6 +137,7 @@
     <Content Include="img\chosen-sprite.png" />
     <Content Include="js\chosen.jquery.js" />
     <Content Include="js\coursemanager.js" />
+    <Content Include="js\bootstrap-alert.js" />
     <Content Include="js\jquery.dataTables.js" />
     <Content Include="js\layoutnavigator.js" />
     <Content Include="js\searchstudent.js" />
@@ -170,6 +174,8 @@
     <Content Include="login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="searchstudent.aspx" />
+    <Content Include="Services\SubjectService.asmx" />
+    <Content Include="Services\CourseService.asmx" />
     <Content Include="Services\SearchStudentService.asmx" />
     <Content Include="Services\StudentService.asmx" />
     <Content Include="settings.aspx" />

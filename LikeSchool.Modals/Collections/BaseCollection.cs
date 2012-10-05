@@ -72,7 +72,7 @@ namespace LikeSchool.Modals
 
         public bool IsReadOnly
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public bool Remove(T item)

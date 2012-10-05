@@ -8,17 +8,17 @@ namespace LikeSchool.Services.DB
 {
     public interface IDB
     {
-        [WebMethod]
         string InsertDB(string jsonValue);
-        [WebMethod]
+        string InsertDBWithLogin(string jsonValue, string loginValues);
+       
         string DeleteAll();
-        [WebMethod]
+       
         string DeleteDBOnCondition(string jsonValue);
-        [WebMethod]
+       
         string UpdateDBOnCondition(string jsonValue);
-        [WebMethod]
+       
         string SelectDB();
-        [WebMethod]
+       
         string SelectDBOnCondition(string jsonValue);
 
 

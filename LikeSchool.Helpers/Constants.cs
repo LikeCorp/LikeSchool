@@ -41,6 +41,11 @@ namespace LikeSchool.Helpers
         public const string SP_SelectStudentDetail = "SelectStudentDetail";
         public const string SP_DeleteEventTable = "DeleteEventTable";
         public const string SP_SelectEventsConstrain = "SelectEventsConstrain";
+        public const string SP_InsertSubject = "InsertSubject";
+        public const string SP_InsertCourse = "InsertCourse";
+        public const string SP_SelectCourse = "SelectCourse";
+        public const string CourseName = "@coursename";
+        public const string NoOfStudents = "@noofstuds";
         public const string LikeConnectionString = "likeconnectionstring";
 
         public const string Query_Contact = "select C.*,M.username as LastModifiedBy,C.lastmodifiedtime,L.username as CreatedBy,C.createdtime  from dbo.communicationtable C inner join logintable M on C.lastmodifiedid=M.id inner join logintable L on C.createdid=L.id where fk_admissionno=@admissionno";
@@ -54,9 +59,9 @@ namespace LikeSchool.Helpers
         public const string EventId = "@id";
         public const string EventColor = "@eColor";
         public const string WholeDay = "@all";
-        public const string CreatedId="@createdid";
+        public const string CreatedId = "@createdid";
         public const string CreatedTime = "@createdtime";
-        public const string LastModifiedId="@modifiedid";
+        public const string LastModifiedId = "@modifiedid";
         public const string LastModifiedTime = "@modifiedtime";
         #endregion
 
@@ -74,6 +79,21 @@ namespace LikeSchool.Helpers
 
         public const string ClassName = "@classname";
         public const string Section = "@section";
+        public const string SubjectName = "@subjectname";
+
+        public const string SubjectIds = "@subjectids";
+        public const string CreatedBy = "@createdby";
+
         #endregion
+
+        public static string LastModifiedBy = "@lastmodifiedby";
+        public const string SP_SelectSubject = "SelectSubject";
+        public static string StudentProfile = "Student Profile";
+        public static string Administration = "Administration";
+        public static string Admission="Admission";
+        public static string TeacherTitle="Teacher";
+        public static string CourseManager="Course Manager";
+        public static string ClassManager="Class Manager";
+        public static string SearchStudent="Search Student";
     }
 }

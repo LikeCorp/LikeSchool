@@ -14,6 +14,7 @@ namespace LikeSchool
         protected void Page_Load(object sender, EventArgs e)
         {
             UpdatePageTitle();
+
         }
         private void UpdatePageTitle()
         {
@@ -38,6 +39,27 @@ namespace LikeSchool
                     break;
                 case "calendar":
                     title = Constants.Calendar;
+                    break;
+                case "studentdetail":
+                    title = Constants.StudentProfile;
+                    break;
+                case"administration":
+                    title=Constants.Administration;
+                    break;
+                case "admission":
+                    title = Constants.Admission;
+                    break;
+                case "teacher":
+                    title = Constants.TeacherTitle;
+                    break;
+                case "course":
+                    title = Constants.CourseManager;
+                    break;
+                case "classmanager":
+                    title = Constants.ClassManager;
+                    break;
+                case "searchstudent":
+                    title = Constants.SearchStudent;
                     break;
             }
             Page.Header.Title = string.Format(Constants.TitlePrefix, title);

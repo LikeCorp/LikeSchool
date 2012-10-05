@@ -99,6 +99,9 @@ function ConstructSearchResult(result) {
 function UpdateSearchTextPlaceHolder() {
     $('#searchtext').val('');
     radioVal = $('input[name=optionsRadios]:checked', '#search').val();
+    if (radioVal == undefined)
+        radioVal = 'admission';
+
     switch (radioVal) {
         case 'admission':
             place = "Type the admission No [eg: 1045]";

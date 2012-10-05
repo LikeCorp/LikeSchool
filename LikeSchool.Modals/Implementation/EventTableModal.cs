@@ -25,7 +25,7 @@ namespace LikeSchool.Modals
             set
             {
                 start = value;
-                startdt = DateTime.ParseExact(start.Substring(0, 24), "ddd MMM d yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                startdt = DateTime.ParseExact(start, "ddd MMM d yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             }
         }
         public string End
@@ -38,7 +38,7 @@ namespace LikeSchool.Modals
             set
             {
                 end = value;
-                enddt = DateTime.ParseExact(end.Substring(0, 24), "ddd MMM d yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                enddt = DateTime.ParseExact(end, "ddd MMM d yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             }
         }
         public DateTime StartDT

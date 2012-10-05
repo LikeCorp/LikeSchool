@@ -108,8 +108,8 @@ function UpdateView(view) {
     $("#eventTitle").html("Events of this " + view.name + " | <strong>" + view.title + "</strong>");
     var displayrefs = ['start', 'end'];
     var displayValues = [];
-    displayValues.push(view.start);
-    displayValues.push(view.end);
+    displayValues.push($.fullCalendar.formatDate(view.start, 'ddd MMM d yyyy HH:mm:ss'));
+    displayValues.push($.fullCalendar.formatDate(view.end, 'ddd MMM d yyyy HH:mm:ss'));
     $("#displayloading").show();
     $.ajax({
         url: "/Services/EventService.asmx/SelectEventTableWithConstrain",

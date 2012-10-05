@@ -4,3 +4,11 @@
 {
     margin-left:0 !important;
 }
+.alert
+{
+    display:none;
+}
+.alert-error
+{
+    display:none;
+}

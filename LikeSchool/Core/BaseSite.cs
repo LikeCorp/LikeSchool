@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
 using LikeSchool.Helpers;
@@ -11,10 +9,7 @@ namespace LikeSchool
     public class BaseSite : Page
     {
         private ILoginTableModal loginModal;
-        protected override void OnLoad(EventArgs e)
-        {            
-            base.OnLoad(e);
-        }
+               
 
         protected void SetJavaScriptFunction(string message)
         {
@@ -83,6 +78,8 @@ namespace LikeSchool
 
             return string.Empty;
         }
+      
+	}
 
-    }
+	
 }

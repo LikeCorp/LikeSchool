@@ -8,7 +8,15 @@
          <bc1:BreadCrumb runat="server" ID="BreadCrumb" />
         <div class="row-fluid">
             <div class="span2">
-                <!--Sidebar content-->
+               <div class="well sidebar-nav">
+                    <ul class="nav nav-list prof">
+                        <li class="nav-header">Course Menu</li>
+                        <li class="active"><a href="#" id="manageCourse" hint="first"><i class="icon-search icon-black"></i>&nbsp;Manage Course</a></li>
+                        <li><a href="#" id="manageSubject" hint="second"><i class="icon-th icon-black"></i>&nbsp;Manage Subject</a></li>
+                        <li><a href="#" hint="third"><i class="icon-list-alt icon-black"></i>&nbsp;Report</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="span10">
                 <!--Body content-->

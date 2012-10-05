@@ -16,6 +16,12 @@
         $(this).find('i').removeClass('icon-black');
         $(this).find('i').addClass('icon-white');
     });
+    
+
+
+});
+function SetDataTableTheme()
+{
     $('.sDataTable').dataTable({
         "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
         "sPaginationType": "bootstrap",
@@ -23,6 +29,4 @@
             "sLengthMenu": "_MENU_ records per page"
         }
     });
-
-
-});
+}

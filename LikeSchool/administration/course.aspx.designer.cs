@@ -22,12 +22,30 @@ namespace LikeSchool {
         protected global::LikeSchool.Controls.breadcrumb BreadCrumb;
         
         /// <summary>
-        /// viewCourse control.
+        /// LoginIdField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor viewCourse;
+        protected global::System.Web.UI.WebControls.HiddenField LoginIdField;
+        
+        /// <summary>
+        /// LoginNameField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField LoginNameField;
+        
+        /// <summary>
+        /// RoleNameField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField RoleNameField;
     }
 }

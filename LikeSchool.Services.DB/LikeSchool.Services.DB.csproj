@@ -39,9 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper">
-      <HintPath>..\Thrid party\Dapper.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +65,7 @@
     <Compile Include="AccessLayer\LoginAccessLayer.cs" />
     <Compile Include="AccessLayer\StudentAccessLayer.cs" />
     <Compile Include="IDB.cs" />
+    <Compile Include="AccessLayer\CourseAccessLayer.cs" />
     <Compile Include="Services\CourseDB.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -81,6 +79,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Services\LoginDB.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AccessLayer\SubjectAccessLayer.cs" />
+    <Compile Include="Services\SubjectDB.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Utilities\Connection.cs" />
@@ -103,6 +105,10 @@
     <None Include="Properties\PublishProfiles\LikeSchool.Services.DB.pubxml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\SamSaffron-dapper-dot-net-2a94c2b\SamSaffron-dapper-dot-net-2a94c2b\Dapper\Dapper.csproj">
+      <Project>{daf737e1-05b5-4189-a5aa-dac6233b64d7}</Project>
+      <Name>Dapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LikeSchool.Helpers\LikeSchool.Helpers.csproj">
       <Project>{2cdc2b1a-a6e7-44ec-b357-e2bf162f7968}</Project>
       <Name>LikeSchool.Helpers</Name>

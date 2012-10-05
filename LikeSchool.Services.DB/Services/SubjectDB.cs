@@ -12,7 +12,7 @@ namespace LikeSchool.Services.DB.Services
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [ScriptService]
-    public class CourseDB : System.Web.Services.WebService, IDB
+    public class SubjectDB : System.Web.Services.WebService, IDB
     {
         [WebMethod]
         public string InsertDB(string jsonValue)
@@ -37,15 +37,15 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public string SelectDB()
         {
-            CourseAccessLayer courseLayer = new CourseAccessLayer();
-            CourseCollection collection = courseLayer.SelectAll(Constants.SP_SelectCourse);
-            return Serializer.GetSerialized<CourseCollection>(collection);
+            SubjectAccessLayer accesslayer = new SubjectAccessLayer();
+            SubjectCollection collection = accesslayer.SelectAll(Constants.SP_SelectSubject);
+            return Serializer.GetSerialized<SubjectCollection>(collection);
         }
         [WebMethod]
-        public CourseCollection SelectDBWithoutSerialization()
+        public SubjectCollection SelectDBWithoutSerialization()
         {
-            CourseAccessLayer courseLayer = new CourseAccessLayer();
-            CourseCollection collection = courseLayer.SelectAll(Constants.SP_SelectCourse);
+            SubjectAccessLayer accesslayer = new SubjectAccessLayer();
+            SubjectCollection collection = accesslayer.SelectAll(Constants.SP_SelectSubject);
             return collection;
         }
         [WebMethod]
@@ -57,14 +57,14 @@ namespace LikeSchool.Services.DB.Services
         [WebMethod]
         public string InsertDBWithLogin(string jsonValue, string loginValues)
         {
-            CourseModal courseModal = Serializer.GetDeserialized<CourseModal>(jsonValue);
+            SubjectModal subjectModal = Serializer.GetDeserialized<SubjectModal>(jsonValue);            
             ILoginTableModal loginTable = Serializer.GetDeserialized<LoginTableModal>(loginValues);
-            IUpdaterDetailTableModal updateModal = new UpdaterDetailTableModal();
-            updateModal.CreatedById = updateModal.LastModifiedId = loginTable.Id;
-            updateModal.CreatedTime = updateModal.LastModifiedTime = DateTime.Now;
-            courseModal.UpdateModal = updateModal;
-            CourseAccessLayer courseLayer = new CourseAccessLayer(courseModal);
-            bool check = courseLayer.InsertDB(Constants.SP_InsertCourse);
+            IUpdaterDetailTableModal upModal = new UpdaterDetailTableModal();
+            upModal.CreatedById = upModal.LastModifiedId = loginTable.Id;
+            upModal.CreatedTime = upModal.LastModifiedTime = DateTime.Now;
+            subjectModal.UpdateModal = upModal;
+            SubjectAccessLayer subLayer = new SubjectAccessLayer(subjectModal);
+            bool check = subLayer.InsertDB(Constants.SP_InsertSubject);
             return Serializer.GetSerialized<bool>(check);
         }
     }

@@ -35,10 +35,15 @@ namespace LikeSchool.Services.DB.AccesLayer
         public ClassCollection SelectClass(string procedureName)
         {
             OpenConnection();
-            ClassCollection result = DbConnection.Query<ClassTableModal>(procedureName,
-            commandType: System.Data.CommandType.StoredProcedure) as ClassCollection;
+            List<ClassTableModal> result = DbConnection.Query<ClassTableModal>(procedureName,
+            commandType: System.Data.CommandType.StoredProcedure).ToList<ClassTableModal>();
+            ClassCollection collection = new ClassCollection();
+            foreach (ClassTableModal modal in result)
+            {
+                collection.Add(modal);
+            }
             CloseConnection();
-            return result;
+            return collection;
         }
 
         public IClassTableModal SelectClassById(string procedureName)

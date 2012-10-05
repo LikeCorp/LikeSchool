@@ -49,12 +49,12 @@ namespace LikeSchool.Services.DB
         }
         public T GetQueryied<T, TModal>(string sql, CommandType cmdType)
         {
-            return GetQueryied<T, TModal>(sql, null, cmdType);
+            return GetQueryied<T, TModal>(sql,new DynamicParameters(), cmdType);
         }
         public T GetQueryied<T, TModal>(string sql, DynamicParameters parameters, CommandType cmdType)
         {
             OpenConnection();
-            var query = DbConnection.Query<T>(sql, parameters, commandType: cmdType);
+            var query = DbConnection.Query<TModal>(sql, parameters, commandType: cmdType);
             T result = GetTypeCastedCollection<T, TModal>(query as List<TModal>);
             CloseConnection();
             return result;

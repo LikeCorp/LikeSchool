@@ -23,20 +23,7 @@ namespace LikeSchool.Services.DB.Services
     // [System.Web.Script.Services.ScriptService]
     public class StudentTableDB : System.Web.Services.WebService
     {
-        [WebMethod]
-        public string SelectClassTable()
-        {
-            ClassAccessLayer al = new ClassAccessLayer();
-            ClassCollection output = al.SelectClass(Constants.SP_SelectClassTable);
-            return Serializer.GetSerialized<ClassCollection>(output);
-        }
-        [WebMethod]
-        public string SelectAdmissionNoTable()
-        {
-            StudentAccessLayer al = new StudentAccessLayer();
-            AdmissionCollection output = al.GetAdmissionIds(Constants.SP_SelectAdmissionNo);
-            return Serializer.GetSerialized<AdmissionCollection>(output);
-        }
+       
 
         [WebMethod]
         public IStudentTableModal SelectStudentData(int admissionno, int batchId)

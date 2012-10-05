@@ -16,6 +16,15 @@ namespace LikeSchool
         public string admissionNo;
         private string batchId;
         public IStudentTableModal StudentModal;
+        public int percentage;
+
+        public string Percentage
+        {
+            get
+            {
+                return percentage.ToString();
+            }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,7 +52,29 @@ namespace LikeSchool
         {
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             StudentTableDB studDb = new StudentTableDB();
-            StudentModal = studDb.SelectStudentData(Convert.ToInt32(admissionNo),Convert.ToInt32(batchId));
+            StudentModal = studDb.SelectStudentData(Convert.ToInt32(admissionNo), Convert.ToInt32(batchId));
+            SetPercentage();
+        }
+
+        protected void SetPercentage()
+        {
+            if(StudentModal.ContactModal !=null)
+            {
+                percentage += 25;
+            }
+            if(StudentModal.OtherModal !=null)
+            {
+                percentage += 25;
+            }
+            if(StudentModal.ParentModal !=null)
+            {
+                percentage += 25;
+            }
+            if(!string.IsNullOrEmpty(StudentModal.AdmissionNo.ToString()))
+            {
+                percentage += 25;
+            }
+
         }
 
     }

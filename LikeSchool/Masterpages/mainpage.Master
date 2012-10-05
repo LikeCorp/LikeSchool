@@ -10,54 +10,57 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css" />
     <link rel="stylesheet" type="text/css" href="../css/main.css" />
     <script type="text/javascript" src="../js/jquery/core/jquery-1.7.2.js"></script>
-    <script  type="text/javascript" src="../js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="../js/jquery/ui/jquery-ui-1.8.17.custom.min.js"></script>
     <script type="text/javascript" src="../js/masterpage.js"></script>
     <script type="text/javascript" src="../js/utilities/utilities.js"></script>
     <script type="text/javascript" src="../js/bootstrap_button.js"></script>
     <script type="text/javascript" src="../js/bootstrap_modal.js"></script>
     <script type="text/javascript" src="../js/bootstrap-dropdown.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div class="navbar">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="#">Like School</a>
-                <div class="btn-group pull-right">
-                    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i>
-                        <%=HttpContext .Current.User.Identity.Name %><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="../studentdetail.aspx">Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="../logout.aspx">Log Out</a></li>
-                    </ul>
-                </div>
-                <div class="nav-collapse" id="menu">
-                    <ul class="nav">
-                        <li><a href="../index.aspx"><i class="icon-th icon-black"></i>&nbsp;Dashboard</a></li>
-                        <li><a href="../attendance.aspx"><i class="icon-ok icon-black"></i>&nbsp;Attendance
+   <%-- <form runat="server">--%>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">Like School</a>
+                    <div class="btn-group pull-right">
+                        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i>
+                            <%=HttpContext .Current.User.Identity.Name %><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../studentdetail.aspx">Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="../logout.aspx">Log Out</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-collapse" id="menu">
+                        <ul class="nav">
+                            <li><a href="../index.aspx"><i class="icon-th icon-black"></i>&nbsp;Dashboard</a></li>
+                            <li><a href="../attendance.aspx"><i class="icon-ok icon-black"></i>&nbsp;Attendance
                             Manager</a></li>
-                        <li><a href="../timetable.aspx"><i class="icon-th icon-black"></i>&nbsp;TimeTable Manager
-                        </a></li>
-                        <li><a href="../leave.aspx"><i class="icon-list-alt icon-black"></i>&nbsp;Leave Manager
-                        </a></li>
-                        <li><a href="../calendar.aspx"><i class="icon-calendar icon-black"></i>&nbsp;Calendar
-                        </a></li>
-                        <li><a href="#" id="supportId"><i class="icon-envelope"></i>&nbsp;Support</a></li>
-                    </ul>
+                            <li><a href="../timetable.aspx"><i class="icon-th icon-black"></i>&nbsp;TimeTable Manager
+                            </a></li>
+                            <li><a href="../leave.aspx"><i class="icon-list-alt icon-black"></i>&nbsp;Leave Manager
+                            </a></li>
+                            <li><a href="../calendar.aspx"><i class="icon-calendar icon-black"></i>&nbsp;Calendar
+                            </a></li>
+                            <li><a href="#" id="supportId"><i class="icon-envelope"></i>&nbsp;Support</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <uc1:Support runat="server" ID="support"></uc1:Support>
-   
+        <uc1:Support runat="server" ID="support"></uc1:Support>
+
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
-    
-    <hr />
-    <footer>
+
+        <hr />
+        <footer>
             <p style="padding-left: 30px;">(C) All rights reserved to Like Corp Pvt Ltd. We recommed <a href="https://www.google.com/intl/en/chrome/browser/" target="_blank">Google Chrome </a>browser to view the portal.</p>
         </footer>
+    <%--</form>--%>
 </body>
 </html>

@@ -8,5 +8,6 @@ namespace LikeSchool.Modals
     public class SubjectModal : ISubjectModal
     {
         public string SubjectName { get; set; }
+        public IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }

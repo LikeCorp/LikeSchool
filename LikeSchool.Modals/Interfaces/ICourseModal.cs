@@ -5,7 +5,7 @@ namespace LikeSchool.Modals
     {
         string CourseName { get; set; }
         int CouserId { get; set; }
-        int NoOfStiudents { get; set; }
+        int NoOfStudents { get; set; }
         IUpdaterDetailTableModal UpdateModal { get; set; }
     }
 }
